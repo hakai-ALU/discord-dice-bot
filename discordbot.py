@@ -1,24 +1,18 @@
 import discord
+import os 
 
-token = os.environ['DISCORD_BOT_TOKEN']
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 client = discord.Client()
 
-# 起動時に動作する処理
-@client.event
-async def on_ready():
-    # 起動したらターミナルにログイン通知が表示される
-    print('ログインしました')
-
-# メッセージ受信時に動作する処理
+メッセージ受信時に動作する処理
 @client.event
 async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
-    # 「/neko」と発言したら「にゃーん」が返る処理
+    # 「/n」と発言したら「にゃーん」が返る処理
     if message.content == '/n':
         await message.channel.send('にゃーん')
-    
-    
-bot.run(token)
+
+client.run(TOKEN)
