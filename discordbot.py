@@ -1,6 +1,4 @@
-from discord.ext import commands
-import os
-import traceback
+import discord
 
 token = os.environ['DISCORD_BOT_TOKEN']
 
@@ -19,7 +17,7 @@ async def on_message(message):
     if message.author.bot:
         return
     # 「/neko」と発言したら「にゃーん」が返る処理
-    if message.content == '/neko':
+    if message.content == '/n':
         await message.channel.send('にゃーん')
     
     
