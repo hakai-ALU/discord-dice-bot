@@ -5,6 +5,10 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 client = discord.Client()
 
+@client.event
+async def on_ready():
+    print('Hello World,対話botプログラム「Project-ririna-」、起動しました')
+
 # メッセージ受信時に動作する処理
 @client.event
 async def on_message(message):
