@@ -6,7 +6,7 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 client = discord.Client()
 
-date = datetime.datetime.today()
+date = datetime.datetime.now()
 
 @client.event
 async def on_ready():
