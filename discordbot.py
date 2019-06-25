@@ -18,11 +18,9 @@ async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
-
-if message.content.startswith('何日？'):
+    if message.content.startswith('何日？'):
         await message.channel.send('今日は'+str(date.year)+'年'+str(date.month)+'月'+str(date.day)+'日です！')	
-
-if message.content.startswith('時間？'):
+    if message.content.startswith('時間？'):
         await message.channel.send('今は'+str(date.hour)+'時'+str(date.minute)+'分'+str(date.second)+'秒です！')	        
      
 client.run(TOKEN)
