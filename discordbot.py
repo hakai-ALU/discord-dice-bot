@@ -14,13 +14,15 @@ async def on_ready():
 
 # メッセージ受信時に動作する処理
 @client.event
-async def on_message(message):
-    # メッセージ送信者がBotだった場合は無視する
-    if message.author.bot:
-        return
-    if message.content.startswith('何日？'):
-        await message.channel.send('今日は'+str(date.year)+'年'+str(date.month)+'月'+str(date.day)+'日です！')	
-    if message.content.startswith('時間？'):
-        await message.channel.send('今は'+str(date.hour)+'時'+str(date.minute)+'分'+str(date.second)+'秒です！')	        
-     
+   async def on_message(message):
+ # メッセージ送信者がBotだった場合は無視する
+    　　if message.author.bot:
+        　　return
+　　　　#!timeとサーバのチャット欄に打てば現在時刻を教えてくれる
+       if message.content.startswith('何日？'):
+           replay = datetime.now().strftime("%Y年%m月%d日 %H時:%M分:%S秒")       
+           await client.send_message(message.channel, replay) 
+
+
 client.run(TOKEN)
+
