@@ -18,7 +18,6 @@ async def on_ready():
  # メッセージ送信者がBotだった場合は無視する
     　　if message.author.bot:
         　　return
- #年月日
        if all(s in message.content for s in['何日？']):
            date = datetime.datetime.now()
            await message.channel.send(f'今日は{date.year}年{date.month}月{date.day}日です！')    
