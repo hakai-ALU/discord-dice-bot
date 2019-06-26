@@ -1,6 +1,6 @@
 import discord
 import os 
-from datetime import datetime
+import datetime
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
@@ -18,11 +18,13 @@ async def on_ready():
  # メッセージ送信者がBotだった場合は無視する
     　　if message.author.bot:
         　　return
-　　　　#!timeとサーバのチャット欄に打てば現在時刻を教えてくれる
-       if message.content.startswith('何日？'):
-           replay = datetime.now().strftime("%Y年%m月%d日 %H時:%M分:%S秒")       
-           await client.send_message(message.channel, replay) 
-
+ #年月日
+       if all(s in message.content for s in['何日？']):
+           date = datetime.datetime.now()
+           await message.channel.send(f'今日は{date.year}年{date.month}月{date.day}日です！')    
+       if all(s in message.content for s in ['何時？']):
+           date = datetime.datetime.now()
+           await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
 
 client.run(TOKEN)
 
