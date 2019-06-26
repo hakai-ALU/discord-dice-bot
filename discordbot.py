@@ -7,7 +7,7 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
 date = datetime.datetime.now()
-
+hour = date.hour+9
 @client.event
 async def on_ready():
     print('Hello World,対話botプログラム「Project-ririna-」、起動しました')
