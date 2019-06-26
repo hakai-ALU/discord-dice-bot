@@ -1,6 +1,6 @@
 import discord
 import os 
-import datetime
+from datetime import datetime
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
