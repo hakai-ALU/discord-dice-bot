@@ -27,7 +27,7 @@ async def on_message(message):
         await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
     # メンバーのリストを取得して表示
     if message.content == '/member':
-        print(message.guild.members)
+        await message.channel.send(message.guild.members)
     # 役職のリストを取得して表示
     if message.content == '/roles':
         print(message.guild.roles)
