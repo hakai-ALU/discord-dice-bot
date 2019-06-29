@@ -25,6 +25,21 @@ async def on_message(message):
     if all(s in message.content for s in ['何時？']):
         date = datetime.datetime.now()
         await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
+    # メンバーのリストを取得して表示
+    if message.content == '/member':
+        print(message.guild.members)
+    # 役職のリストを取得して表示
+    if message.content == '/roles':
+        print(message.guild.roles)
+    # テキストチャンネルのリストを取得して表示
+    if message.content == '/tch':
+        print(message.guild.text_channels)
+    # ボイスチャンネルのリストを取得して表示
+    if message.content == '/vch':
+        print(message.guild.voice_channels)
+    # カテゴリチャンネルのリストを取得して表示
+    if message.content == '/cch':
+        print(message.guild.categories)
 
 client.run(TOKEN)
 
