@@ -161,15 +161,4 @@ async def on_reaction_remove(reaction, user):
         await SendMsg(DefaultChannel, f'{user.mention} 参加をキャンセルしました。')
     pass
 
-loop = asyncio.get_event_loop()
-
-try:
-  asyncio.async(main_task())
-  asyncio.async(check_for_reminder())
-  loop.run_forever()
-except:
-  loop.run_until_complete(client.logout())
-finally:
-  loop.close()
-
 client.run(TOKEN)
