@@ -10,7 +10,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print('Hello World,リマインドbotプログラム「Project-REMAIN-」、起動しました')
+    print('Hello World,リマインドbotプログラム「project-remain」、起動しました')
 
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
