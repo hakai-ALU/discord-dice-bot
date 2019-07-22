@@ -8,6 +8,10 @@ CHANNEL_ID = 587658526013390859 #チャンネルID
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
+@client.event
+async def on_ready():
+    print('Hello World,FRONt LINeナビゲーションbotプログラム「Project-SUI-」、起動しました')
+
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
 async def loop():
