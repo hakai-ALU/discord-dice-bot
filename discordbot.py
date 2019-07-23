@@ -22,7 +22,7 @@ async def loop():
         await channel.send('おはようございます！9:00です！今日も一日頑張りましょう！')  
     elif now == '23:00':
         channel = client.get_channel(CHANNEL_ID)
-        await channel.send('おやすみなさい！23:00です！以降のメンションはお控え下さい。') 
+        await channel.send('おやすみなさい！23:00です！以降のメンションはお控え下さい。（テスト：@supporter）') 
 #ループ処理実行
 loop.start()
 
