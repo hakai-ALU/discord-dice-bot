@@ -19,10 +19,10 @@ async def loop():
     now = datetime.now().strftime('%H:%M')
     if now == '09:00':
         channel = client.get_channel(CHANNEL_ID)
-        await channel.send('おはようございます！9:00です！')  
+        await channel.send('おはようございます！9:00です！今日も一日頑張りましょう！')  
     elif now == '23:00':
         channel = client.get_channel(CHANNEL_ID)
-        await channel.send('おやすみなさい！23:00です！') 
+        await channel.send('おやすみなさい！23:00です！以降のメンションはお控え下さい。') 
 #ループ処理実行
 loop.start()
 
