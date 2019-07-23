@@ -11,7 +11,9 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print('Hello World,リマインドbotプログラム「project-remain」、起動しました')
-
+    channel = client.get_channel(CHANNEL_ID)
+    await channel.send('これは起動テストです。 @supporter ')
+          
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
 async def loop():
