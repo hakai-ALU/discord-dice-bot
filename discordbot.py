@@ -5,14 +5,15 @@ from datetime import datetime
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 587658526013390859 #チャンネルID
+CHANNEL_ID2 = 603203288883789831
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
 @client.event
 async def on_ready():
     print('Hello World,リマインドbotプログラム「project-remain」、起動しました')
-    channel = client.get_channel(CHANNEL_ID)
-    await channel.send('これは起動テストです。 @supporter ')
+    channel = client.get_channel(CHANNEL_ID2)
+    await channel.send('BOT再起動しました')
           
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
