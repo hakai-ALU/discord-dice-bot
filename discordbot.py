@@ -2,6 +2,7 @@ import discord
 import os
 from discord.ext import tasks
 from datetime import datetime
+import random
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 587658526013390859 #チャンネルID
@@ -14,7 +15,21 @@ async def on_ready():
     print('Hello World,リマインドbotプログラム「project-remain」、起動しました')
     channel = client.get_channel(CHANNEL_ID2)
     await channel.send('BOT再起動しました')
-          
+
+@client.event
+async def on_message(message):
+    """メッセージを処理"""
+    if message.author.bot:  # ボットのメッセージをハネる
+        return
+    
+    if message.content == "おみくじ":
+         # Embedを使ったメッセージ送信 と ランダムで要素を選択
+        embed = discord.Embed(title="おみくじ", description=f"{message.author.mention}さんの今日の運勢は！",
+                              color=0x2ECC69)
+        embed.set_thumbnail(url=message.author.avatar_url)
+        embed.add_field(name="[運勢] ", value=random.choice(('大吉', '吉', '凶', '大凶')), inline=False)
+        await message.channel.send(embed=embed)
+
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
 async def loop():
