@@ -15,7 +15,8 @@ async def on_ready():
     print('Hello World,リマインドbotプログラム「project-remain」、起動しました')
     channel = client.get_channel(CHANNEL_ID2)
     await channel.send('BOT再起動しました')
-
+    date = datetime.datetime.now()
+    await message.channel.send(f'日付確認：{date.year}年{date.month}月{date.day}日{date.hour}時{date.minute}分{date.second}秒')   
 @client.event
 async def on_message(message):
     """メッセージを処理"""
