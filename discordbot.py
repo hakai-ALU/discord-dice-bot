@@ -14,7 +14,7 @@ client = discord.Client()
 async def on_ready():
     print('Hello World,リマインドbotプログラム「project-remain」、起動しました')
     channel = client.get_channel(CHANNEL_ID2)
-    await message.channel.send(f'BOT再起動しました。日付確認：{date.year}年{date.month}月{date.day}日{date.hour}時{date.minute}分{date.second}秒')   
+    await channel.send(f'BOT再起動しました。日付確認：{date.year}年{date.month}月{date.day}日{date.hour}時{date.minute}分{date.second}秒')   
 
 @client.event
 async def on_message(message):
