@@ -7,6 +7,8 @@ import random
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 587658526013390859 #チャンネルID
 CHANNEL_ID2 = 603203288883789831
+CHANNEL_ID3 = 604573398831726602
+
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
@@ -23,7 +25,8 @@ async def on_message(message):
         return
     
     if message.content == "おみくじ":
-         # Embedを使ったメッセージ送信 と ランダムで要素を選択
+        channel = client.get_channel(CHANNEL_ID3)
+        # Embedを使ったメッセージ送信 と ランダムで要素を選択
         embed = discord.Embed(title="おみくじ", description=f"{message.author.mention}さんの今日の運勢は！",
                               color=0x2ECC69)
         embed.set_thumbnail(url=message.author.avatar_url)
