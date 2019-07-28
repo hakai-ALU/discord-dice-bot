@@ -24,7 +24,7 @@ async def on_message(message):
     if message.author.bot:  # ボットのメッセージをハネる
         return
     
-    if message.content == "おみくじ":
+    if client.get_channel(CHANNEL_ID3).message.content == "おみくじ":
         # Embedを使ったメッセージ送信 と ランダムで要素を選択
         embed = discord.Embed(title="おみくじ", description=f"{message.author.mention}さんの今日の運勢は！",
                               color=0x2ECC69)
