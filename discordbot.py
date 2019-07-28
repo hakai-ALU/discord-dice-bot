@@ -5,14 +5,18 @@ from datetime import datetime
 import random
 import re
 
+#トークン
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = 587658526013390859 #チャンネルID
+
+#チャンネルID
+CHANNEL_ID = 587658526013390859 
 CHANNEL_ID2 = 603203288883789831
 CHANNEL_ID3 = 604573398831726602
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
+#起動メッセージ
 @client.event
 async def on_ready():
     print('Hello World,リマインドbotプログラム「project-remain」、起動しました')
@@ -25,6 +29,7 @@ async def on_message(message):
     if message.author.bot:  # ボットのメッセージをハネる
         return
     
+#おみくじ
     if message.content == "おみくじ":
         # Embedを使ったメッセージ送信 と ランダムで要素を選択
         embed = discord.Embed(title="おみくじ", description=f"{message.author.mention}さんの今日の運勢は！",
@@ -33,8 +38,7 @@ async def on_message(message):
         embed.add_field(name="[運勢] ", value=random.choice(('大吉', '中吉', '小吉', '吉', '半吉', '末吉', '末小吉', '凶', '小凶', '半凶', '末凶', '大凶')), inline=False)
         await client.get_channel(CHANNEL_ID3).send(embed=embed)
 
- #御籤 
-    #「翠、おみくじ引かせて！」って言うとおみくじ引く
+ #運勢
     if message.content == '運勢':
         prob = random.random()
     
