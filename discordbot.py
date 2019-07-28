@@ -35,29 +35,29 @@ async def on_message(message):
 
  #御籤 
     #「翠、おみくじ引かせて！」って言うとおみくじ引く
-    if message.content == 'おみくじ' or message.content == '運勢':
+    if message.content == '運勢':
         prob = random.random()
     
         if prob < 0.3:
-            await message.channel.send('凶です……外出を控えることをオススメします(  ･᷄ὢ･᷅  )')
+            await client.get_channel(CHANNEL_ID3).send('凶です……外出を控えることをオススメします(  ･᷄ὢ･᷅  )')
         
         elif prob < 0.65:
-            await message.channel.send('吉です！何かいい事があるかもですね！')
+            await client.get_channel(CHANNEL_ID3).send('吉です！何かいい事があるかもですね！')
         
         elif prob < 0.71:
-            await message.channel.send('末吉……どれくらい運がいいんでしょうね？•́ω•̀)?')
+            await client.get_channel(CHANNEL_ID3).send('末吉……どれくらい運がいいんでしょうね？•́ω•̀)?')
         
         elif prob < 0.76:
-            await message.channel.send('半吉は吉の半分、つまり運がいいのです！')
+            await client.get_channel(CHANNEL_ID3).send('半吉は吉の半分、つまり運がいいのです！')
         
         elif prob < 0.80:
-            await message.channel.send('小吉ですね！ちょっと優しくされるかも？')
+            await client.get_channel(CHANNEL_ID3).send('小吉ですね！ちょっと優しくされるかも？')
         
         elif prob < 0.83:
-            await message.channel.send('吉の中で1番当たっても微妙に感じられる……つまり末吉なのです( ´･ω･`)')
+            await client.get_channel(CHANNEL_ID3).send('吉の中で1番当たっても微妙に感じられる……つまり末吉なのです( ´･ω･`)')
        
         elif prob <= 1.0:
-            await message.channel.send('おめでとうございます！大吉ですよ！(๑>∀<๑)♥')   
+            await client.get_channel(CHANNEL_ID3).send('おめでとうございます！大吉ですよ！(๑>∀<๑)♥')   
 
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
