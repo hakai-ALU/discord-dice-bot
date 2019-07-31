@@ -12,6 +12,7 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 587658526013390859 
 CHANNEL_ID2 = 603203288883789831
 CHANNEL_ID3 = 604573398831726602
+CHANNEL_ID4 = 606100494179500054
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
@@ -65,7 +66,7 @@ async def on_message(message):
 
 @client.event
 async def on_message(message):
-    await client.get_channel(CHANNEL_ID2).send(message.author.id)     
+    await client.get_channel(CHANNEL_ID4).send(message.author.id)     
 
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
