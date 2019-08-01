@@ -66,8 +66,7 @@ async def on_message(message):
 
 # @client.event
 # async def on_message(message):
-    # 
-await client.get_channel(CHANNEL_ID4).send(message.author.id)     
+# await client.get_channel(CHANNEL_ID4).send(message.author.id)     
 
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
