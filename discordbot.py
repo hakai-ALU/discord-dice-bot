@@ -64,9 +64,9 @@ async def on_message(message):
         elif prob <= 1.0:
             await client.get_channel(CHANNEL_ID3).send('おめでとうございます！大吉ですよ！(๑>∀<๑)♥')   
 
-# @client.event
-# async def on_message(message):
-# await client.get_channel(CHANNEL_ID4).send(message.author.id)     
+@client.event
+async def on_member_join(member):
+    await client.get_channel(CHANNEL_ID4).send(message.author.id)     
 
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
