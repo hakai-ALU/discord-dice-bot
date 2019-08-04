@@ -7,7 +7,7 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
-discord_voice_channel_id = '607543283320881161' # 特定のボイスチャンネルを指定
+discord_voice_channel_id = '' # 特定のボイスチャンネルを指定
 youtube_url = 'https://www.youtube.com/watch?v=mN7u3h-BZjY' # youtubeのURLを指定
 
 voice = None
