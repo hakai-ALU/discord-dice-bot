@@ -19,10 +19,6 @@ async def on_ready():
     print('Hello World,リマインドbotプログラム「project-youtube」、起動しました')
 
 @client.event
-async def on_ready():
-    print('Botを起動しました。')
-
-@client.event
 async def on_message(message):
     global voice, player
     msg = message.content
