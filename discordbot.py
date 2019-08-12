@@ -7,14 +7,23 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
+#チャンネルID
+CHANNEL_ID = 610388405926494211
+
+#発言した奴のID取得
 @client.event
 async def on_message(message):
-    if message.author.bot:
-        return
+    if not message.author.bot: 
+        await client.get_channel(CHANNEL_ID).send(message.author.id)  
 
-    voice = await client.join_voice_channel(client.get_channel("577830004231110677"))
-    if message.content == ("lecture"):
-        player = await voice.create_ytdl_player('https://youtu.be/mN7u3h-BZjY')
-        player.start()
+#入ってきた奴のID取得
+@client.event
+async def on_member_join(member):
+    await client.get_channel(CHANNEL_ID).send(member.id)            
 
+#出て行った奴のID取得
+@client.event
+async def on_member_remove(member):
+    await client.get_channel(CHANNEL_ID).send(member.id)            
+    
 client.run(TOKEN)
