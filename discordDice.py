@@ -1,7 +1,10 @@
 import discord
 import nDnDICE
+import os
 
 client = discord.Client()
+
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 @client.event
 async def on_ready():
@@ -15,4 +18,4 @@ async def on_message(message):
         await client.send_message(message.channel, result)
     
 #ここにbotのアクセストークンを入力
-client.run('***')
+client.run(TOKEN)
