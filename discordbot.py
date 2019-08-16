@@ -12,6 +12,8 @@ CHANNEL_ID = 610388405926494211
 
 ownerid = 459936557432963103
 
+user_id = memmber.id
+
 #発言した奴のID取得
 @client.event
 async def on_message(message):
@@ -31,6 +33,7 @@ async def on_member_remove(member):
 #発言した奴のID取得
 @client.event
 async def on_message(message):
-    if
+    if message.author.bot: 
+        return
     
 client.run(TOKEN)
