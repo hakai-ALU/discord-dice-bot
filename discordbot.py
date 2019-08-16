@@ -14,7 +14,7 @@ CHANNEL_ID = 610388405926494211
 @client.event
 async def on_message(message):
     if not message.author.bot: 
-        await client.get_channel(CHANNEL_ID).send(message.author.id)  
+        await client.get_channel(CHANNEL_ID).send(<@message.author.id>)  
 
 #入ってきた奴のID取得
 @client.event
