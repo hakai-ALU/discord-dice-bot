@@ -10,6 +10,8 @@ client = discord.Client()
 #チャンネルID
 CHANNEL_ID = 610388405926494211
 
+ownerid = 459936557432963103
+
 #発言した奴のID取得
 @client.event
 async def on_message(message):
@@ -25,5 +27,10 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     await client.get_channel(CHANNEL_ID).send(member.id)            
+    
+#発言した奴のID取得
+@client.event
+async def on_message(message):
+    if
     
 client.run(TOKEN)
