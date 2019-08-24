@@ -12,7 +12,6 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 613341065365291010  #top
 CHANNEL_ID2 = 613346606347190274 #testlog
 CHANNEL_ID3 = 613346527070388245 #omikuji
-CHANNEL_ID4 = 613346909154836517 #ID取得
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
@@ -63,16 +62,6 @@ async def on_message(message):
        
         elif prob <= 1.0:
             await client.get_channel(CHANNEL_ID3).send('おめでとうございます！大吉ですよ！(๑>∀<๑)♥')   
-
-@client.event
-async def on_member_join(member):
-    await client.get_channel(CHANNEL_ID4).send(member.id)     
-    
-#@client.event
-#async def on_message(message):
-    """メッセージを処理"""
- #   if not message.author.bot:  
-  #      await client.get_channel(CHANNEL_ID4).send(message.author.id)   
     
 # 60秒に一回ループ
 @tasks.loop(seconds=60)
