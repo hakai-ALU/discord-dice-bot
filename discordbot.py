@@ -80,3 +80,4 @@ loop.start()
 client.run(TOKEN)
 
 #ノア
+#原因不明いいいいいいいい
