@@ -78,3 +78,5 @@ async def loop():
 loop.start()
 
 client.run(TOKEN)
+
+#ノア
