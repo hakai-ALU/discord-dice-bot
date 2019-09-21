@@ -11,7 +11,7 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 #チャンネルID
 CHANNEL_ID = 613341065365291010  #top
 CHANNEL_ID2 = 613346606347190274 #testlog
-CHANNEL_ID3 = 613346527070388245 #omikuji
+CHANNEL_ID3 = 624496341124513793 #omikuji
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
