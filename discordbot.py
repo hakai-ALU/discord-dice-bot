@@ -34,9 +34,7 @@ async def on_message(message):
             client.global_list.append(new_w)
             await message.channel.send("グローバルチャットのチャンネルに登録しました。")
             return
-       else:
-            await message.channel.send('管理者権限が必要です')
-
+       
     for webhook in client.global_list:
         if message.channel != webhook.channel:
             await webhook.send(content=message.content,username=message.author.name,avatar_url=message.author.avatar_url)
