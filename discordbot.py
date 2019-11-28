@@ -11,6 +11,7 @@ client = discord.Client()
 @client.event
 async def on_ready():
     client.global_list = []
+    print("起動しました")
 
 @client.event
 async def on_message(message):
