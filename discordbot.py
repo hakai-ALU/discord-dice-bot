@@ -11,9 +11,6 @@ client = discord.Client()
 @client.event
 async def on_ready():
     client.global_list = []
-    for guild in client.guilds:
-        tmp = discord.utils.get(guild.text_channels,name="noa-global-chat")
-        if tmp: client.global_list.append(tmp)
     print("起動しました")
 
 @client.event
