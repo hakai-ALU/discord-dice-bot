@@ -24,7 +24,7 @@ async def on_message(message):
 
     global_tmp = [w for w in await message.channel.webhooks() if w in client.global_list]
 
-    if message.content == "!global":
+    if message.content == "!noa-global":
         if global_tmp:
             await message.channel.send("既に登録されています。")
             return
