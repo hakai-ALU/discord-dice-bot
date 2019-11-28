@@ -10,7 +10,7 @@ client = discord.Client()
 #起動メッセージ
 @client.event
 async def on_ready():
-   client.global_list = []
+    client.global_list = []
 
 @client.event
 async def on_message(message):
