@@ -31,9 +31,9 @@ async def on_message(message):
                 return
 
             new_w = await message.channel.create_webhook(name="global")
-        client.global_list.append(new_w)
-        await message.channel.send("グローバルチャットのチャンネルに登録しました。")
-        return
+            client.global_list.append(new_w)
+            await message.channel.send("グローバルチャットのチャンネルに登録しました。")
+            return
 
     for webhook in client.global_list:
         if message.channel != webhook.channel:
