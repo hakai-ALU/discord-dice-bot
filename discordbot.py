@@ -42,4 +42,4 @@ async def on_message(message):
 client.run(TOKEN)
 
 #ノア
-#原因不明いいいいいいいい
+#グローバルチャット
