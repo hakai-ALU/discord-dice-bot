@@ -17,9 +17,9 @@ async def on_ready():
 async def on_message(message):
 
     if '表示順をアップしたよ' in message.content:
-        await channel.send('bumpを確認しました！2時間後お願いします！') 
+        await message.channel.send('bumpを確認しました！2時間後お願いします！') 
         await asyncio.sleep(7200)
-        await channel.send('bumpチャンス！') 
+        await message.channel.send('bumpチャンス！') 
 
     if message.author == message.guild.me:
         return
