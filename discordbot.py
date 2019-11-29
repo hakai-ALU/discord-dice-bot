@@ -18,7 +18,7 @@ async def on_message(message):
 
     if 'Bumpを確認しました' in message.content:
         await message.channel.send('bumpを確認しました！2時間後お願いします！') 
-        await asyncio.sleep(7200)
+        await asyncio.sleep(10)
         await message.channel.send('bumpチャンス！') 
 
     if message.author == message.guild.me:
