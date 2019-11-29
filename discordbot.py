@@ -8,7 +8,7 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
-channel_bot_test = [channel for channel in client.get_all_channels() if channel.name == 'noa-global-chat'][0]
+channel_bot_test = 'noa-global-chat'
 
 #起動メッセージ
 @client.event
@@ -17,7 +17,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.channel = channel_bot_test
+    if message.channel.name = channel_bot_test
         if '/discord.gg/' in message.content:
             await asyncio.sleep(1)
             await message.delete()
