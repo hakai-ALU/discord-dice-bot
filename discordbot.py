@@ -16,7 +16,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
-    if '23456' in message.content:
+    if '表示順をアップしたよ' in message.content:
         await channel.send('bumpを確認しました！2時間後お願いします！') 
         await asyncio.sleep(7200)
         await channel.send('bumpチャンス！') 
