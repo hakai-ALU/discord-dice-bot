@@ -17,7 +17,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.channel.name = channel_bot_test
+    if channel.name = channel_bot_test
         if '/discord.gg/' in message.content:
             await asyncio.sleep(1)
             await message.delete()
