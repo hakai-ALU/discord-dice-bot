@@ -21,6 +21,8 @@ async def on_message(message):
     if 'Bumpを確認しました' in message.content:
         await asyncio.sleep(1)
         await message.channel.send('bumpを確認しました！2時間後お願いします！') 
+
+    if 'Bumpを確認しました' in message.content:
         await asyncio.sleep(2*60*60)
         await message.channel.send('bumpチャンス！') 
 
