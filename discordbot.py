@@ -29,14 +29,6 @@ async def on_message(message):
     if message.author == message.guild.me:
         return
 
-@tasks.loop(seconds=5)
-async def loop():
-    if 'https://discord.gg/' in message.content:
-        channel_bot_test = [channel for channel in client.get_all_channels() if channel.name == 'noa-global-chat'][0]
-        await client.get_channel(channel_bot_test).delete()
-#ループ処理実行
-loop.start()
-
 client.run(TOKEN)
 
 #ノア
