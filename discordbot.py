@@ -17,6 +17,7 @@ async def on_ready():
 async def on_message(message):
     if 'Bumpを確認しました' in message.content:
         await asyncio.sleep(1)
+        channel_bot_test = [channel for channel in client.get_all_channels() if channel.name == 'noa-global-chat'][0]
 
     if 'Bumpを確認しました' in message.content:
         await asyncio.sleep(1)
