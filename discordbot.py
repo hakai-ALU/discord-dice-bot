@@ -15,7 +15,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    
+    if 'Bumpを確認しました' in message.content:
+        await asyncio.sleep(1)
+
     if 'Bumpを確認しました' in message.content:
         await asyncio.sleep(1)
         await message.channel.send('bumpを確認しました！2時間後お願いします！') 
