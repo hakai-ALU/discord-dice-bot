@@ -43,8 +43,20 @@ async def on_message(message):
         await asyncio.sleep(2*60*60)
         await message.channel.send('<@&650506130325372950> bumpチャンス！') 
 
-    if message.author == message.guild.me:
+    if message.author.bot:
         return
+    if message.channel.category_id != 652032561815486486:
+        # 指定したIDのカテゴリのチャンネルに対してのみ処理する
+        return
+
+    if message.channel.position != 0:
+        # もし一番上のチャンネルでなければ
+        if not message.content.startswith("[sage]"):
+        # [sage]で始まっていなければ
+            await message.channel.edit(position=0)
+
+    await message_count(message.channel)
+
 
 client.run(TOKEN)
 
