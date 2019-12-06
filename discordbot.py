@@ -23,7 +23,7 @@ async def on_message(message):
         await asyncio.sleep(2*60*60)
         await message.channel.send('<@&650506130325372950> bumpチャンス！') 
 
-    if 'joined; Invited by DISBOARD' in message.content:
+    #if 'joined; Invited by DISBOARD' in message.content:
         if '(7 invites)' in message.content:
             role1 = discord.utils.get(message.guild.roles, name='class SAXONY')
             await message.author.add_roles(role1)
