@@ -26,12 +26,18 @@ async def on_message(message):
     if message.content == 'ステータス':
         if message.author.guild_permissions.administrator:
             await message.channel.send(f'サーバー名：{message.guild.name}')
+            await asyncio.sleep(0.1)
             await message.channel.send(f'現オーナー名：{message.guild.owner}')
+            await asyncio.sleep(0.1)
             member_count_server = len(message.guild.members) 
             await message.channel.send(f'今のサーバー人数(BOT含む)：{member_count_server}人')
+            await asyncio.sleep(0.1)
             await message.channel.send(f'総チャンネル数：{len(message.guild.channels)}個')
+            await asyncio.sleep(0.1)
             await message.channel.send(f'テキストチャンネル数：{len(message.guild.text_channels)}個')
+            await asyncio.sleep(0.1)
             await message.channel.send(f'ボイスチャンネル数：{len(message.guild.voice_channels)}個')
+            await asyncio.sleep(0.1)
             embed = discord.Embed(title="サーバーアイコン")
             embed.set_image(url=message.guild.icon_url)
             await message.channel.send(embed=embed)
