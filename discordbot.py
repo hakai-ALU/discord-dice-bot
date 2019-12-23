@@ -24,7 +24,7 @@ async def on_message(message):
         await message.channel.send('<@&650506130325372950> bumpチャンス！') 
 
     if message.content == 'ステータス':
-        if message.author.id == master_owner_id:
+        if message.author.guild_permissions.administrator:
             await message.channel.send(f'サーバー名：{message.guild.name}')
             await message.channel.send(f'現オーナー名：{message.guild.owner}')
             member_count_server = len(message.guild.members) -5
@@ -35,7 +35,10 @@ async def on_message(message):
             embed = discord.Embed(title="サーバーアイコン")
             embed.set_image(url=message.guild.icon_url)
             await message.channel.send(embed=embed)
-            
+          
+        if not message.author.guild_permissions.administrator:
+            await message.channel.send(f'サーバー名：{message.guild.name}')
+              
 client.run(TOKEN)
 
 #ノア
