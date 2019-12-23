@@ -29,9 +29,16 @@ async def on_message(message):
             await asyncio.sleep(0.1)
             await message.channel.send(f'現オーナー名：{message.guild.owner}')
             await asyncio.sleep(0.1)
-            member_count_server = len(message.guild.members) - 0
-            await message.channel.send(f'今のサーバー人数(BOT含む)：{member_count_server}人')
+            guild = message.guild
+            member_count = sum(1 for member in guild.members if not member.bot) 
+            bot_count = sum(1 for member in guild.members if member.bot) 
+            all_count = (member_count) + (bot_count)
+            await message.channel.send(f'総人数：{all_count}人')
             await asyncio.sleep(0.1)
+            await message.channel.send(f'ユーザ数：{member_count}')
+            await asyncio.sleep(0.1)
+            await message.channel.send(f'BOT数：{bot_count}')
+            await asyncio.sleep(0.1) 
             await message.channel.send(f'総チャンネル数：{len(message.guild.channels)}個')
             await asyncio.sleep(0.1)
             await message.channel.send(f'テキストチャンネル数：{len(message.guild.text_channels)}個')
@@ -41,7 +48,7 @@ async def on_message(message):
             embed = discord.Embed(title="サーバーアイコン")
             embed.set_image(url=message.guild.icon_url)
             await message.channel.send(embed=embed)
-          
+    
         if not message.author.guild_permissions.administrator:
             await message.channel.send('貴方は管理者権限がありません。 \n You do not have admin roles !!')
               
