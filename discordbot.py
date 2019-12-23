@@ -23,6 +23,19 @@ async def on_message(message):
         await asyncio.sleep(2*60*60)
         await message.channel.send('<@&650506130325372950> bumpチャンス！') 
 
+    if message.content == 'ステータス':
+        if message.author.id == master_owner_id:
+            await message.channel.send(f'サーバー名：{message.guild.name}')
+            await message.channel.send(f'現オーナー名：{message.guild.owner}')
+            member_count_server = len(message.guild.members) -5
+            await message.channel.send(f'今のサーバー人数：{member_count_server}人')
+            await message.channel.send(f'総チャンネル数：{len(message.guild.channels)}個')
+            await message.channel.send(f'テキストチャンネル数：{len(message.guild.text_channels)}個')
+            await message.channel.send(f'ボイスチャンネル数：{len(message.guild.voice_channels)}個')
+            embed = discord.Embed(title="サーバーアイコン")
+            embed.set_image(url=message.guild.icon_url)
+            await message.channel.send(embed=embed)
+            
 client.run(TOKEN)
 
 #ノア
