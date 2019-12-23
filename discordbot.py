@@ -37,7 +37,7 @@ async def on_message(message):
             await message.channel.send(embed=embed)
           
         if not message.author.guild_permissions.administrator:
-            await message.channel.send('貴方は管理者権限がありません。')
+            await message.channel.send('貴方は管理者権限がありません。 \n You do not have admin roles !!')
               
 client.run(TOKEN)
 
