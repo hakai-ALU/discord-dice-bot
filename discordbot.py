@@ -29,7 +29,7 @@ async def on_message(message):
             await asyncio.sleep(0.1)
             await message.channel.send(f'現オーナー名：{message.guild.owner}')
             await asyncio.sleep(0.1)
-            member_count_server = len(message.guild.members) - len(bot.members) 
+            member_count_server = len(message.guild.members) - 0
             await message.channel.send(f'今のサーバー人数(BOT含む)：{member_count_server}人')
             await asyncio.sleep(0.1)
             await message.channel.send(f'総チャンネル数：{len(message.guild.channels)}個')
