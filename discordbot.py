@@ -52,7 +52,7 @@ async def on_message(message):
             await message.channel.send('貴方は管理者権限がありません。 \n You do not have admin roles !!')
 
     if message.content == 'ステータスE':
-        if message.author.id == master_owner_id:
+        if message.author.guild_permissions.administrator:
             embed = discord.Embed(title="この鯖のステータス",description="Embed式")
             embed.add_field(name="サーバー名",value=f'{message.guild.name}',inline=False)
             embed.add_field(name="現オーナー名",value=f'{message.guild.owner}',inline=False)
