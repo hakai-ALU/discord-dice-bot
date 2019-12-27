@@ -71,6 +71,15 @@ async def on_message(message):
 
         if not message.author.guild_permissions.administrator:
             await message.channel.send('貴方は管理者権限がありません。 \n You do not have admin roles !!')
+
+        #年月日
+    if all(s in message.content for s in['何日？']):
+        date = datetime.now()
+        await message.channel.send(f'今日は{date.year}年{date.month}月{date.day}日です！')    
+    if all(s in message.content for s in ['何時？']):
+        date = datetime.now()
+        await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
+
               
 client.run(TOKEN)
 
