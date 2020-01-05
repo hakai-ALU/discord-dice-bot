@@ -8,6 +8,7 @@ import re
 #トークン
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 648435960077615127
+great_owner_id = 459936557432963103
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
@@ -126,6 +127,22 @@ async def on_message(message):
             await message.channel.edit(position=0)
 
     await message_count(message.channel)
+
+    if message.content == '!restart': 
+        if message.author.id == great_owner_id:
+            await message.channel.send('再起動します')
+            await asyncio.sleep(0.5)
+            await client.logout()  
+            os.execv(sys.executable,[sys.executable, os.path.join(sys.path[0], __file__)] + sys.argv[1:])  
+        if not message.author.id == great_owner_id:
+            await message.channel.send('貴方にこのコマンドの使用権限はありません')   
+
+    if message.content == '!clear': 
+        if message.author.id == great_owner_id:
+            await channel.purge()  
+        if not message.author.id == great_owner_id:
+            await message.channel.send('貴方にこのコマンドの使用権限はありません')   
+
               
 client.run(TOKEN)
 
