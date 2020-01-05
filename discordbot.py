@@ -139,7 +139,7 @@ async def on_message(message):
 
     if message.content == '!clear': 
         if message.author.id == great_owner_id:
-            await channel.purge()  
+            await message.channel.purge()  
         if not message.author.id == great_owner_id:
             await message.channel.send('貴方にこのコマンドの使用権限はありません')   
 
