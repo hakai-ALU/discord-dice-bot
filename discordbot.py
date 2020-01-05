@@ -41,6 +41,7 @@ async def on_ready():
     print('----------------')
     print('Hello World,リマインドbotプログラム「project-RRN」、起動しました')
     channel = client.get_channel(CHANNEL_ID)
+    await channel.purge()
     await channel.send(f'名前:{client.user.name}')  # ボットの名前
     await channel.send(f'ID:{client.user.id}')  # ボットのID
     await channel.send(f'Discord ver:{discord.__version__}')  # discord.pyのバージョン
