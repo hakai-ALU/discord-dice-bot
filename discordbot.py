@@ -128,7 +128,7 @@ async def on_message(message):
 
     await message_count(message.channel)
 
-    if message.content == '!restart': 
+    if message.content == 'nrestart': 
         if message.author.id == great_owner_id:
             await message.channel.send('再起動します')
             await asyncio.sleep(0.5)
@@ -137,7 +137,7 @@ async def on_message(message):
         if not message.author.id == great_owner_id:
             await message.channel.send('貴方にこのコマンドの使用権限はありません')   
 
-    if message.content == '!clear': 
+    if message.content == 'nclear': 
         if message.author.id == great_owner_id:
             await message.channel.purge()  
         if not message.author.id == great_owner_id:
