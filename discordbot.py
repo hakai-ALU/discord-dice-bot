@@ -9,7 +9,7 @@ import re
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 648435960077615127
 great_owner_id = 459936557432963103
-
+CHANNEL_ID3 = 664098210264121374
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
@@ -21,7 +21,7 @@ async def message_count(channel):
         #もし、メッセージのカウントが既に行われていたら
         base_name = matched.groups()[0] # 元のチャンネル名
         count = int(matched.groups()[1]) # メッセージ数
-        await channel.edit(name=f"{base_name}（{count+1}）")
+        await client.get_channel(CHANNEL_ID3).edit(name=f"{base_name}（{count+1}）")
         return
 
     count = 0
@@ -30,7 +30,7 @@ async def message_count(channel):
             # 人間が投稿していたらカウントを1増やす
             count += 1 
 
-    await channel.edit(name=f"{channel.name}（{count}）")
+    await client.get_channel(CHANNEL_ID3).edit(name=f"{channel.name}（{count}）")
 
 
 #起動メッセージ
@@ -116,7 +116,7 @@ async def on_message(message):
         date = datetime.now()
         await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
 
-    if message.channel.category_id != 652032561815486486:
+    if message.channel.category_id != 662588978029002763:
         # 指定したIDのカテゴリのチャンネルに対してのみ処理する
         return
 
@@ -124,7 +124,7 @@ async def on_message(message):
         # もし一番上のチャンネルでなければ
         if not message.content.startswith("[sage]"):
         # [sage]で始まっていなければ
-            await message.channel.edit(position=0)
+            await message.get_channel(CHANNEL_ID3).edit(position=0)
 
     await message_count(message.channel)
 
