@@ -15,13 +15,13 @@ client = discord.Client()
 
 async def message_count(channel):
     """チャンネル名にあるメッセージ数を1増やす"""
-    matched = re.match(r"(.+)（(\d+)）",channel.name)
+    matched = re.match(r"(.+)（(\d+)）",channel(CHANNEL_ID3).name)
 
     if matched:
         #もし、メッセージのカウントが既に行われていたら
         base_name = matched.groups()[0] # 元のチャンネル名
         count = int(matched.groups()[1]) # メッセージ数
-        await client.get_channel(CHANNEL_ID3).edit(name=f"{base_name}（{count+1}）")
+        await message.channel(CHANNEL_ID3).edit(name=f"{base_name}（{count+1}）")
         return
 
     count = 0
@@ -30,7 +30,7 @@ async def message_count(channel):
             # 人間が投稿していたらカウントを1増やす
             count += 1 
 
-    await client.get_channel(CHANNEL_ID3).edit(name=f"{channel.name}（{count}）")
+    await message.channel(CHANNEL_ID3).edit(name=f"{channel.name}（{count}）")
 
 
 #起動メッセージ
