@@ -124,7 +124,7 @@ async def on_message(message):
         # もし一番上のチャンネルでなければ
         if not message.content.startswith("[sage]"):
         # [sage]で始まっていなければ
-            await message.get_channel(CHANNEL_ID3).edit(position=0)
+            await message.channel(CHANNEL_ID3).edit(position=0)
 
     await message_count(message.channel)
 
