@@ -116,18 +116,6 @@ async def on_message(message):
         date = datetime.now()
         await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
 
-    if message.channel.category_id != 662588978029002763:
-        # 指定したIDのカテゴリのチャンネルに対してのみ処理する
-        return
-
-    if message.channel.position != 0:
-        # もし一番上のチャンネルでなければ
-        if not message.content.startswith("[sage]"):
-        # [sage]で始まっていなければ
-            await client.get_channel(CHANNEL_ID3).edit(position=0)
-
-    await message_count(message.channel)
-
     if message.content == 'nrestart': 
         if message.author.id == great_owner_id:
             await message.channel.send('再起動します')
@@ -146,9 +134,20 @@ async def on_message(message):
     if not message.author.id == 511397857887125539:
         prob = random.random()
     
-        if prob < 0.6:
+        if prob < 0.65:
             await message.add_reaction('💝')
-           
+
+    if message.channel.category_id != 662588978029002763:
+        # 指定したIDのカテゴリのチャンネルに対してのみ処理する
+        return
+
+    if message.channel.position != 0:
+        # もし一番上のチャンネルでなければ
+        if not message.content.startswith("[sage]"):
+        # [sage]で始まっていなければ
+            await client.get_channel(CHANNEL_ID3).edit(position=0)
+
+    await message_count(message.channel)       
 
               
 client.run(TOKEN)
