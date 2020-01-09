@@ -143,6 +143,13 @@ async def on_message(message):
         if not message.author.id == great_owner_id:
             await message.channel.send('貴方にこのコマンドの使用権限はありません')   
 
+    if not message.author.id == 511397857887125539:
+        prob = random.random()
+    
+        if prob < 0.6:
+            await message.add_reaction('💝')
+           
+
               
 client.run(TOKEN)
 
