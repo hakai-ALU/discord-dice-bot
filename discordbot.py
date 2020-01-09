@@ -112,7 +112,7 @@ async def on_message(message):
         if not message.author.id == great_owner_id:
             await message.channel.send('貴方にこのコマンドの使用権限はありません')   
 
-    if not message.author.id == 511397857887125539:
+    if not message.author.id == 664880378481213473:
         prob = random.random()
     
         if prob < 0.65:
