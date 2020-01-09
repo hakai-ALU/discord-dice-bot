@@ -40,6 +40,9 @@ async def on_message(message):
         await asyncio.sleep(2*60*60)
         await message.channel.send('<@&650506130325372950> bumpチャンス！') 
 
+    if message.author.bot:  # ボットを弾く。
+        return 
+
     if message.content == 'ステータス':
         if message.author.guild_permissions.administrator:
             await message.channel.send(f'サーバー名：{message.guild.name}')
