@@ -118,7 +118,7 @@ async def on_message(message):
     if not message.author.id == 664880378481213473:
         prob = random.random()
     
-        if prob < 0.65:
+        if prob < 0.35:
             await message.add_reaction('💝')
 
     if message.channel.category_id != 662588978029002763:
