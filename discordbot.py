@@ -1,6 +1,8 @@
 import discord 
 import os
 import asyncio
+from discord.ext import tasks
+from datetime import datetime
 
 #トークン
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
@@ -46,6 +48,14 @@ async def on_message(message):
         await asyncio.sleep(0.5)
         await my_message.edit(content="こんばんは。")
         
+@tasks.loop(seconds=5)
+async def loop():
+    channel = client.get_channel(665641489975607297)
+    my_bot_message = await channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
+    date = datetime.now()
+    await my_bot_message.edit(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！') 
 
+#ループ処理実行
+loop.start()
 
 client.run(TOKEN)
