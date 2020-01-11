@@ -31,5 +31,13 @@ async def on_message(message):
     
     if message.author.bot:  # ボットを弾く。
         return 
-              
+    if message.content.startswith("テスト"): 
+        await message.channel.send('お') 
+        await message.edit('おか')
+
+
+
+
+
+
 client.run(TOKEN)
