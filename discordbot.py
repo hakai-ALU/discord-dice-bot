@@ -35,23 +35,22 @@ async def on_message(message):
     if message.author.bot:  # ボットを弾く。
         return 
     if message.content.startswith("テスト"): 
-        my_message = await message.channel.send("こんにちは")
-        await my_message.edit(content="こ")
+        my_message = await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
+        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await asyncio.sleep(0.5)
-        await my_message.edit(content="こん")
+        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await asyncio.sleep(0.5)
-        await my_message.edit(content="こんば")
+        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await asyncio.sleep(0.5)
-        await my_message.edit(content="こんばん")
+        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await asyncio.sleep(0.5)
-        await my_message.edit(content="こんばんは")
+        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await asyncio.sleep(0.5)
-        await my_message.edit(content="こんばんは。")
+        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         
-@tasks.loop(seconds=5)
+@tasks.loop(seconds=1)
 async def loop():
-    channel = client.get_channel(665641489975607297)
-    my_bot_message = await channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
+    my_bot_message = await client.get_channel(665641489975607297).send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
     date = datetime.now()
     await my_bot_message.edit(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！') 
 
