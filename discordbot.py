@@ -1,5 +1,6 @@
 import discord 
 import os
+import asyncio
 
 #トークン
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
@@ -33,11 +34,18 @@ async def on_message(message):
         return 
     if message.content.startswith("テスト"): 
         my_message = await message.channel.send("こんにちは")
-        await my_message.edit(content="こんばんは、60秒後に削除されます。" , delete_after=60.0 )
-
-
-
-
+        await my_message.edit(content="こ")
+        await asyncio.sleep(10)
+        await my_message.edit(content="こん")
+        await asyncio.sleep(10)
+        await my_message.edit(content="こんば")
+        await asyncio.sleep(10)
+        await my_message.edit(content="こんばん")
+        await asyncio.sleep(10)
+        await my_message.edit(content="こんばんは")
+        await asyncio.sleep(10)
+        await my_message.edit(content="こんばんは。")
+        
 
 
 client.run(TOKEN)
