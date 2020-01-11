@@ -35,6 +35,7 @@ async def on_message(message):
     if message.author.bot:  # ボットを弾く。
         return 
     if message.content.startswith("テスト"): 
+        date = datetime.now()
         my_message = await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await asyncio.sleep(0.5)
