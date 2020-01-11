@@ -52,9 +52,10 @@ async def on_message(message):
         
 @tasks.loop(seconds=1)
 async def loop():
-    my_bot_message = await client.get_channel(665641489975607297).send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
+    await channel.purge()
+    channel = client.get_channel(665641489975607297)
     date = datetime.now()
-    await my_bot_message.edit(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！') 
+    await channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！') 
 
 #ループ処理実行
 loop.start()
