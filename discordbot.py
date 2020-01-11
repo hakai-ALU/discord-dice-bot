@@ -35,15 +35,15 @@ async def on_message(message):
     if message.content.startswith("テスト"): 
         my_message = await message.channel.send("こんにちは")
         await my_message.edit(content="こ")
-        await asyncio.sleep(10)
+        await asyncio.sleep(0.5)
         await my_message.edit(content="こん")
-        await asyncio.sleep(10)
+        await asyncio.sleep(0.5)
         await my_message.edit(content="こんば")
-        await asyncio.sleep(10)
+        await asyncio.sleep(0.5)
         await my_message.edit(content="こんばん")
-        await asyncio.sleep(10)
+        await asyncio.sleep(0.5)
         await my_message.edit(content="こんばんは")
-        await asyncio.sleep(10)
+        await asyncio.sleep(0.5)
         await my_message.edit(content="こんばんは。")
         
 
