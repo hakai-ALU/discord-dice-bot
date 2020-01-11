@@ -50,12 +50,12 @@ async def on_message(message):
         await asyncio.sleep(1)
         await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         
-@tasks.loop(seconds=1)
+@tasks.loop(seconds=5)
 async def loop():
     await channel.purge()
     channel = client.get_channel(665641489975607297)
     date = datetime.now()
-    await channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！') 
+    await channel.send(f'{date.hour}：{date.minute}：{date.second}') 
 
 #ループ処理実行
 loop.start()
