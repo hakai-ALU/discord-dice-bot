@@ -53,7 +53,7 @@ async def on_message(message):
         suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
         suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
         suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
-        my_message = await message.channel.send('スロット結果')
+        my_message = await message.channel.send('スロット結果がここに表示されます！')
         await asyncio.sleep(1)
         await my_message.edit(content='？|？|？')
         await asyncio.sleep(1)
