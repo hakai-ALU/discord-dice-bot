@@ -56,17 +56,17 @@ async def on_message(message):
         my_message = await message.channel.send('スロット結果がここに表示されます！')
         await asyncio.sleep(3)
         await my_message.edit(content='？|？|？')
-        await asyncio.sleep(1.5)
+        await asyncio.sleep(1)
         await my_message.edit(content=suroto + '|？|？')
-        await asyncio.sleep(1.5)
+        await asyncio.sleep(1)
         await my_message.edit(content=suroto + '|' + suroto1 + '|？')
-        await asyncio.sleep(1.5)
+        await asyncio.sleep(1)
         await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2)
         if suroto == suroto1 == suroto2:
-            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 大当たり！！')
+            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：大当たり！！')
         elif suroto == suroto1 or suroto == suroto2 or suroto1 == suroto2:
-            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n リーチ！')
+            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：リーチ！')
         else:
-            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n ハズレ')
+            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：ハズレ')
         
 client.run(TOKEN)
