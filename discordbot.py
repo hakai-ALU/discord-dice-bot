@@ -1,8 +1,9 @@
 import discord 
 import os
 import asyncio
-from discord.ext import tasks
+import random
 from datetime import datetime
+
 
 #トークン
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
@@ -47,17 +48,20 @@ async def on_message(message):
         await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         await asyncio.sleep(1)
         await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
-        await asyncio.sleep(1)
-        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
         
-@tasks.loop(seconds=5)
-async def loop():
-    await channel.purge()
-    channel = client.get_channel(665641489975607297)
-    date = datetime.now()
-    await channel.send(f'{date.hour}：{date.minute}：{date.second}') 
-
-#ループ処理実行
-loop.start()
-
+    if message.content.startswith("スロット"): 
+        suroto=random.choice(('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'))
+        suroto1=random.choice(('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'))
+        suroto2=random.choice(('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'))
+        my_message = await message.channel.send('スロット結果')
+        await asyncio.sleep(1)
+        await my_message.edit(content='？|？|？')
+        await asyncio.sleep(1)
+        await my_message.edit(content=suroto + '|？|？')
+        await asyncio.sleep(1)
+        await my_message.edit(content=suroto + '|' + suroto1 + '|？')
+        await asyncio.sleep(1)
+        await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2)
+        
+   
 client.run(TOKEN)
