@@ -64,9 +64,12 @@ async def on_message(message):
         await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2)
         if suroto == suroto1 == suroto2:
             await message.channel.send('大当たり！！')
+            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 大当たり！！')
         elif suroto == suroto1 or suroto == suroto2 or suroto1 == suroto2:
             await message.channel.send('リーチ！')
+            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n リーチ！')
         else:
             await message.channel.send('ハズレ')
+            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n ハズレ')
         
 client.run(TOKEN)
