@@ -38,7 +38,7 @@ async def on_message(message):
     if message.content == 'roll':
         role1 = discord.utils.get(message.guild.roles, name='class SAXONY')
         guild = message.guild
-        await guild.create_roles(role1)
+        await guild.managed_roles(role1)
 
 
 client.run(TOKEN)
