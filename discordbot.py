@@ -35,39 +35,9 @@ async def on_message(message):
     
     if message.author.bot:  # ボットを弾く。
         return 
-    if message.content.startswith("テスト"): 
-        date = datetime.now()
-        my_message = await message.channel.send(f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
-        await asyncio.sleep(1)
-        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
-        await asyncio.sleep(1)
-        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
-        await asyncio.sleep(1)
-        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
-        await asyncio.sleep(1)
-        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
-        await asyncio.sleep(1)
-        await my_message.edit(content=f'今は{date.hour}時{date.minute}分{date.second}秒だよ！')
-        
-    if message.content.startswith("スロット"): 
-        suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
-        suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
-        suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
-        await asyncio.sleep(0.1)
-        my_message = await message.channel.send('スロット結果がここに表示されます！')
-        await asyncio.sleep(3)
-        await my_message.edit(content='？|？|？')
-        await asyncio.sleep(1)
-        await my_message.edit(content=suroto + '|？|？')
-        await asyncio.sleep(1)
-        await my_message.edit(content=suroto + '|' + suroto1 + '|？')
-        await asyncio.sleep(1)
-        await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2)
-        if suroto == suroto1 == suroto2:
-            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：大当たり！！')
-        elif suroto == suroto1 or suroto == suroto2 or suroto1 == suroto2:
-            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：リーチ！')
-        else:
-            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：ハズレ')
-        
+    if message.content == 'roll':
+        role1 = discord.utils.get(message.guild.roles, name='class SAXONY')
+        await message.author.create_roles(role1)
+
+
 client.run(TOKEN)
