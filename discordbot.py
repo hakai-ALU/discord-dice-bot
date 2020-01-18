@@ -36,9 +36,7 @@ async def on_message(message):
     if message.author.bot:  # ボットを弾く。
         return 
     if message.content == 'roll':
-        role1 = discord.utils.get(message.guild.roles, name='class SAXONY')
-        guild = message.guild
-        await guild.managed_roles(role1)
-
+        guild = ctx.guild
+        await guild.create_role(name="role name")
 
 client.run(TOKEN)
