@@ -7,13 +7,14 @@ import re
 import random
 from func import diceroll
 
-
 #トークン
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
+#ID置き
+great_owner_id = 459936557432963103
 CHANNEL_ID = 665579602504318978
 
 #起動メッセージ
