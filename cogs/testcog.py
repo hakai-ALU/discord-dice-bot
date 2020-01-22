@@ -53,6 +53,7 @@ class TestCog(commands.Cog):
         await ctx.send('作成しました')
         role1 = discord.utils.get(message.guild.roles, name=set_name)
         await member.add_roles(role1)
+        await ctx.send('終了')
 
     @commands.Cog.listener()
     async def on_message(self, message):
