@@ -12,6 +12,10 @@ class TestCog(commands.Cog):
     async def ping(self, ctx):
         await ctx.send('pong!')
 
+    @commands.command()
+    async def what(self, ctx, what):
+        await ctx.send(f'{what}とはなんですか？')
+
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
