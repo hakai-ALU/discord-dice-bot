@@ -1,9 +1,7 @@
 from discord.ext import commands # Bot Commands Frameworkをインポート
 import traceback # エラー表示のためにインポート
 import os
-import random
 import discord
-import re
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 665579602504318978
@@ -47,5 +45,5 @@ class MyBot(commands.Bot):
 
 # MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='!') # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
+    bot = MyBot(command_prefix='r!n') # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
     bot.run(TOKEN) # Botのトークン
