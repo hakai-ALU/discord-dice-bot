@@ -44,7 +44,7 @@ class TestCog(commands.Cog):
     @role.command()
     async def create(self, ctx):
         guild = ctx.guild
-        set_name = f'{self.user.id}'
+        set_name = f'{self.member.name}'
         await guild.create_role(name=set_name)
         await ctx.send('作成しました')
 
