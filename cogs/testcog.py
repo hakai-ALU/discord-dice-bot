@@ -51,6 +51,7 @@ class TestCog(commands.Cog):
         set_name = set1 + set2 + set3 + set4
         await guild.create_role(name=set_name)
         await ctx.send('作成しました')
+        await member.add_roles()
 
     @commands.Cog.listener()
     async def on_message(self, message):
