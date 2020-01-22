@@ -1,4 +1,5 @@
 from discord.ext import commands # Bot Commands Frameworkのインポート
+import discord
 
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
