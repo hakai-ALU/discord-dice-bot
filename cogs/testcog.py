@@ -19,7 +19,7 @@ class TestCog(commands.Cog):
     @commands.command()
     async def what(self, ctx, what):
         await ctx.send(f'{what}とはなんですか？')
-
+    
     # メインとなるroleコマンド
     @commands.group()
     async def role(self, ctx):
@@ -39,6 +39,13 @@ class TestCog(commands.Cog):
     async def remove(self, ctx, member: discord.Member, role: discord.Role):
         await member.remove_roles(role)
 
+    # roleコマンドのサブコマンド
+    # 指定したユーザーに指定した役職を付与する。
+    @role.command()
+    async def create(self, ctx):
+        guild = ctx.guild
+        await guild.create_role(name="role name")
+
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:
@@ -46,10 +53,7 @@ class TestCog(commands.Cog):
 
         if message.content == 'こんにちは':
             await message.channel.send('こんにちは')
-        if message.content == 'role':
-            guild = ctx.guild
-            await guild.create_role(name="role name")
-
+          
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
