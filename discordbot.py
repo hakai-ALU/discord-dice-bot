@@ -5,7 +5,6 @@ import random
 import discord
 import re
 
-client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 665579602504318978
 
@@ -32,15 +31,15 @@ class MyBot(commands.Bot):
 
     # Botの準備完了時に呼び出されるイベント
     async def on_ready(self):
-        print(client.user.name)  # ボットの名前
-        print(client.user.id)  # ボットのID
+        print(self.user.name)  # ボットの名前
+        print(self.user.id)  # ボットのID
         print(discord.__version__)  # discord.pyのバージョン
         print('----------------')
         print('Hello World,リマインドbotプログラム「project-RRN」、起動しました')
-        channel = client.get_channel(CHANNEL_ID)
+        channel = self.get_channel(CHANNEL_ID)
         await channel.purge()
-        await channel.send(f'名前:{client.user.name}')  # ボットの名前
-        await channel.send(f'ID:{client.user.id}')  # ボットのID
+        await channel.send(f'名前:{self.user.name}')  # ボットの名前
+        await channel.send(f'ID:{self.user.id}')  # ボットのID
         await channel.send(f'Discord ver:{discord.__version__}')  # discord.pyのバージョン
         await channel.send('----------------')
         await channel.send('状態：BOT再起動しました。')   
