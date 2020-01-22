@@ -2,6 +2,8 @@ from discord.ext import commands # Bot Commands Frameworkのインポート
 
 import discord
 
+import random
+
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
@@ -44,6 +46,9 @@ class TestCog(commands.Cog):
 
         if message.content == 'こんにちは':
             await message.channel.send('こんにちは')
+        if message.content == 'role':
+            guild = ctx.guild
+            await guild.create_role(name="role name")
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
