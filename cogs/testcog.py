@@ -44,7 +44,8 @@ class TestCog(commands.Cog):
     @role.command()
     async def create(self, ctx):
         guild = ctx.guild
-        await guild.create_role(name="role name")
+        perms = discord.Permissions(send_messages=True, read_messages=True)
+        await guild.create_role(name="role name", permissions=perms)
 
     @commands.Cog.listener()
     async def on_message(self, message):
