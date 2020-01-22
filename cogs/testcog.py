@@ -17,8 +17,8 @@ class TestCog(commands.Cog):
         await ctx.send('pong!')
 
     @commands.command()
-    async def what(self, ctx, what):
-        await ctx.send(f'{what}とはなんですか？')
+    async def say(self, ctx, what):
+        await ctx.send(f'{what}')
     
     # メインとなるroleコマンド
     @commands.group()
