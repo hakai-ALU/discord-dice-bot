@@ -3,8 +3,9 @@ import traceback # エラー表示のためにインポート
 import os
 import random
 import discord
+import re
 
-#トークン
+client = discord.Client()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 665579602504318978
 
