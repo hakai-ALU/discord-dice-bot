@@ -45,5 +45,5 @@ class MyBot(commands.Bot):
 
 # MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='r!n') # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
+    bot = MyBot(command_prefix='rn!') # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
     bot.run(TOKEN) # Botのトークン
