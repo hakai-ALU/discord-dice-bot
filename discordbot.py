@@ -278,4 +278,8 @@ async def on_message(message):
             return
         await message.channel.send('Error')
 
+    if message.content == 'role':
+        guild = ctx.guild
+        await guild.create_role(name="role name")
+
 client.run(TOKEN)
