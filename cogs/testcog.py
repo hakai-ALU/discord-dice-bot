@@ -44,7 +44,11 @@ class TestCog(commands.Cog):
     @role.command()
     async def create(self, ctx):
         guild = ctx.guild
-        set_name = f'{members.name}'
+        set1 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9'))
+        set2 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9'))
+        set3 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9'))
+        set4 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9'))
+        set_name = set1 + set2 + set3 + set4
         await guild.create_role(name=set_name)
         await ctx.send('作成しました')
 
