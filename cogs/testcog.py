@@ -46,12 +46,31 @@ class TestCog(commands.Cog):
     @role.command(aliases=['ad'])
     async def add(self, ctx, member: discord.Member, role: discord.Role):
         await member.add_roles(role)
+        await ctx.send('付与しました。')
 
     # roleコマンドのサブコマンド
     # 指定したユーザーから指定した役職を剥奪する。
     @role.command(aliases=['rm'])
     async def remove(self, ctx, member: discord.Member, role: discord.Role):
         await member.remove_roles(role)
+        await ctx.send('剥奪しました。')
+
+    @commands.group(aliases=['me'])
+    @commands.has_permissions(administrator=True)
+    async def member(self, ctx):
+        # サブコマンドが指定されていない場合、メッセージを送信する。
+        if ctx.invoked_subcommand is None:
+            await ctx.send('このコマンドにはサブコマンドが必要です。')
+
+    @member.command()
+    async def ban(self, ctx, member: discord.Member):
+        await member.ban()
+        await ctx.send('BANしました。')
+
+    @member.command()
+    async def kick(self, ctx, member: discord.Member):
+        await member.kick()
+        await ctx.send('KICKしました。')
 
     @commands.Cog.listener()
     async def on_message(self, message):
