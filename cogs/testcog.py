@@ -4,6 +4,8 @@ import discord
 
 import random
 
+import typing
+
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
@@ -55,22 +57,14 @@ class TestCog(commands.Cog):
         await member.remove_roles(role)
         await ctx.send('剥奪しました。')
 
-    @commands.group(aliases=['me'])
-    @commands.has_permissions(administrator=True)
-    async def member(self, ctx):
-        # サブコマンドが指定されていない場合、メッセージを送信する。
-        if ctx.invoked_subcommand is None:
-            await ctx.send('このコマンドにはサブコマンドが必要です。')
-
-    @member.command()
-    async def ban(self, ctx, member: discord.Member):
-        await member.ban(member)
-        await ctx.send('BANしました。')
-
-    @member.command()
-    async def kick(self, ctx, member: discord.Member):
-        await member.kick(member)
-        await ctx.send('KICKしました。')
+    
+    @bot.command()
+    async def ban(ctx, members: commands.Greedy[discord.Member],
+                       delete_days: typing.Optional[int] = 0, *,
+                       reason: str):
+        """Mass bans members with an optional delete_days parameter"""
+        for member in members:
+            await member.ban(delete_message_days=delete_days, reason=reason)
 
     @commands.Cog.listener()
     async def on_message(self, message):
