@@ -60,7 +60,25 @@ class TestCog(commands.Cog):
 
         if message.content == 'こんにちは':
             await message.channel.send('こんにちは')
-          
+ 
+    @commands.group()
+    @commands.has_permissions(manage_roles=True)
+    async def bot(self, ctx):
+        # サブコマンドが指定されていない場合、メッセージを送信する。
+        if ctx.invoked_subcommand is None:
+            await ctx.send('このコマンドにはサブコマンドが必要です。')
+       
+    @bot.command()
+    @commands.cooldown(1, 10.0)
+    async def add(ctx, left: int, right: int):
+        """Adds two numbers together."""
+        await ctx.send('left + right')
+
+    @bot.event
+    async def on_command_error(ctx, exception):
+        if isinstance(exception, commands.CommandOnCooldown):
+            await ctx.channel.send('You are on cooldown. Try again in {:.2f}s'.format(exception.retry_after))
+
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
