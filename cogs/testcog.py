@@ -16,28 +16,17 @@ class TestCog(commands.Cog):
     async def ping(self, ctx):
         await ctx.send('pong!')
 
-    @commands.command()
+    @commands.command(aiiases=['s'])
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
     
     # メインとなるroleコマンド
     @commands.group()
+    @commands.has_permissions(manage_roles=True)
     async def role(self, ctx):
         # サブコマンドが指定されていない場合、メッセージを送信する。
         if ctx.invoked_subcommand is None:
             await ctx.send('このコマンドにはサブコマンドが必要です。')
-
-    # roleコマンドのサブコマンド
-    # 指定したユーザーに指定した役職を付与する。
-    @role.command()
-    async def add(self, ctx, member: discord.Member, role: discord.Role):
-        await member.add_roles(role)
-
-    # roleコマンドのサブコマンド
-    # 指定したユーザーから指定した役職を剥奪する。
-    @role.command()
-    async def remove(self, ctx, member: discord.Member, role: discord.Role):
-        await member.remove_roles(role)
 
     # roleコマンドのサブコマンド
     # 指定したユーザーに指定した役職を付与する。
@@ -50,10 +39,19 @@ class TestCog(commands.Cog):
         set4 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9', '0'))
         set_name = set1 + set2 + set3 + set4
         await guild.create_role(name=set_name)
-        await ctx.send('作成しました')
-        role1 = discord.utils.get(message.guild.roles, name=set_name)
-        await member.add_roles(role1)
-        await ctx.send('終了')
+        await ctx.send(f'作成しました。@' + set_name)
+        
+    # roleコマンドのサブコマンド
+    # 指定したユーザーに指定した役職を付与する。
+    @role.command()
+    async def add(self, ctx, member: discord.Member, role: discord.Role):
+        await member.add_roles(role)
+
+    # roleコマンドのサブコマンド
+    # 指定したユーザーから指定した役職を剥奪する。
+    @role.command()
+    async def remove(self, ctx, member: discord.Member, role: discord.Role):
+        await member.remove_roles(role)
 
     @commands.Cog.listener()
     async def on_message(self, message):
