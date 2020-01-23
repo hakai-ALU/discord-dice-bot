@@ -4,8 +4,6 @@ import discord
 
 import random
 
-import typing
-
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
@@ -56,15 +54,6 @@ class TestCog(commands.Cog):
     async def remove(self, ctx, member: discord.Member, role: discord.Role):
         await member.remove_roles(role)
         await ctx.send('剥奪しました。')
-
-    
-    @bot.command()
-    async def ban(ctx, members: commands.Greedy[discord.Member],
-                       delete_days: typing.Optional[int] = 0, *,
-                       reason: str):
-        """Mass bans members with an optional delete_days parameter"""
-        for member in members:
-            await member.ban(delete_message_days=delete_days, reason=reason)
 
     @commands.Cog.listener()
     async def on_message(self, message):
