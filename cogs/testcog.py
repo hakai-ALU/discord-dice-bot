@@ -16,7 +16,7 @@ class TestCog(commands.Cog):
     async def ping(self, ctx):
         await ctx.send('pong!')
 
-    @commands.command(aiiases=['s'])
+    @commands.command(aliases=['s'])
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
     
@@ -30,7 +30,7 @@ class TestCog(commands.Cog):
 
     # roleコマンドのサブコマンド
     # 指定したユーザーに指定した役職を付与する。
-    @role.command(aiiases=['cr'])
+    @role.command(aliases=['cr'])
     async def create(self, ctx):
         guild = ctx.guild
         set1 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9', '0'))
@@ -43,13 +43,13 @@ class TestCog(commands.Cog):
         
     # roleコマンドのサブコマンド
     # 指定したユーザーに指定した役職を付与する。
-    @role.command(aiiases=['ad'])
+    @role.command(aliases=['ad'])
     async def add(self, ctx, member: discord.Member, role: discord.Role):
         await member.add_roles(role)
 
     # roleコマンドのサブコマンド
     # 指定したユーザーから指定した役職を剥奪する。
-    @role.command(aiiases=['rm'])
+    @role.command(aliases=['rm'])
     async def remove(self, ctx, member: discord.Member, role: discord.Role):
         await member.remove_roles(role)
 
