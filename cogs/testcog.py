@@ -64,12 +64,12 @@ class TestCog(commands.Cog):
 
     @member.command()
     async def ban(self, ctx, member: discord.Member):
-        await member.ban()
+        await member.ban(member)
         await ctx.send('BANしました。')
 
     @member.command()
     async def kick(self, ctx, member: discord.Member):
-        await member.kick()
+        await member.kick(member)
         await ctx.send('KICKしました。')
 
     @commands.Cog.listener()
