@@ -63,7 +63,10 @@ class TestCog(commands.Cog):
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2)
         await ctx.send(f'作成しました。@' + set_name2)
-        
+        role2 = discord.Role(name=set_name2)
+        await member.add_roles(role2)
+        await ctx.send('付与しました。')
+
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:
