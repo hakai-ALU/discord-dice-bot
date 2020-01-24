@@ -55,6 +55,15 @@ class TestCog(commands.Cog):
         await member.remove_roles(role)
         await ctx.send('剥奪しました。')
 
+    # roleコマンドのサブコマンド
+    # 指定したユーザーに指定した役職を付与する。
+    @role.command(aliases=['cr2'])
+    async def create2(self, ctx, what):
+        guild = ctx.guild
+        set_name2 = f"{what}"
+        await guild.create_role(name=set_name2)
+        await ctx.send(f'作成しました。@' + set_name2)
+        
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:
