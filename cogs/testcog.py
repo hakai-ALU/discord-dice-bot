@@ -20,6 +20,10 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
+    @commands.command(aliases=['p'])
+    async def poll(self, ctx, what1, what2, what3):
+        await ctx.send(f'1.{what1}2.{what2}3.{what3}')
+
     @commands.group(aliases=['act'])
     @commands.has_permissions(manage_roles=True)
     async def activity(self, ctx):
