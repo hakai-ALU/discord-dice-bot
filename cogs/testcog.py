@@ -23,25 +23,6 @@ class TestCog(commands.Cog):
     @commands.command()
     async def test(ctx, arg1, arg2):
         await ctx.send('You passed {} and {}'.format(arg1, arg2))
-
-    @commands.group(aliases=['act'])
-    @commands.has_permissions(manage_roles=True)
-    async def activity(self, ctx):
-        # サブコマンドが指定されていない場合、メッセージを送信する。
-        if ctx.invoked_subcommand is None:
-            await ctx.send('このコマンドにはサブコマンドが必要です。')
-
-    # activityコマンドのサブコマンド
-    # 指定したユーザーに指定した役職を付与する。
-    @activity.command()
-    async def set(self, ctx, what):   
-        await ctx.change_presence(activity=discord.Game(name=f'{what}'))
-    
-    # activityコマンドのサブコマンド
-    # 指定したユーザーに指定した役職を付与する。
-    @activity.command()
-    async def del(self, ctx):   
-        await ctx.change_presence(activity=None)
     
     # メインとなるroleコマンド
     @commands.group()
@@ -86,10 +67,7 @@ class TestCog(commands.Cog):
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2)
         await ctx.send(f'作成しました。@' + set_name2)
-        role2 = discord.Role(name=set_name2)
-        await member.add_roles(role2)
-        await ctx.send('付与しました。')
-
+        
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:
