@@ -20,7 +20,7 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
-    @bot.command()
+    @commands.command()
     async def test(ctx, arg1, arg2):
         await ctx.send('You passed {} and {}'.format(arg1, arg2))
 
