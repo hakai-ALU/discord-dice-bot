@@ -21,8 +21,8 @@ class TestCog(commands.Cog):
         await ctx.send(f'{what}')
 
     @commands.command()
-    async def test(ctx, arg1, arg2):
-        await ctx.send('You passed {} and {}'.format(arg1, arg2))
+    async def test(self, ctx, arg1, arg2):
+        await ctx.send(f'{arg1},{arg2}')
     
     # メインとなるroleコマンド
     @commands.group()
