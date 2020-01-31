@@ -70,6 +70,9 @@ class TestCog(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message(self, message):
+        if message.content == '..i in':
+            await message.channel.send('..in')
+
         if message.author.bot:
             return
 
