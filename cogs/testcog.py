@@ -18,6 +18,7 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
+        await ctx.send(f'{what}')
 
     @commands.command()
     async def test(self, ctx, arg1, arg2): 
