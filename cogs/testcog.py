@@ -22,22 +22,22 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['t'])
     async def tas(self, ctx, math1, math2):
-        t_result = math1 + math2
+        t_result = str(math1 + math2)
         await ctx.send(f'結果:{t_result}[{math1}+{math2}]')
 
     @commands.command(aliases=['h'])
     async def hiku(self, ctx, math1, math2):
-        h_result = math1 - math2
+        h_result = str(math1 - math2)
         await ctx.send(f'結果:{h_result}[{math1}-{math2}]')
 
     @commands.command(aliases=['k'])
     async def kake(self, ctx, math1, math2):
-        k_result = math1 * math2
+        k_result = str(math1 * math2)
         await ctx.send(f'結果:{k_result}[{math1}×{math2}]')
 
     @commands.command(aliases=['w'])
     async def waru(self, ctx, math1, math2):
-        w_result = math1 / math2
+        w_result = str(math1 / math2)
         await ctx.send(f'結果:{w_result}[{math1}÷{math2}]')
 
     @commands.command()
