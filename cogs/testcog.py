@@ -20,8 +20,28 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
+    @commands.command(aliases=['t'])
+    async def tas(self, ctx, math1, math2):
+        t_result = math1 + math2
+        await ctx.send(f'結果:{t_result}[{math1}+{math2}]')
+
+    @commands.command(aliases=['h'])
+    async def hiku(self, ctx, math1, math2):
+        h_result = math1 - math2
+        await ctx.send(f'結果:{h_result}[{math1}-{math2}]')
+
+    @commands.command(aliases=['k'])
+    async def kake(self, ctx, math1, math2):
+        k_result = math1 * math2
+        await ctx.send(f'結果:{k_result}[{math1}×{math2}]')
+
+    @commands.command(aliases=['w'])
+    async def waru(self, ctx, math1, math2):
+        w_result = math1 / math2
+        await ctx.send(f'結果:{w_result}[{math1}÷{math2}]')
+
     @commands.command()
-    async def test(self, ctx, arg1, arg2):
+    async def test(self, ctx, arg1, arg2): 
         await ctx.send(f'{arg1},{arg2}')
     
     # メインとなるroleコマンド
