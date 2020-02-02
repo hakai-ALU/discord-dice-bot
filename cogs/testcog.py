@@ -18,34 +18,6 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
-        await ctx.send(f'{what}')
-
-    @commands.command(aliases=["計算問題", "計算クイズ"])
-    @commands.cooldown(1, 30, commands.BucketType.user)
-    async def keisan_quiz(ctx):
-        n1 = random.randint(0,300)
-        n2 = random.randint(0,300)
-        answer = n1+n2
-
-        await ctx.send(ctx.message.author.mention + " >> " + str(n1) + "+" + str(n2) + " = ?")
-
-        def answercheck(m):
-            return m.author == ctx.message.author and m.channel == ctx.message.channel and m.content.isdigit()
-
-        try:
-            waitresp = await client.wait_for('message', timeout=30, check=answercheck)
-        except asyncio.TimeoutError:
-            await ctx.send(ctx.message.author.mention + " >> 時間切れです。正解は " + str(answer))
-        else:
-            if waitresp.content == str(answer):
-                await ctx.send(ctx.message.author.mention + " >> 正解です！お見事！")
-            else:
-                await ctx.send(ctx.message.author.mention + " >> 不正解です。正解は " + str(answer))
-
-    @keisan_quiz.error
-    async def keisan_quiz_error(ctx, error):
-        if isinstance(error, CommandOnCooldown):
-            await ctx.send(ctx.message.author.mention + " >> 計算クイズはまだプレイできません(クールダウン中)")
 
     @commands.command()
     async def test(self, ctx, arg1, arg2): 
