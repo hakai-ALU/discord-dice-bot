@@ -13,8 +13,17 @@ class TestCog(commands.Cog):
 
     # コマンドの作成。コマンドはcommandデコレータで必ず修飾する。
     @commands.command(aliases=['p'])
-    async def ping(self, ctx):
-        await ctx.send('pong!')
+    async def poll(self, ctx, pol1, pol2, pol3, pol4):
+
+        embed = discord.Embed(title=f"{pol1}", description=" ", color=0xeee657)
+        embed.add_field(name=f":regional_indicator_a: {pol2}", value=" ", inline=False)
+        embed.add_field(name=f":regional_indicator_b: {pol3}", value=" ", inline=False)
+        embed.add_field(name=f":regional_indicator_c: {pol4}", value=" ", inline=False)
+        embed.add_field(name=f" ", value=" ", inline=False)
+        embed.add_field(name=f" ", value=" ", inline=False)
+        embed.add_field(name=f" ", value=" ", inline=False)
+
+        await ctx.send(embed=embed)
 
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
