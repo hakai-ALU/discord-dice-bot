@@ -63,6 +63,7 @@ class TestCog(commands.Cog):
         output = 'Results of the poll for "{}":\n'.format(embed['title']) + \
                  '\n'.join(['{}: {}'.format(opt_dict[key], tally[key]) for key in tally.keys()])
         await self.bot.say(output)
+
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
