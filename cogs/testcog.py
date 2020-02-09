@@ -15,14 +15,6 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
-    @commands.command()
-    async def cc(self, ctx, arg1):
-        category_id = ctx.channel.category_id
-        category = ctx.guild.get_channel(category_id)
-        new_channel = await category.create_text_channel(name=arg1)
-        reply = f'{new_channel.mention} を作成しました'
-        await ctx.send(reply)
-
     # メインとなるroleコマンド
     @commands.group()
     @commands.has_permissions(manage_roles=True)
