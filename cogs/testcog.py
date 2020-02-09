@@ -16,9 +16,8 @@ class TestCog(commands.Cog):
         await ctx.send(f'{what}')
 
     @commands.command()
-    async def cc(self, ctx, arg1): 
-        guild = ctx.guild
-        await guild.create_channel(name=arg1)
+    async def cc(self, ctx, arg1):
+        await ctx.create_channel(name=arg1)
     
     # メインとなるroleコマンド
     @commands.group()
