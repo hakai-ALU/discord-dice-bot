@@ -17,8 +17,8 @@ class TestCog(commands.Cog):
 
     @commands.command()
     async def cc(self, ctx, arg1):
-        category_id = message.channel.category_id
-        category = message.guild.get_channel(category_id)
+        category_id = ctx.channel.category_id
+        category = ctx.guild.get_channel(category_id)
         new_channel = await category.create_text_channel(name=arg1)
         reply = f'{new_channel.mention} を作成しました'
         await ctx.send(reply)
