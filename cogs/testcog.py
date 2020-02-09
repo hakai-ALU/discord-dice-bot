@@ -17,7 +17,7 @@ class TestCog(commands.Cog):
 
     @commands.command()
     async def cc(self, ctx, arg1):
-        await ctx.create_channel(name=arg1)
+        await ctx.create_text_channel(name=arg1)
     
     # メインとなるroleコマンド
     @commands.group()
