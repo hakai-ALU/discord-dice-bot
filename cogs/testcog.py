@@ -4,6 +4,8 @@ import discord
 
 import random
 
+import sqlite3
+
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
@@ -11,9 +13,34 @@ class TestCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+        DB_NAME = "dtp"
+        db_path = os.path.join(os.path.abspath(os.getcwd()), DB_NAME + ".db")
+        self.db = sqlite3.connect(db_path)
+        self.db_cursor = self.db.cursor()
+        self.db_cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY,
+            name TEXT,
+            discriminator TEXT
+        )
+        """)
+
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
+
+    @commands.command(name="whoami")
+    async def whoami(self, ctx):
+        self.db_cursor.execute("SELECT * FROM users WHERE id=?", (ctx.author.id,))
+        response = self.db_cursor.fetchone()
+        if not response:
+            self.db_cursor.execute("INSERT INTO users VALUES (?,?,?)",
+                (ctx.author.id, ctx.author.name, ctx.author.discriminator,))
+            self.db.commit()
+
+        uid, name, discriminator = response
+        await ctx.send("<@{}>, you are {}#{}.".format(uid, name, discriminator))
+
 
     # メインとなるroleコマンド
     @commands.group()
