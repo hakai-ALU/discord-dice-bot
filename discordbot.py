@@ -42,6 +42,7 @@ class MyBot(commands.Bot):
         await channel.send('----------------')
         await channel.send('状態：BOT再起動しました。')   
         await self.change_presence(status=discord.Status.idle,activity=discord.Game(name='Discord Test Program'))
+        bot.load_extension("cogs.dtp")
 
 # MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
