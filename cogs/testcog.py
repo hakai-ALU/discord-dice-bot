@@ -15,6 +15,11 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
+    @commands.command(aliases=['q'])
+    async def queue(self, ctx, q1, q2):
+        embed = discord.Embed(title=q1,description=q2)
+        await ctx.send(embed=embed)
+
     # メインとなるroleコマンド
     @commands.group()
     @commands.has_permissions(manage_roles=True)
