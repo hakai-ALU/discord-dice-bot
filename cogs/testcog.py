@@ -13,6 +13,19 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
+    #bans a user with a reason
+    @commands.command()
+    async def ban(self, ctx, member:discord.User=None, reason =None):
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("BAN対象が正しくありません")
+            return
+        if reason == None:
+            reason = "None"
+        message = f"貴方は{ctx.guild.name}からBANされました。\n理由:{reason}"
+        await member.send(message)
+        await ctx.guild.ban(member, reason=reason)
+        await ctx.channel.send(f"{member} をBANしました。")
+
     # メインとなるroleコマンド
     @commands.group()
     @commands.has_permissions(manage_roles=True)
@@ -21,19 +34,6 @@ class TestCog(commands.Cog):
         if ctx.invoked_subcommand is None:
             await ctx.send('このコマンドにはサブコマンドが必要です。')
 
-    # roleコマンドのサブコマンド
-    # 指定したユーザーに指定した役職を付与する。
-    @role.command(aliases=['cr'])
-    async def create(self, ctx):
-        guild = ctx.guild
-        set1 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9', '0'))
-        set2 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9', '0'))
-        set3 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9', '0'))
-        set4 = random.choice(('1', '2', '3', '4', '5', '6', '7', '8', '9', '0'))
-        set_name = set1 + set2 + set3 + set4
-        await guild.create_role(name=set_name)
-        await ctx.send(f'作成しました。@' + set_name)
-        
     # roleコマンドのサブコマンド
     # 指定したユーザーに指定した役職を付与する。
     @role.command(aliases=['ad'])
