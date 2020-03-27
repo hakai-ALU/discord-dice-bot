@@ -2,6 +2,8 @@ from discord.ext import commands # Bot Commands Frameworkのインポート
 
 import discord
 
+import asyncio
+
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
