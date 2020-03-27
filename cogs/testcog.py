@@ -18,7 +18,7 @@ class TestCog(commands.Cog):
     #bans a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def ban(self, ctx, member:discord.Member, *, reason =None):
+    async def ban(self, ctx, member:discord.User=None, reason =None):
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
             return
