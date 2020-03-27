@@ -81,6 +81,8 @@ class TestCog(commands.Cog):
         if message.content == 'ログ削除して':
             await message.channel.purge()
             await message.channel.send("削除しました。")
+            await asyncio.sleep(5)
+            await message.delete()
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
