@@ -15,6 +15,7 @@ class TestCog(commands.Cog):
 
     #bans a user with a reason
     @commands.command()
+    @commands.has_permissions(manage_guild=True)
     async def ban(self, ctx, member:discord.User=None, reason =None):
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
@@ -25,6 +26,18 @@ class TestCog(commands.Cog):
         await member.send(message)
         await ctx.guild.ban(member, reason=reason)
         await ctx.channel.send(f"{member} をBANしました。")
+
+    #bans a user with a reason
+    @commands.command()
+    @commands.has_permissions(manage_guild=True)
+    async def unban(self, ctx, member:discord.User=None):
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("UNBAN対象が正しくありません")
+            return
+        message = f"貴方は{ctx.guild.name}のBANが解除されました。"
+        await member.send(message)
+        await ctx.guild.unban(member)
+        await ctx.channel.send(f"{member} をUNBANしました。")
 
     # メインとなるroleコマンド
     @commands.group()
