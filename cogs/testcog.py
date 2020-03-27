@@ -44,7 +44,7 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def purge(self, ctx)
-        await ctx.channel.purge()
+        await ctx.purge()
         await ctx.channel.send('ログ削除しました！')
         await ctx.sleep(5)
         await ctx.message.delete()
