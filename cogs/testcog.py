@@ -40,7 +40,7 @@ class TestCog(commands.Cog):
             reason = "None"
         message = f"貴方は{ctx.guild.name}からKICKされました。\n理由:{reason}"
         await member.send(message)
-        await self.bot.kick(member, reason=reason)
+        await ctx.guild.kick(member, reason=reason)
         await ctx.channel.send(f"{member} をKICKしました。")
 
     # メインとなるroleコマンド
