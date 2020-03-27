@@ -27,7 +27,7 @@ class TestCog(commands.Cog):
             reason = "None"
         message = f"貴方は{ctx.guild.name}からBANされました。\n理由:{reason}"
         await member.send(message)
-        await self.guilds.ban(member, reason=reason)
+        await ctx.guild.ban(member, reason=reason)
         await ctx.channel.send(f"{member} をBANしました。")
 
     #unbans a user with a reason
