@@ -41,6 +41,14 @@ class TestCog(commands.Cog):
         await ctx.guild.kick(member, reason=reason)
         await ctx.channel.send(f"{member} をKICKしました。")
 
+    @commands.command()
+    @commands.has_permissions(manage_guild=True)
+    async def purge(self, ctx)
+        await ctx.channel.purge()
+        await ctx.channel.send('ログ削除しました！')
+        await ctx.sleep(5)
+        await ctx.message.delete()
+
     # メインとなるroleコマンド
     @commands.group()
     @commands.has_permissions(manage_roles=True)
