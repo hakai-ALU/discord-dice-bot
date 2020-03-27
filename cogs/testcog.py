@@ -67,8 +67,8 @@ class TestCog(commands.Cog):
 
     # roleコマンドのサブコマンド
     # 指定したユーザーに指定した役職を付与する。
-    @role.command(aliases=['cr2'])
-    async def create2(self, ctx, what):
+    @role.command(aliases=['cr'])
+    async def create(self, ctx, what):
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2)
@@ -83,7 +83,7 @@ class TestCog(commands.Cog):
         if message.content == 'ログ削除して':
             await message.channel.purge()
             msg = await message.channel.send("削除しました。")
-            await asyncio.sleep(5)
+            await asyncio.sleep(15)
             await msg.delete()
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
