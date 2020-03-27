@@ -29,10 +29,25 @@ class TestCog(commands.Cog):
         await ctx.guild.ban(member, reason=reason)
         await ctx.channel.send(f"{member} をBANしました。")
 
-    #bans a user with a reason
+    #kick a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def kick(self, ctx, member:discord.User=None, reason =None):
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("KICK対象が正しくありません")
+            return
+        if reason == None:
+            reason = "None"
+        message = f"貴方は{ctx.guild.name}からKICKされました。\n理由:{reason}"
+        await member.send(message)
+        await ctx.guild.kick(member, reason=reason)
+        await ctx.channel.send(f"{member} をKICKしました。")
+
+    #kick a user with a reason
+    @commands.command()
+    @commands.has_permissions(manage_guild=True)
+    async def KICK(self, ctx, what, reason =None):
+        member = self.bot.get_user(what) 
         if member == None or member == ctx.message.author:
             await ctx.channel.send("KICK対象が正しくありません")
             return
