@@ -41,14 +41,6 @@ class TestCog(commands.Cog):
         await ctx.guild.kick(member, reason=reason)
         await ctx.channel.send(f"{member} をKICKしました。")
 
-    @commands.command()
-    @commands.has_permissions(manage_guild=True)
-    async def purge(self, ctx)
-        await ctx.purge()
-        await ctx.channel.send('ログ削除しました！')
-        await ctx.sleep(5)
-        await ctx.message.delete()
-
     # メインとなるroleコマンド
     @commands.group()
     @commands.has_permissions(manage_roles=True)
@@ -81,15 +73,14 @@ class TestCog(commands.Cog):
         await ctx.send(f'作成しました。@' + set_name2)
         
     @commands.Cog.listener()
+    @commands.has_permissions(manage_guild=True)
     async def on_message(self, message):
-        if message.content == '..i in':
-            await message.channel.send('..in')
-
         if message.author.bot:
             return
 
-        if message.content == 'こんにちは':
-            await message.channel.send('こんにちは')
+        if message.content == 'ログ削除して':
+            await message.channel.purge()
+            await message.channel.send("削除しました。")
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
