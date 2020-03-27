@@ -30,6 +30,21 @@ class TestCog(commands.Cog):
         await ctx.guild.ban(member, reason=reason)
         await ctx.channel.send(f"{member} をBANしました。")
 
+    #unbans a user with a reason
+    @commands.command()
+    @commands.has_permissions(manage_guild=True)
+    async def unban(self, ctx, what: int, reason =None):
+        member = self.bot.get_user(what)
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("UNBAN対象が正しくありません")
+            return
+        if reason == None:
+            reason = "無し"
+        message = f"貴方は{ctx.guild.name}のBANが解除されました。\n理由:{reason}"
+        await member.send(message)
+        await ctx.guild.unban(member, reason=reason)
+        await ctx.channel.send(f"{member} をUNBANしました。")
+
     #kick a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
