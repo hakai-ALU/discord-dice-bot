@@ -15,7 +15,7 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
-    @bot.command()
+    @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def b(self, ctx, user_id: int, reason):
         await ctx.guild.ban(discord.Object(user_id), reason=reason)
