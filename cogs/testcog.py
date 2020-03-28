@@ -16,8 +16,8 @@ class TestCog(commands.Cog):
         await ctx.send(f'{what}')
 
     @bot.command()
-    @commands.has_permissions(ban_members=True)
-    async def BAN(self, ctx, user_id: int, reason):
+    @commands.has_permissions(manage_guild=True)
+    async def b(self, ctx, user_id: int, reason):
         await ctx.guild.ban(discord.Object(user_id), reason=reason)
 
     #bans a user with a reason
