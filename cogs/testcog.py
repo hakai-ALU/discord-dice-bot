@@ -20,9 +20,9 @@ class TestCog(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def gban(self, ctx, user_id: int, reason =None):
         member = self.bot.get_user(user_id)
-        #if member == None or member == ctx.message.author:
-         #   await ctx.channel.send("BAN対象が正しくありません")
-         #   return
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("BAN対象が正しくありません")
+            return
         if reason == None:
             reason = "None"
         message = f"貴方はGlobal BANされました。\n理由:{reason}"
