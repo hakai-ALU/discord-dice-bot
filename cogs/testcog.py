@@ -47,7 +47,7 @@ class TestCog(commands.Cog):
         for g in self.bot.guilds:
             guildf = self.bot.get_guild(g.id)
             await guildf.unban(discord.Object(user_id), reason=reason)
-        await ctx.channel.send(f"{member} をGUNBANしました。")
+        await self.bot.logout()
 
     #bans a user with a reason
     @commands.command()
