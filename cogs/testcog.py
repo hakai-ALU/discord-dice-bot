@@ -20,7 +20,7 @@ class TestCog(commands.Cog):
     #gbans a user with a reason
     @commands.command()
     async def gban(self, ctx, user_id: int, reason =None):
-        if message.author.id != great_owner_id:
+        if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
         if member == None or member == ctx.message.author:
@@ -36,7 +36,7 @@ class TestCog(commands.Cog):
     #gunbans a user with a reason
     @commands.command()
     async def gunban(self, ctx, user_id: int, reason =None):
-        if message.author.id != great_owner_id:
+        if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
         if member == None or member == ctx.message.author:
