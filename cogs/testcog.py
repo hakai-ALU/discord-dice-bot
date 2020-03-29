@@ -26,9 +26,9 @@ class TestCog(commands.Cog):
         if reason == None:
             reason = "None"
         message = f"貴方は{ctx.guild.name}からBANされました。\n理由:{reason}"
-        await member.send(message) 
-        for g in self.guilds:
-            await g.ban(discord.Object(user_id), reason=reason)
+        for g in self.bot.guilds:
+            await ctx.channel.send(g)
+        await member.send(message)
         await ctx.channel.send(f"{member} をBANしました。")
 
     #bans a user with a reason
@@ -42,8 +42,8 @@ class TestCog(commands.Cog):
         if reason == None:
             reason = "None"
         message = f"貴方は{ctx.guild.name}からBANされました。\n理由:{reason}"
-        await member.send(message)
         await ctx.guild.ban(discord.Object(user_id), reason=reason)
+        await member.send(message)
         await ctx.channel.send(f"{member} をBANしました。")
 
     #unbans a user with a reason
@@ -57,8 +57,8 @@ class TestCog(commands.Cog):
         if reason == None:
             reason = "無し"
         message = f"貴方は{ctx.guild.name}のBANが解除されました。\n理由:{reason}"
-        await member.send(message)
         await ctx.guild.unban(member, reason=reason)
+        await member.send(message)
         await ctx.channel.send(f"{member} をUNBANしました。")
 
     #kick a user with a reason
@@ -71,8 +71,8 @@ class TestCog(commands.Cog):
         if reason == None:
             reason = "None"
         message = f"貴方は{ctx.guild.name}からKICKされました。\n理由:{reason}"
-        await member.send(message)
         await ctx.guild.kick(member, reason=reason)
+        await member.send(message)
         await ctx.channel.send(f"{member} をKICKしました。")
 
     #kick a user with a reason
@@ -86,8 +86,8 @@ class TestCog(commands.Cog):
         if reason == None:
             reason = "None"
         message = f"貴方は{ctx.guild.name}からKICKされました。\n理由:{reason}"
-        await member.send(message)
         await ctx.guild.kick(member, reason=reason)
+        await member.send(message)
         await ctx.channel.send(f"{member} をKICKしました。")
 
     # メインとなるroleコマンド
