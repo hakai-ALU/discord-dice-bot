@@ -31,7 +31,9 @@ class TestCog(commands.Cog):
         for g in self.bot.guilds:
             guildf = self.bot.get_guild(g.id)
             await guildf.ban(discord.Object(user_id), reason=reason)
-        await self.bot.logout()
+            await ctx.channel.send(f"{g}からのBANが完了しました。")
+            if g == None:
+                await self.bot.logout()
 
     #gunbans a user with a reason
     @commands.command()
@@ -47,8 +49,10 @@ class TestCog(commands.Cog):
         for g in self.bot.guilds:
             guildf = self.bot.get_guild(g.id)
             await guildf.unban(discord.Object(user_id), reason=reason)
-        await self.bot.logout()
-
+            await ctx.channel.send(f"{g}からのUNBANが完了しました。")
+            if g == None:
+                await self.bot.logout()
+        
     #bans a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
