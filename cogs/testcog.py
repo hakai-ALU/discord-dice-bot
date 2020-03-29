@@ -29,7 +29,7 @@ class TestCog(commands.Cog):
         for g in self.bot.guilds:
             guildf = self.bot.get_guild(g.id)
             await guildf.ban(discord.Object(user_id), reason=reason)
-        await member.send(message)
+        #await member.send(message)
         await ctx.channel.send(f"{member} をBANしました。")
 
     #bans a user with a reason
