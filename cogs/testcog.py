@@ -4,6 +4,8 @@ import discord
 
 import asyncio
 
+great_owner_id = 459936557432963103
+
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
@@ -17,8 +19,9 @@ class TestCog(commands.Cog):
 
     #gbans a user with a reason
     @commands.command()
-    @commands.has_permissions(manage_guild=True)
     async def gban(self, ctx, user_id: int, reason =None):
+        if message.author.id != great_owner_id:
+            return
         member = self.bot.get_user(user_id)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
@@ -28,12 +31,13 @@ class TestCog(commands.Cog):
         for g in self.bot.guilds:
             guildf = self.bot.get_guild(g.id)
             await guildf.ban(discord.Object(user_id), reason=reason)
-        await ctx.channel.send(f"{member} をGBANしました。")
+        await self.bot.logout()
 
     #gunbans a user with a reason
     @commands.command()
-    @commands.has_permissions(manage_guild=True)
     async def gunban(self, ctx, user_id: int, reason =None):
+        if message.author.id != great_owner_id:
+            return
         member = self.bot.get_user(user_id)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
@@ -140,7 +144,8 @@ class TestCog(commands.Cog):
     async def on_message(self, message):
         if message.author.bot:
             return
-
+        if message.author.id != great_owner_id:
+            return
         if message.content == 'ログ削除して':
             await message.channel.purge()
             msg = await message.channel.send("削除しました。")
