@@ -27,8 +27,8 @@ class TestCog(commands.Cog):
             reason = "None"
         message = f"貴方は{ctx.guild.name}からBANされました。\n理由:{reason}"
         for g in self.bot.guilds:
-            guild = self.bot.get_guild(g.id)
-            await ctx.guild.ban(discord.Object(user_id), reason=reason)
+            guildf = self.bot.get_guild(g.id)
+            await ctx.guildf.ban(discord.Object(user_id), reason=reason)
         await member.send(message)
         await ctx.channel.send(f"{member} をBANしました。")
 
