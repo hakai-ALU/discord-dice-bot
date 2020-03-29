@@ -23,9 +23,9 @@ class TestCog(commands.Cog):
         if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
-        if member == None or member == ctx.message.author:
-            await ctx.channel.send("BAN対象が正しくありません")
-            return
+        #if member == None or member == ctx.message.author:
+        #    await ctx.channel.send("BAN対象が正しくありません")
+        #    return
         if reason == None:
             reason = "None"
         for g in self.bot.guilds:
@@ -41,9 +41,9 @@ class TestCog(commands.Cog):
         if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
-        if member == None or member == ctx.message.author:
-            await ctx.channel.send("BAN対象が正しくありません")
-            return
+        #if member == None or member == ctx.message.author:
+        #    await ctx.channel.send("BAN対象が正しくありません")
+        #    return
         if reason == None:
             reason = "None"
         for g in self.bot.guilds:
