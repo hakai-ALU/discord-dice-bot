@@ -20,16 +20,16 @@ class TestCog(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def gban(self, ctx, user_id: int, reason =None):
         member = self.bot.get_user(user_id)
-        if member == None or member == ctx.message.author:
-            await ctx.channel.send("BAN対象が正しくありません")
-            return
+        #if member == None or member == ctx.message.author:
+         #   await ctx.channel.send("BAN対象が正しくありません")
+         #   return
         if reason == None:
             reason = "None"
         message = f"貴方は{ctx.guild.name}からBANされました。\n理由:{reason}"
         for g in self.bot.guilds:
             await ctx.guild(g.id).ban(discord.Object(user_id), reason=reason)
         #await member.send(message)
-        await ctx.channel.send(f"{member} をBANしました。")
+        await ctx.channel.send(f"{member} をGBANしました。")
 
     #bans a user with a reason
     @commands.command()
