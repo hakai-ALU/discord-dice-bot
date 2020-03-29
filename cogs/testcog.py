@@ -25,11 +25,9 @@ class TestCog(commands.Cog):
             return
         if reason == None:
             reason = "None"
-        message = f"貴方はGlobal BANされました。\n理由:{reason}"
         for g in self.bot.guilds:
             guildf = self.bot.get_guild(g.id)
             await guildf.ban(discord.Object(user_id), reason=reason)
-        await member.send(message)
         await ctx.channel.send(f"{member} をGBANしました。")
 
     #gunbans a user with a reason
@@ -42,11 +40,9 @@ class TestCog(commands.Cog):
             return
         if reason == None:
             reason = "None"
-        message = f"貴方はGlobal BANが解除されました。\n理由:{reason}"
         for g in self.bot.guilds:
             guildf = self.bot.get_guild(g.id)
             await guildf.unban(discord.Object(user_id), reason=reason)
-        await member.send(message)
         await ctx.channel.send(f"{member} をGUNBANしました。")
 
     #bans a user with a reason
