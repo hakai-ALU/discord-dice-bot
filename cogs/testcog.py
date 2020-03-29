@@ -35,7 +35,7 @@ class TestCog(commands.Cog):
     #gunbans a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def gban(self, ctx, user_id: int, reason =None):
+    async def gunban(self, ctx, user_id: int, reason =None):
         member = self.bot.get_user(user_id)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
