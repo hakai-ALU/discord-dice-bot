@@ -17,6 +17,11 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
+
+    @commands.command(aliases=['p'])
+    async def ping(self, ctx):
+        await ctx.send(f'{self.bot.ws.latency * 1000:.0f}ms')
+
     #gbans a user with a reason
     @commands.command()
     async def gban(self, ctx, user_id: int, reason =None):
