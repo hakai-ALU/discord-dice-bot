@@ -5,6 +5,7 @@ import discord
 import asyncio
 
 great_owner_id = 459936557432963103
+banlog = self.bot.get_channel(694044656501129317)
 
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
@@ -23,9 +24,6 @@ class TestCog(commands.Cog):
         if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
-        #if member == None or member == ctx.message.author:
-        #    await ctx.channel.send("BAN対象が正しくありません")
-        #    return
         if reason == None:
             reason = "None"
         for g in self.bot.guilds:
@@ -41,9 +39,6 @@ class TestCog(commands.Cog):
         if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
-        #if member == None or member == ctx.message.author:
-        #    await ctx.channel.send("BAN対象が正しくありません")
-        #    return
         if reason == None:
             reason = "None"
         for g in self.bot.guilds:
@@ -67,41 +62,28 @@ class TestCog(commands.Cog):
         await ctx.guild.ban(discord.Object(user_id), reason=reason)
         await member.send(message)
         await ctx.channel.send(f"{member} をBANしました。")
+        await banlog.send(f"BAN通知 \n 鯖名：{ctx.guild.name} \n user id：{user_id} \n 理由：{reason}")
 
     #unbans a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def unban(self, ctx, what: int, reason =None):
-        member = self.bot.get_user(what)
+    async def unban(self, ctx, user_id: int, reason =None):
+        member = self.bot.get_user(user_id)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("UNBAN対象が正しくありません")
             return
         if reason == None:
             reason = "無し"
         message = f"貴方は{ctx.guild.name}のBANが解除されました。\n理由:{reason}"
-        await ctx.guild.unban(member, reason=reason)
+        await ctx.guild.unban(user_id, reason=reason)
         await member.send(message)
         await ctx.channel.send(f"{member} をUNBANしました。")
+        await banlog.send(f"UNBAN通知 \n 鯖名：{ctx.guild.name} \n user id：{user_id} \n 理由：{reason}")
 
     #kick a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def kick(self, ctx, member:discord.User=None, reason =None):
-        if member == None or member == ctx.message.author:
-            await ctx.channel.send("KICK対象が正しくありません")
-            return
-        if reason == None:
-            reason = "None"
-        message = f"貴方は{ctx.guild.name}からKICKされました。\n理由:{reason}"
-        await ctx.guild.kick(member, reason=reason)
-        await member.send(message)
-        await ctx.channel.send(f"{member} をKICKしました。")
-
-    #kick a user with a reason
-    @commands.command()
-    @commands.has_permissions(manage_guild=True)
-    async def KICK(self, ctx, what: int, reason =None):
-        member = self.bot.get_user(what) 
         if member == None or member == ctx.message.author:
             await ctx.channel.send("KICK対象が正しくありません")
             return
