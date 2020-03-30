@@ -20,7 +20,8 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['p'])
     async def ping(self, ctx):
-        await ctx.send(f'{self.bot.ws.latency * 1000:.0f}ms')
+        for i in range(5):
+            await ctx.send(f'No.{i} Latency: {round(bot.latency * 1000)}ms')
 
     #gbans a user with a reason
     @commands.command()
