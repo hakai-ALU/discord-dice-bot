@@ -5,7 +5,6 @@ import discord
 import asyncio
 
 great_owner_id = 459936557432963103
-banlog = self.bot.get_channel(694044656501129317)
 
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
@@ -53,6 +52,7 @@ class TestCog(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def ban(self, ctx, user_id: int, reason =None):
         member = self.bot.get_user(user_id)
+        banlog = self.bot.get_channel(694044656501129317)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
             return
@@ -69,6 +69,7 @@ class TestCog(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def unban(self, ctx, user_id: int, reason =None):
         member = self.bot.get_user(user_id)
+        banlog = self.bot.get_channel(694044656501129317)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("UNBAN対象が正しくありません")
             return
