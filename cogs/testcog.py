@@ -18,11 +18,17 @@ class TestCog(commands.Cog):
         await ctx.send(f'{what}')
 
 
-    @commands.command(aliases=['p'])
-    async def ping(self, ctx):
-        for i in range(5):
-            await ctx.send(f'No.{i} Latency: {round(self.bot.ws.latency * 1000)}ms')
-
+    @commands.command(aliases=['b'])
+    async def bot(self, ctx):
+        embed = discord.Embed(title=f"{self.bot.user}情報:", description="このBotの情報です。")
+        embed.set_thumbnail(url=self.bot.user.avatar_url)
+        embed.add_field(name="SERVERの数", value=f"`{len(self.bot.guilds)}`")
+        embed.add_field(name="USERの数", value=f"`{len(set(self.bot.get_all_members()))}`")
+        embed.add_field(name="言語", value="`discord.py`")
+        embed.add_field(name="Ping値", value=f"`{self.bot.ws.latency * 1000:.0f}ms`")
+        embed.add_field(name="各種リンク", value="[このBOTの公式開発鯖](<https://discord.gg/ENxnsJM>)", inline=False)
+        await ctx.channel.send(embed=embed)
+            
     #gbans a user with a reason
     @commands.command()
     async def gban(self, ctx, user_id: int, reason =None):
