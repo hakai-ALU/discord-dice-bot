@@ -20,7 +20,7 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['b'])
     async def bot(self, ctx):
-        embed = discord.Embed(title=f"{self.bot.user}情報:", description="このBotの情報です。")
+        embed = discord.Embed(title=f"{self.bot.user}", description="このBotの情報です")
         embed.set_thumbnail(url=self.bot.user.avatar_url)
         embed.add_field(name="SERVERの数", value=f"`{len(self.bot.guilds)}`")
         embed.add_field(name="USERの数", value=f"`{len(set(self.bot.get_all_members()))}`")
