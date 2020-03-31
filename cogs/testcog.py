@@ -266,9 +266,6 @@ class TestCog(commands.Cog):
             await ctx.send(self.bot.bot_prefix + avi)
         await ctx.message.delete()
 
-
-
-
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
