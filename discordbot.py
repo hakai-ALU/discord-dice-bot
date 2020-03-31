@@ -32,7 +32,8 @@ class MyBot(commands.Bot):
         print(self.user.id)  # ボットのID
         print(discord.__version__)  # discord.pyのバージョン
         print('----------------')
-        print('Hello World,リマインドbotプログラム「project-RRN」、起動しました')
+        print('Hello World,五皇帝管理プログラム「project-RTA」、起動しました')
+        
         
 # MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
