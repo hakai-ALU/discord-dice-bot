@@ -18,20 +18,37 @@ class TestCog(commands.Cog):
         await ctx.send(f'{what}')
 
     @commands.command(aliases=['sinfo'])
-    async def serverinfo(self, ctx):
+    async def serverinfo(self, ctx, server_id: int=None):
+        if server_id == None:
+            embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
+            embed.add_field(name="サーバー名",value=f'`{ctx.guild.name}`')
+            embed.add_field(name="現オーナー名",value=f'`{ctx.guild.owner}`')
+            guild = ctx.guild
+            member_count = sum(1 for member in guild.members if not member.bot) 
+            bot_count = sum(1 for member in guild.members if member.bot) 
+            all_count = (member_count) + (bot_count)
+            embed.add_field(name="総人数",value=f'`{all_count}`',inline=False)
+            embed.add_field(name="ユーザ数",value=f'`{member_count}`',inline=False)
+            embed.add_field(name="BOT数",value=f'`{bot_count}`',inline=False)
+            embed.add_field(name="テキストチャンネル数",value=f'`{len(ctx.guild.text_channels)}`',inline=False)
+            embed.add_field(name="ボイスチャンネル数",value=f'`{len(ctx.guild.voice_channels)}`',inline=False)
+            embed.set_thumbnail(url=ctx.guild.icon_url)
+            await ctx.channel.send(embed=embed)
+            return
+        server = self.bot.get_guild(server_id)
         embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
-        embed.add_field(name="サーバー名",value=f'`{ctx.guild.name}`')
-        embed.add_field(name="現オーナー名",value=f'`{ctx.guild.owner}`')
-        guild = ctx.guild
+        embed.add_field(name="サーバー名",value=f'`{server.name}`')
+        embed.add_field(name="現オーナー名",value=f'`{server.owner}`')
+        guild = server.guild
         member_count = sum(1 for member in guild.members if not member.bot) 
         bot_count = sum(1 for member in guild.members if member.bot) 
         all_count = (member_count) + (bot_count)
         embed.add_field(name="総人数",value=f'`{all_count}`',inline=False)
         embed.add_field(name="ユーザ数",value=f'`{member_count}`',inline=False)
         embed.add_field(name="BOT数",value=f'`{bot_count}`',inline=False)
-        embed.add_field(name="テキストチャンネル数",value=f'`{len(ctx.guild.text_channels)}`',inline=False)
-        embed.add_field(name="ボイスチャンネル数",value=f'`{len(ctx.guild.voice_channels)}`',inline=False)
-        embed.set_thumbnail(url=ctx.guild.icon_url)
+        embed.add_field(name="テキストチャンネル数",value=f'`{len(server.text_channels)}`',inline=False)
+        embed.add_field(name="ボイスチャンネル数",value=f'`{len(server.voice_channels)}`',inline=False)
+        embed.set_thumbnail(url=server.icon_url)
         await ctx.channel.send(embed=embed)
 
     @commands.command(aliases=['b'])
@@ -47,7 +64,7 @@ class TestCog(commands.Cog):
             
     #gbans a user with a reason
     @commands.command()
-    async def gban(self, ctx, user_id: int, reason =None):
+    async def gban(self, ctx, user_id: int=None, reason =None):
         if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
@@ -62,7 +79,7 @@ class TestCog(commands.Cog):
 
     #gunbans a user with a reason
     @commands.command()
-    async def gunban(self, ctx, user_id: int, reason =None):
+    async def gunban(self, ctx, user_id: int=None, reason =None):
         if ctx.author.id != great_owner_id:
             return
         member = self.bot.get_user(user_id)
@@ -78,7 +95,7 @@ class TestCog(commands.Cog):
     #bans a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def ban(self, ctx, user_id: int, reason =None):
+    async def ban(self, ctx, user_id: int=None, reason =None):
         member = self.bot.get_user(user_id)
         banlog = self.bot.get_channel(694044656501129317)
         if member == None or member == ctx.message.author:
@@ -95,7 +112,7 @@ class TestCog(commands.Cog):
     #unbans a user with a reason
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def unban(self, ctx, user_id: int, reason =None):
+    async def unban(self, ctx, user_id: int=None, reason =None):
         member = self.bot.get_user(user_id)
         banlog = self.bot.get_channel(694044656501129317)
         if member == None or member == ctx.message.author:
