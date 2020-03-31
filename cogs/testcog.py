@@ -17,6 +17,23 @@ class TestCog(commands.Cog):
     async def say(self, ctx, what):
         await ctx.send(f'{what}')
 
+    @commands.command(aliases=['sinfo'])
+    async def serverinfo(self, ctx):
+        embed = discord.Embed(title="鯖ステータス",description="Ping:{self.bot.ws.latency * 1000:.0f}ms")
+        embed.add_field(name="サーバー名",value=f'{self.bot.guild.name}',inline=False)
+        embed.add_field(name="現オーナー名",value=f'{self.bot.guild.owner}',inline=False)
+        guild = message.guild
+        member_count = sum(1 for member in guild.members if not member.bot) 
+        bot_count = sum(1 for member in guild.members if member.bot) 
+        all_count = (member_count) + (bot_count)
+        embed.add_field(name="総人数",value=f'{all_count}',inline=False)
+        embed.add_field(name="ユーザ数",value=f'{member_count}')
+        embed.add_field(name="BOT数",value=f'{bot_count}')
+        embed.add_field(name="テキストチャンネル数",value=f'{len(self.bot.guild.text_channels)}個',inline=False)
+        embed.add_field(name="ボイスチャンネル数",value=f'{len(self.bot.guild.voice_channels)}個',inline=False)
+        embed.set_thumbnail(url=self.bot.guild.icon_url)
+        await ctx.channel.send(embed=embed)
+
 
     @commands.command(aliases=['b'])
     async def bot(self, ctx):
