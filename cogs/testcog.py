@@ -1,7 +1,5 @@
 from discord.ext import commands # Bot Commands Frameworkのインポート
-
 import discord
-
 import asyncio
 
 great_owner_id = 459936557432963103
@@ -57,7 +55,7 @@ class TestCog(commands.Cog):
         embed.set_thumbnail(url=self.bot.user.avatar_url)
         embed.add_field(name="SERVERの数", value=f'`{len(self.bot.guilds)}`',inline=False)
         embed.add_field(name="USERの数", value=f'`{len(set(self.bot.get_all_members()))}`',inline=False)
-        embed.add_field(name="言語", value='`discord.py`',inline=False)
+        embed.add_field(name="言語", value='`discord.py` `discord.js`',inline=False)
         embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
         embed.add_field(name="各種リンク", value="[このBOTの公式開発鯖](<https://discord.gg/ENxnsJM>)", inline=False)
         await ctx.channel.send(embed=embed)
