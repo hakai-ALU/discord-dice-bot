@@ -22,7 +22,7 @@ class TestCog(commands.Cog):
         embed = discord.Embed(title="鯖ステータス",description="Ping:{self.bot.ws.latency * 1000:.0f}ms")
         embed.add_field(name="サーバー名",value=f'{ctx.guild.name}',inline=False)
         embed.add_field(name="現オーナー名",value=f'{ctx.guild.owner}',inline=False)
-        guild = message.guild
+        guild = ctx.guild
         member_count = sum(1 for member in guild.members if not member.bot) 
         bot_count = sum(1 for member in guild.members if member.bot) 
         all_count = (member_count) + (bot_count)
