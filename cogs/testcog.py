@@ -20,8 +20,8 @@ class TestCog(commands.Cog):
     @commands.command(aliases=['sinfo'])
     async def serverinfo(self, ctx):
         embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
-        embed.add_field(name="サーバー名",value=f'`{ctx.guild.name}`',inline=False)
-        embed.add_field(name="現オーナー名",value=f'`{ctx.guild.owner}`',inline=False)
+        embed.add_field(name="サーバー名",value=f'`{ctx.guild.name}`')
+        embed.add_field(name="現オーナー名",value=f'`{ctx.guild.owner}`')
         guild = ctx.guild
         member_count = sum(1 for member in guild.members if not member.bot) 
         bot_count = sum(1 for member in guild.members if member.bot) 
