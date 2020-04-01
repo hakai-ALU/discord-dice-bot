@@ -222,8 +222,8 @@ class TestCog(commands.Cog):
         embed.add_field(name="ハズレ回数", value=f'`{coin_fals}`',inline=False)
         await ctx.channel.send(embed=embed)
 
-    @commands.command(aliases=['SL'])
-    async def SLOT(self, ctx, what: int=None):
+    @commands.command(aliases=['sls'])
+    async def slotsecond(self, ctx, what: int=None):
         if what == None:
              what = 1
         coin_true = 0
