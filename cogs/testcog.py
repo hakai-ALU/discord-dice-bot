@@ -189,7 +189,7 @@ class TestCog(commands.Cog):
              what = 1
         slots = 0 
         what += 1
-        while slot < what:
+        while slots < what:
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -209,6 +209,7 @@ class TestCog(commands.Cog):
                 await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：リーチ！')
             else:
                 await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：ハズレ')
+            slots += 1
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
