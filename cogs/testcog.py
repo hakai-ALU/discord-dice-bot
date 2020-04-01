@@ -222,6 +222,37 @@ class TestCog(commands.Cog):
         embed.add_field(name="ハズレ回数", value=f'`{coin_fals}`',inline=False)
         await ctx.channel.send(embed=embed)
 
+    @commands.command(aliases=['sl2'])
+    async def slot2(self, ctx, what: int=None):
+        if what == None:
+             what = 1
+        coin_true = 0
+        coin_none = 0
+        coin_fals = 0
+        slot_count = await ctx.channel.send(f'0/{what} 完了')
+        slots = 1
+        whats = what 
+        what += 1
+        while slots < what:
+            suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
+            suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
+            suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
+            await asyncio.sleep(0.1)
+            if suroto == suroto1 == suroto2:
+                coin_true += 1
+            elif suroto == suroto1 or suroto == suroto2 or suroto1 == suroto2:
+                coin_none += 1
+            else:
+                coin_fals += 1
+            slot_count.edit(content=f'{slots}/{whats} 完了'
+            slots += 1
+        embed = discord.Embed(title="スロット結果",description=f"`Ping値:{self.bot.ws.latency * 1000:.0f}ms`")
+        embed.add_field(name="試行回数",value=f'`{whats}`')
+        embed.add_field(name="当たり回数", value=f'`{coin_true}`',inline=False)
+        embed.add_field(name="リーチ回数", value=f'`{coin_none}`',inline=False)
+        embed.add_field(name="ハズレ回数", value=f'`{coin_fals}`',inline=False)
+        await ctx.channel.send(embed=embed)
+
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
