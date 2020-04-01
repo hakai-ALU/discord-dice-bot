@@ -187,7 +187,7 @@ class TestCog(commands.Cog):
     async def slot(self, ctx, what: int=None):
         if what == None:
              what = 1
-        slots = 0 
+        slots = 1 
         what += 1
         while slots < what:
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
