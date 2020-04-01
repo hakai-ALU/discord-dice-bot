@@ -44,7 +44,7 @@ class MyBot(commands.Bot):
     
 @tasks.loop(seconds=10)
 async def loop():
-    await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms'))
+    await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{bot.ws.latency * 1000:.0f}ms'))
 #ループ処理実行
 loop.start() 
 
