@@ -187,7 +187,11 @@ class TestCog(commands.Cog):
     async def slot(self, ctx, what: int=None):
         if what == None:
              what = 1
-        slots = 1 
+        coin_true = 0
+        coin_none = 0
+        coin_fals = 0
+        slots = 1
+        whats = what 
         what += 1
         while slots < what:
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -205,11 +209,20 @@ class TestCog(commands.Cog):
             await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2)
             if suroto == suroto1 == suroto2:
                 await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：当たり！！')
+                coin_true += 1
             elif suroto == suroto1 or suroto == suroto2 or suroto1 == suroto2:
                 await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：リーチ！')
+                coin_none += 1
             else:
                 await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：ハズレ')
+                coin_fals += 1
             slots += 1
+        embed = discord.Embed(title="スロット結果",description=f"`Ping値:{self.bot.ws.latency * 1000:.0f}ms`")
+        embed.add_field(name="試行回数",value=f'`{whats}`')
+        embed.add_field(name="当たり回数", value=f'`{coin_true}`',inline=False)
+        embed.add_field(name="リーチ回数", value=f'`{coin_none}`',inline=False)
+        embed.add_field(name="ハズレ回数", value=f'`{coin_fals}`',inline=False)
+        await ctx.channel.send(embed=embed)
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
