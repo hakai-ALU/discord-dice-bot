@@ -1,6 +1,7 @@
 from discord.ext import commands # Bot Commands Frameworkのインポート
 import discord
 import asyncio
+import random
 
 great_owner_id = 459936557432963103
 
@@ -181,6 +182,33 @@ class TestCog(commands.Cog):
             msg = await message.channel.send("削除しました。")
             await asyncio.sleep(15)
             await msg.delete()
+
+    @commands.command(aliases=['sl'])
+    async def slot(self, ctx, what: int=None):
+        if what == None:
+             what = 1
+        slots = 0 
+        what += 1
+        while slot < what:
+            suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
+            suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
+            suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
+            await asyncio.sleep(0.1)
+            my_message = await ctx.channel.send('スロット結果がここに表示されます！')
+            await asyncio.sleep(3)
+            await my_message.edit(content='？|？|？')
+            await asyncio.sleep(1)
+            await my_message.edit(content=suroto + '|？|？')
+            await asyncio.sleep(1)
+            await my_message.edit(content=suroto + '|' + suroto1 + '|？')
+            await asyncio.sleep(1)
+            await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2)
+            if suroto == suroto1 == suroto2:
+                await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：当たり！！')
+            elif suroto == suroto1 or suroto == suroto2 or suroto1 == suroto2:
+                await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：リーチ！')
+            else:
+                await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：ハズレ')
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
