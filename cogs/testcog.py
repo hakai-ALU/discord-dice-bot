@@ -244,7 +244,9 @@ class TestCog(commands.Cog):
                 coin_none += 1
             else:
                 coin_fals += 1
+            await asyncio.sleep(0.1)
             await slot_count.edit(content=f'{slots}/{whats} 完了')
+            await asyncio.sleep(0.1)
             slots += 1
         embed = discord.Embed(title="スロット結果",description=f"`Ping値:{self.bot.ws.latency * 1000:.0f}ms`")
         embed.add_field(name="試行回数",value=f'`{whats}`')
