@@ -1,4 +1,4 @@
-from discord.ext import commands # Bot Commands Frameworkをインポート
+from discord.ext import commands, tasks # Bot Commands Frameworkをインポート
 import traceback # エラー表示のためにインポート
 import os
 import discord
@@ -40,8 +40,15 @@ class MyBot(commands.Bot):
         await channel.send('----------------')
         await channel.send('Hello World,五皇帝管理プログラム「project-RTA」、起動しました')
         await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms'))
+
     
-# MyBotのインスタンス化及び起動処理。
+@tasks.loop(seconds=30)
+async def loop():
+    await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms'))
+#ループ処理実行
+loop.start() 
+
+#MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
     bot = MyBot(command_prefix='rt') # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
     bot.run(TOKEN) # Botのトークン
