@@ -33,8 +33,14 @@ class MyBot(commands.Bot):
         print(discord.__version__)  # discord.pyのバージョン
         print('----------------')
         print('Hello World,五皇帝管理プログラム「project-RTA」、起動しました')
-        
-        
+        channel = self.get_channel(694452244635975691)
+        await channel.send(self.user.name)  # ボットの名前
+        await channel.send(self.user.id)  # ボットのID
+        await channel.send(discord.__version__)  # discord.pyのバージョン
+        await channel.send('----------------')
+        await channel.send('Hello World,五皇帝管理プログラム「project-RTA」、起動しました')
+        await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{client.ws.latency * 1000:.0f}ms'))
+    
 # MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
     bot = MyBot(command_prefix='rt') # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
