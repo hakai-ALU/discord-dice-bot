@@ -98,6 +98,7 @@ class TestCog(commands.Cog):
         banlog = self.bot.get_channel(694044656501129317)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
+            await ctx.channel.send(member)
             return
         if reason == None:
             reason = "None"
