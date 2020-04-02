@@ -313,7 +313,6 @@ class TestCog(commands.Cog):
             ("Server Roles", ", ".join(roles)),
             ("Color", user.color),
             ("Status", user.status),
-            ("Game", user.game),
             ("Voice Channel", voice_channel),
             ("Servers Shared", share),
             ("Avatar URL", user.avatar_url)
