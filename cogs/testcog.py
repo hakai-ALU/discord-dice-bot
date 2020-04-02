@@ -95,7 +95,7 @@ class TestCog(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def ban(self, ctx, member: int=None, reason =None):
         if member != None:
-            member = discord.Object(user_id)
+            member = discord.Object(member)
         banlog = self.bot.get_channel(694044656501129317)
         if member == None or member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
