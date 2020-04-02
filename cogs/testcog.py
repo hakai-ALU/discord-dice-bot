@@ -296,12 +296,6 @@ class TestCog(commands.Cog):
             user = ctx.author
 
         share = sum(1 for m in self.bot.get_all_members() if m.id == user.id)
-        voice_channel = user.voice
-        if voice_channel is not None:
-            voice_channel = voice_channel.channel.name
-        else:
-            voice_channel = "Not in a voice channel."
-
         embed = discord.Embed(title="User_info",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
         embed.add_field(name="Name",value=f'`{user.name}`')
         embed.add_field(name="Discrim",value=f'`{user.discriminator}`')
@@ -311,7 +305,6 @@ class TestCog(commands.Cog):
         embed.add_field(name="Joined at",value=f'`{user.joined_at}`')
         embed.add_field(name="Color",value=f'`{user.color}`')
         embed.add_field(name="Status",value=f'`{user.status}`')
-        embed.add_field(name="Voice Channel",value=f'`{voice_channel}`')
         embed.add_field(name="Servers Shared",value=f'`{share}`')
         embed.set_thumbnail(url=user.avatar_url)
         await ctx.channel.send(embed=embed)
