@@ -94,11 +94,14 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def ban(self, ctx, member: int=None, reason =None):
-        if member != None:
+        if member == None:
+            await ctx.channel.send("BAN対象が正しくありません")
+            return
+        else:
             member = self.bot.get_user(member)
             print(member)
         banlog = self.bot.get_channel(694044656501129317)
-        if member == None or member == ctx.message.author:
+        if member == ctx.message.author:
             await ctx.channel.send("BAN対象が正しくありません")
             print(member)
             return
@@ -113,10 +116,16 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def unban(self, ctx, user_id: int=None, reason =None):
-        member = self.bot.get_user(user_id)
-        banlog = self.bot.get_channel(694044656501129317)
-        if member == None or member == ctx.message.author:
+        if member == None:
             await ctx.channel.send("UNBAN対象が正しくありません")
+            return
+        else:
+            member = self.bot.get_user(member)
+            print(member)
+        banlog = self.bot.get_channel(694044656501129317)
+        if member == ctx.message.author:
+            await ctx.channel.send("UNBAN対象が正しくありません")
+            print(member)
             return
         if reason == None:
             reason = "無し"
