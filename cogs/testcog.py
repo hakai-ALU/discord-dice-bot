@@ -67,7 +67,6 @@ class TestCog(commands.Cog):
     async def gban(self, ctx, user_id: int=None, reason =None):
         if ctx.author.id != great_owner_id:
             return
-        member = self.bot.get_user(user_id)
         if reason == None:
             reason = "None"
         for g in self.bot.guilds:
@@ -82,7 +81,6 @@ class TestCog(commands.Cog):
     async def gunban(self, ctx, user_id: int=None, reason =None):
         if ctx.author.id != great_owner_id:
             return
-        member = self.bot.get_user(user_id)
         if reason == None:
             reason = "None"
         for g in self.bot.guilds:
@@ -96,13 +94,14 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def ban(self, ctx, user_id: int=None, reason =None):
-        member = self.bot.get_user(user_id)
+        member = discord.Object(user_id)
         banlog = self.bot.get_channel(694044656501129317)
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("BAN対象が正しくありません")
+            return
         if reason == None:
             reason = "None"
-        message = f"貴方は{ctx.guild.name}からBANされました。\n理由:{reason}"
         await ctx.guild.ban(discord.Object(user_id), reason=reason)
-        await member.send(message)
         await ctx.channel.send(f"{member} をBANしました。")
         await banlog.send(f"BAN通知 \n 鯖名：{ctx.guild.name} \n user id：{user_id} \n 理由：{reason}")
 
@@ -112,11 +111,12 @@ class TestCog(commands.Cog):
     async def unban(self, ctx, user_id: int=None, reason =None):
         member = self.bot.get_user(user_id)
         banlog = self.bot.get_channel(694044656501129317)
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("UNBAN対象が正しくありません")
+            return
         if reason == None:
             reason = "無し"
-        message = f"貴方は{ctx.guild.name}のBANが解除されました。\n理由:{reason}"
         await ctx.guild.unban(user_id, reason=reason)
-        await member.send(message)
         await ctx.channel.send(f"{member} をUNBANしました。")
         await banlog.send(f"UNBAN通知 \n 鯖名：{ctx.guild.name} \n user id：{user_id} \n 理由：{reason}")
 
