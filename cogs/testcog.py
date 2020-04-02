@@ -318,7 +318,7 @@ class TestCog(commands.Cog):
             ("Avatar URL", user.avatar_url)
         ]
 
-        await ctx.send(util.neatly(msg))
+        await ctx.send(msg)
 
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
