@@ -302,7 +302,6 @@ class TestCog(commands.Cog):
         embed.add_field(name="ID",value=f'`{user.id}`')
         embed.add_field(name="Display Name",value=f'`{user.display_name}`')
         embed.add_field(name="Created at",value=f'`{user.created_at}`')
-        embed.add_field(name="Joined at",value=f'`{user.joined_at}`')
         embed.add_field(name="Color",value=f'`{user.color}`')
         embed.add_field(name="Status",value=f'`{user.status}`')
         embed.add_field(name="Servers Shared",value=f'`{share}`')
