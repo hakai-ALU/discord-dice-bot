@@ -107,7 +107,7 @@ class TestCog(commands.Cog):
         if reason == None:
             reason = "None"
         await ctx.guild.ban(discord.Object(user_id), reason=reason)
-        await ctx.channel.send(f"{member}をBANしました。")
+        await ctx.channel.send(f"<@{user_id}> をBANしました。")
         await banlog.send(f"BAN通知 \n 鯖名：{ctx.guild.name} \n user id：{user_id} \n 理由：{reason}")
         print(member)
 
@@ -128,7 +128,7 @@ class TestCog(commands.Cog):
         if reason == None:
             reason = "None"
         await ctx.guild.unban(discord.Object(user_id), reason=reason)
-        await ctx.channel.send(f"{member} をUNBANしました。")
+        await ctx.channel.send(f"<@{user_id}> をUNBANしました。")
         await banlog.send(f"UNBAN通知 \n 鯖名：{ctx.guild.name} \n user id：{user_id} \n 理由：{reason}")
 
     #kick a user with a reason
