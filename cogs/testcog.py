@@ -304,22 +304,21 @@ class TestCog(commands.Cog):
         else:
             voice_channel = "Not in a voice channel."
 
-        msg = [
-            ("Name", user.name), ("Discrim", user.discriminator),
-            ("ID", user.id),
-            ("Display Name", user.display_name),
-            ("Joined at", user.joined_at),
-            ("Created at", user.created_at),
-            ("Server Roles", ", ".join(roles)),
-            ("Color", user.color),
-            ("Status", user.status),
-            ("Voice Channel", voice_channel),
-            ("Servers Shared", share),
-            ("Avatar URL", user.avatar_url)
-        ]
-
-        await ctx.send(msg)
-
+        embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
+        embed.add_field(name="Name",value=f'`{user.name}`')
+        embed.add_field(name="Discrim",value=f'`{user.discriminator}`')
+        embed.add_field(name="ID",value=f'`{user.id}`')
+        embed.add_field(name="Display Name",value=f'`{user.display_name}`')
+        embed.add_field(name="Joined at",value=f'`user.joined_at}`')
+        embed.add_field(name="Created at",value=f'`{user.created_at}`')
+        embed.add_field(name="Server Roles",value=f'`{join(roles)}`')
+        embed.add_field(name="Color",value=f'`{user.color}`')
+        embed.add_field(name="Status",value=f'`{user.status}`')
+        embed.add_field(name="Voice Channel",value=f'`{voice_channel}`')
+        embed.add_field(name="Servers Shared",value=f'`{share}`')
+        embed.set_thumbnail(url=user.avatar_url)
+        await ctx.channel.send(embed=embed)
+        
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
