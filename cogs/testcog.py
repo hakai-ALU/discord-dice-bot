@@ -107,7 +107,7 @@ class TestCog(commands.Cog):
             return
         if reason == None:
             reason = "None"
-        await ctx.guild.ban(discord.Object(user_id), reason=reason)
+        await ctx.guild.ban(discord.Object(member), reason=reason)
         await ctx.channel.send(f"{member} をBANしました。")
         await banlog.send(f"BAN通知 \n 鯖名：{ctx.guild.name} \n user id：{user_id} \n 理由：{reason}")
         print(member)
@@ -116,11 +116,11 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def unban(self, ctx, user_id: int=None, reason =None):
-        if member == None:
+        if user_id == None:
             await ctx.channel.send("UNBAN対象が正しくありません")
             return
         else:
-            member = self.bot.get_user(member)
+            member = self.bot.get_user(user_id)
             print(member)
         banlog = self.bot.get_channel(694044656501129317)
         if member == ctx.message.author:
