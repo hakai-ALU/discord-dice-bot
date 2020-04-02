@@ -289,26 +289,6 @@ class TestCog(commands.Cog):
         embed.add_field(name="ハズレ回数", value=f'`{coin_fals}`',inline=False)
         await ctx.channel.send(embed=embed)
 
-    @commands.command()
-    async def user_info(self, ctx, *, user_id: int=None):
-        user = self.bot.get_user(user_id)
-        if not user:
-            user = ctx.author
-
-        share = sum(1 for m in self.bot.get_all_members() if m.id == user.id)
-        embed = discord.Embed(title="User_info",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
-        embed.add_field(name="Name",value=f'`{user.name}`')
-        embed.add_field(name="Discrim",value=f'`{user.discriminator}`')
-        embed.add_field(name="ID",value=f'`{user.id}`')
-        embed.add_field(name="Display Name",value=f'`{user.display_name}`')
-        embed.add_field(name="Created at",value=f'`{user.created_at}`')
-        embed.add_field(name="Color",value=f'`{user.color}`')
-        embed.add_field(name="Status",value=f'`{user.status}`')
-        embed.add_field(name="Servers Shared",value=f'`{share}`')
-        embed.set_thumbnail(url=user.avatar_url)
-        await ctx.channel.send(embed=embed)
-        
-
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
