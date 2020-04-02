@@ -39,14 +39,7 @@ class MyBot(commands.Bot):
         await channel.send(discord.__version__)  # discord.pyのバージョン
         await channel.send('----------------')
         await channel.send('Hello World,五皇帝管理プログラム「project-RTA」、起動しました')
-        await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms'))
-
-    
-@tasks.loop(seconds=2)
-async def loop():
-    await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{bot.ws.latency * 1000:.0f}ms'))
-#ループ処理実行
-loop.start() 
+        await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms')) 
 
 #MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
