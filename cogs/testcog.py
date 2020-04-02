@@ -290,14 +290,11 @@ class TestCog(commands.Cog):
         await ctx.channel.send(embed=embed)
 
     @commands.command()
-    async def user_info(self, ctx, *, user: discord.Member = None):
-        """
-        Gives you player info on a user. If a user isn't passed then the shown info is yours.
-        """
+    async def user_info(self, ctx, *, user_id: int=None):
+        user = self.bot.get_user(user_id)
         if not user:
             user = ctx.author
 
-        roles = [role.name.replace("@", "@\u200b") for role in user.roles]
         share = sum(1 for m in self.bot.get_all_members() if m.id == user.id)
         voice_channel = user.voice
         if voice_channel is not None:
@@ -305,7 +302,7 @@ class TestCog(commands.Cog):
         else:
             voice_channel = "Not in a voice channel."
 
-        embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
+        embed = discord.Embed(title="User_info",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
         embed.add_field(name="Name",value=f'`{user.name}`')
         embed.add_field(name="Discrim",value=f'`{user.discriminator}`')
         embed.add_field(name="ID",value=f'`{user.id}`')
