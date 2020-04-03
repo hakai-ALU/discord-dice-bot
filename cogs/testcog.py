@@ -188,6 +188,8 @@ class TestCog(commands.Cog):
             msg = await message.channel.send("削除しました。")
             await asyncio.sleep(15)
             await msg.delete()
+        if message.content == '再起動して':
+            await self.bot.logout()
 
     @commands.command(aliases=['sl'])
     async def slot(self, ctx, what: int=None):
