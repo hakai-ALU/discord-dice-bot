@@ -5,7 +5,7 @@ import random
 import datetime
 
 great_owner_id = 459936557432963103
-stop_code = 0
+stopcode = 0
 
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
@@ -14,15 +14,15 @@ class TestCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    global stop_code
+    global stopcode
 
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, SC: int=None):
         if SC == None:
-            SCP = stop_code
+            SCP = stopcode
             await ctx.send(f'Stop Codeが指定されていません。\n`Stop Code={SCP}`')
             return
-        stop_code = SC
+        stopcode = SC
         await ctx.send(f'Stop Codeを設定しました。\n`Stop Code={stop_code}`')
 
     @commands.command(aliases=['s'])
@@ -214,10 +214,10 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if stop_code == 1:
+            if stopcode == 1:
                 await ctx.channel.send('停止します')
                 slots = what
-                stop_code = 0
+                stopcode = 0
                 return
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -259,7 +259,7 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if stop_code == 1:
+            if stopcode == 1:
                 await ctx.channel.send('停止します')
                 slots = what
                 stop_code = 0
@@ -297,7 +297,7 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if stop_code == 1:
+            if stopcode == 1:
                 await ctx.channel.send('停止します')
                 slots = what
                 stop_code = 0
