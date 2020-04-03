@@ -218,10 +218,10 @@ class TestCog(commands.Cog):
         what += 1
         while slots < what:
             if self.stopcodes != 0:
-                await ctx.channel.send('停止します')
+                stp = await ctx.channel.send('停止します')
                 slots = what
                 if self.stopcodes == 9:
-                    await ctx.channel.send('⚠️現在使用できません⚠️')
+                    await stp.edit(content='⚠️現在使用できません⚠️')
                     return
                 self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -268,10 +268,10 @@ class TestCog(commands.Cog):
         what += 1
         while slots < what:
             if self.stopcodes != 0:
-                await ctx.channel.send('停止します')
+                stp = await ctx.channel.send('停止します')
                 slots = what
                 if self.stopcodes == 9:
-                    await ctx.channel.send('⚠️現在使用できません⚠️')
+                    await stp.edit(content='⚠️現在使用できません⚠️')
                     return
                 self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -311,10 +311,10 @@ class TestCog(commands.Cog):
         what += 1
         while slots < what:
             if self.stopcodes != 0:
-                await ctx.channel.send('停止します')
+                stp = await ctx.channel.send('停止します')
                 slots = what
                 if self.stopcodes == 9:
-                    await ctx.channel.send('⚠️現在使用できません⚠️')
+                    await stp.edit(content='⚠️現在使用できません⚠️')
                     return
                 self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
