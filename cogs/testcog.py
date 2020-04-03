@@ -16,6 +16,8 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, stop_code: int=None):
+        if ctx.author.id != great_owner_id:
+            return
         if stop_code == None:
             SCP = self.stopcodes
             await ctx.send(f'Stop Codeが指定されていません。\n`Stop Code={SCP}`')
@@ -203,8 +205,11 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sl'])
     async def slot(self, ctx, what: int=None):
+        if self.stopcodes != 0:
+            await ctx.channel.send('⚠️現在使用できません⚠️')
+            return
         if what == None:
-             what = 1
+            what = 1
         coin_true = 0
         coin_none = 0
         coin_fals = 0
@@ -212,9 +217,12 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if self.stopcodes == 1:
+            if self.stopcodes != 0:
                 await ctx.channel.send('停止します')
                 slots = what
+                if self.stopcodes == 9:
+                    await ctx.channel.send('⚠️現在使用できません⚠️')
+                    return
                 self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -246,8 +254,11 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sl2'])
     async def slot2(self, ctx, what: int=None):
+        if self.stopcodes != 0:
+            await ctx.channel.send('⚠️現在使用できません⚠️')
+            return
         if what == None:
-             what = 1
+            what = 1
         coin_true = 0
         coin_none = 0
         coin_fals = 0
@@ -256,9 +267,12 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if self.stopcodes == 1:
+            if self.stopcodes != 0:
                 await ctx.channel.send('停止します')
                 slots = what
+                if self.stopcodes == 9:
+                    await ctx.channel.send('⚠️現在使用できません⚠️')
+                    return
                 self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -283,8 +297,11 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sl3'])
     async def slot3(self, ctx, what: int=None):
+        if self.stopcodes != 0:
+            await ctx.channel.send('⚠️現在使用できません⚠️')
+            return
         if what == None:
-             what = 1
+            what = 1
         coin_true = 0
         coin_none = 0
         coin_fals = 0
@@ -293,9 +310,12 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if self.stopcodes == 1:
+            if self.stopcodes != 0:
                 await ctx.channel.send('停止します')
                 slots = what
+                if self.stopcodes == 9:
+                    await ctx.channel.send('⚠️現在使用できません⚠️')
+                    return
                 self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
