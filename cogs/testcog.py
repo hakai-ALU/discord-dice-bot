@@ -17,12 +17,12 @@ class TestCog(commands.Cog):
     global stopcode
 
     @commands.command(aliases=['sc'])
-    async def stopcode(self, ctx, SC: int=None):
-        if SC == None:
+    async def stopcode(self, ctx, stop_code: int=None):
+        if stop_code == None:
             SCP = stopcode
             await ctx.send(f'Stop Codeが指定されていません。\n`Stop Code={SCP}`')
             return
-        stopcode = SC
+        stopcode = stop_code
         await ctx.send(f'Stop Codeを設定しました。\n`Stop Code={stop_code}`')
 
     @commands.command(aliases=['s'])
