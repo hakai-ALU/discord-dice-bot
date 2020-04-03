@@ -19,7 +19,7 @@ class TestCog(commands.Cog):
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, SC: int=None):
         if SC == None:
-            await ctx.send(f'Stop Codeが指定されていません。\n`Stop Code={SC}`')
+            await ctx.send(f'Stop Codeが指定されていません。\n`Stop Code={stop_code}`')
             return
         stop_code = SC
         await ctx.send(f'Stop Codeを設定しました。\n`Stop Code={SC}`')
