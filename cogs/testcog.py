@@ -10,11 +10,11 @@ stopcodes = 0
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
+    global stopcodes
+
     # TestCogクラスのコンストラクタ。Botを受取り、インスタンス変数として保持。
     def __init__(self, bot):
         self.bot = bot
-
-    global stopcodes
 
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, stop_code: int=None):
