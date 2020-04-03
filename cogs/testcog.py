@@ -5,25 +5,23 @@ import random
 import datetime
 
 great_owner_id = 459936557432963103
-stopcodes = 0
 
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
 
-    global stopcodes
-
     # TestCogクラスのコンストラクタ。Botを受取り、インスタンス変数として保持。
     def __init__(self, bot):
         self.bot = bot
+        self.stopcodes = 0
 
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, stop_code: int=None):
         if stop_code == None:
-            SCP = stopcodes
+            SCP = self.stopcodes
             await ctx.send(f'Stop Codeが指定されていません。\n`Stop Code={SCP}`')
             return
-        stopcodes = stop_code
-        await ctx.send(f'Stop Codeを設定しました。\n`Stop Code={stop_code}`')
+        self.stopcodes = stop_code
+        await ctx.send(f'Stop Codeを設定しました。\n`Stop Code={self.stopcodes}`')
 
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
@@ -214,10 +212,10 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if stopcodes == 1:
+            if self.stopcodes == 1:
                 await ctx.channel.send('停止します')
                 slots = what
-                stopcodes = 0
+                self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -258,10 +256,10 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if stopcode == 1:
+            if self.stopcodes == 1:
                 await ctx.channel.send('停止します')
                 slots = what
-                stopcodes = 0
+                self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -295,10 +293,10 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if stopcode == 1:
+            if self.stopcodes == 1:
                 await ctx.channel.send('停止します')
                 slots = what
-                stopcodes = 0
+                self.stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
