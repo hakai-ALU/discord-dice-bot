@@ -14,7 +14,7 @@ class TestCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    global stopcode
+    global stopcodes
 
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, stop_code: int=None):
