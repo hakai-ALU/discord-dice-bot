@@ -5,7 +5,7 @@ import random
 import datetime
 
 great_owner_id = 459936557432963103
-stopcode = 0
+stopcodes = 0
 
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
@@ -19,10 +19,10 @@ class TestCog(commands.Cog):
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, stop_code: int=None):
         if stop_code == None:
-            SCP = stopcode
+            SCP = stopcodes
             await ctx.send(f'Stop Codeが指定されていません。\n`Stop Code={SCP}`')
             return
-        stopcode = stop_code
+        stopcodes = stop_code
         await ctx.send(f'Stop Codeを設定しました。\n`Stop Code={stop_code}`')
 
     @commands.command(aliases=['s'])
@@ -214,11 +214,10 @@ class TestCog(commands.Cog):
         whats = what 
         what += 1
         while slots < what:
-            if stopcode == 1:
+            if stopcodes == 1:
                 await ctx.channel.send('停止します')
                 slots = what
-                stopcode = 0
-                return
+                stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -262,8 +261,7 @@ class TestCog(commands.Cog):
             if stopcode == 1:
                 await ctx.channel.send('停止します')
                 slots = what
-                stop_code = 0
-                return
+                stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
@@ -300,8 +298,7 @@ class TestCog(commands.Cog):
             if stopcode == 1:
                 await ctx.channel.send('停止します')
                 slots = what
-                stop_code = 0
-                return
+                stopcodes = 0
             suroto=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto1=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
             suroto2=random.choice(('０', '１', '２', '３', '４', '５', '６', '７', '８', '９'))
