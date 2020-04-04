@@ -12,7 +12,6 @@ INITIAL_EXTENSIONS = [
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
 class MyBot(commands.Bot):
-
     # MyBotのコンストラクタ。
     def __init__(self, command_prefix, help_command):
         # スーパークラスのコンストラクタに値を渡して実行。
@@ -39,9 +38,20 @@ class MyBot(commands.Bot):
         await channel.send(discord.__version__)  # discord.pyのバージョン
         await channel.send('----------------')
         await channel.send('Hello World,五皇帝管理プログラム「project-RTA」、起動しました')
-        await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms')) 
+        await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms'))
+ 
+class JapaneseHelpCommand(commands.DefaultHelpCommand):
+    def __init__(self):
+        super().__init__()
+        self.commands_heading = "コマンド:"
+        self.no_category = "その他"
+        self.command_attrs["help"] = "コマンド一覧と簡単な説明を表示"
+
+    def get_ending_note(self):
+        return (f"各コマンドの説明: {prefix}help <コマンド名>\n"
+                f"各カテゴリの説明: {prefix}help <カテゴリ名>\n")
 
 #MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='rt',help_command=commands.MinimalHelpCommand()) # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
+    bot = MyBot(command_prefix='rt',help_command=commands.JapaneseHelpCommand()) # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
     bot.run(TOKEN) # Botのトークン
