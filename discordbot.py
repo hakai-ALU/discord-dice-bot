@@ -41,9 +41,8 @@ class MyBot(commands.Bot):
         await self.change_presence(status=discord.Status.idle,activity=discord.Game(name=f'五皇管理システム|Ping:{self.ws.latency * 1000:.0f}ms')) 
  
 class JapaneseHelpCommand(commands.DefaultHelpCommand):
-    def __init__(self, command_prefix, help_command):
-        # スーパークラスのコンストラクタに値を渡して実行。
-        super().__init__(command_prefix,help_command)
+    def __init__(self):
+        super().__init__()
         self.commands_heading = "コマンド:"
         self.no_category = "その他"
         self.command_attrs["help"] = "コマンド一覧と簡単な説明を表示"
