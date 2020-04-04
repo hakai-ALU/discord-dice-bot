@@ -191,6 +191,18 @@ class TestCog(commands.Cog):
     @commands.Cog.listener()
     @commands.has_permissions(manage_guild=True)
     async def on_message(self, message):
+        if message.author.id == 159985870458322944: # MEE6からのメッセージかどうかを判別
+            if message.content.startswith("!levelup"):
+                level = int(message.content.split()[-2]) # メッセージを分解
+                t_name = message.content.split()[-1] # メッセージを分解
+                target = discord.utils.get(message.server.members, mention=t_name) # レベルアップしたユーザーのIDを取得
+                levels = 10 - str(level)
+                replys = f"{t_name}さん、が{str(level)}レベルになりました。\nあと{levels}で上級市民になります。" # レベルアップメッセージ
+                await self.bot.get_channel(695795193244286997).send(replys)
+
+                if level == 10: # レベル1になった時の処理
+                    levelrole1 = discord.utils.get(message.server.roles, name="上級市民")
+                    await target.add_roles(levelrole1)
         if message.author.bot:
             return
         if message.author.id != great_owner_id:
