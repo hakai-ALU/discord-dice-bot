@@ -14,9 +14,9 @@ INITIAL_EXTENSIONS = [
 class MyBot(commands.Bot):
 
     # MyBotのコンストラクタ。
-    def __init__(self, command_prefix):
+    def __init__(self, command_prefix, help_command):
         # スーパークラスのコンストラクタに値を渡して実行。
-        super().__init__(command_prefix)
+        super().__init__(command_prefix,help_command)
 
         # INITIAL_COGSに格納されている名前から、コグを読み込む。
         # エラーが発生した場合は、エラー内容を表示。
@@ -43,5 +43,5 @@ class MyBot(commands.Bot):
 
 #MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='rt') # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
+    bot = MyBot(command_prefix='rt',help_command=None) # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
     bot.run(TOKEN) # Botのトークン
