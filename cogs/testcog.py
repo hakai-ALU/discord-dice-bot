@@ -157,37 +157,6 @@ class TestCog(commands.Cog):
         await member.send(message)
         await ctx.channel.send(f"{member} をKICKしました。")
 
-    # メインとなるroleコマンド
-    @commands.group()
-    @commands.has_permissions(manage_roles=True)
-    async def role(self, ctx):
-        # サブコマンドが指定されていない場合、メッセージを送信する。
-        if ctx.invoked_subcommand is None:
-            await ctx.send('このコマンドにはサブコマンドが必要です。')
-
-    # roleコマンドのサブコマンド
-    # 指定したユーザーに指定した役職を付与する。
-    @role.command(aliases=['ad'])
-    async def add(self, ctx, member: discord.Member, role: discord.Role):
-        await member.add_roles(role)
-        await ctx.send('付与しました。')
-
-    # roleコマンドのサブコマンド
-    # 指定したユーザーから指定した役職を剥奪する。
-    @role.command(aliases=['rm'])
-    async def remove(self, ctx, member: discord.Member, role: discord.Role):
-        await member.remove_roles(role)
-        await ctx.send('剥奪しました。')
-
-    # roleコマンドのサブコマンド
-    # 指定したユーザーに指定した役職を付与する。
-    @role.command(aliases=['cr'])
-    async def create(self, ctx, what):
-        guild = ctx.guild
-        set_name2 = f"{what}"
-        await guild.create_role(name=set_name2)
-        await ctx.send(f'作成しました。@' + set_name2)
-        
     @commands.Cog.listener()
     @commands.has_permissions(manage_guild=True)
     async def on_message(self, message):
@@ -350,6 +319,40 @@ class TestCog(commands.Cog):
         embed.add_field(name="ハズレ回数", value=f'`{coin_fals}`',inline=False)
         await ctx.channel.send(embed=embed)
 
+    # メインとなるroleコマンド
+    @commands.group(aliases=['rl'])
+    @commands.has_permissions(manage_guild=True)
+    async def role(self, ctx):
+        # サブコマンドが指定されていない場合、メッセージを送信する。
+        if ctx.invoked_subcommand is None:
+            await ctx.send('このコマンドにはサブコマンドが必要です。')
+
+    # roleコマンドのサブコマンド
+    # 指定したユーザーに指定した役職を付与する。
+    @role.command(aliases=['ad'])
+    async def add(self, ctx, member: discord.Member, role: discord.Role):
+        await member.add_roles(role)
+        await ctx.send('付与しました。')
+
+    # roleコマンドのサブコマンド
+    # 指定したユーザーから指定した役職を剥奪する。
+    @role.command(aliases=['rm'])
+    async def remove(self, ctx, member: discord.Member, role: discord.Role):
+        await member.remove_roles(role)
+        await ctx.send('剥奪しました。')
+
+    # roleコマンドのサブコマンド
+    # 指定したユーザーに指定した役職を付与する。
+    @role.command(aliases=['cr'])
+    async def create(self, ctx, what= None):
+        if what == None:
+            await ctx.send('Error:type name=None')
+            return
+        guild = ctx.guild
+        set_name2 = f"{what}"
+        await guild.create_role(name=set_name2)
+        await ctx.send(f'作成しました。@' + set_name2)
+        
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
