@@ -349,9 +349,17 @@ class TestCog(commands.Cog):
             return
         rote = 0
         while rote < 10:
-            roleedit = discord.Embed(title="権限設定",description=f"番号を入力")
+            roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
+            roleedit.add_field(name="管理者",value='1')
+            roleedit.add_field(name="監査ログを表示",value='2')
+            roleedit.add_field(name="サーバーの管理",value='3')
+            roleedit.add_field(name="ロールの管理",value='4')
+            roleedit.add_field(name="チャンネルの管理",value='5')
+            roleedit.add_field(name="メンバーをKICK",value='6')
+            roleedit.add_field(name="メンバーをBAN",value='7')
             roleedit.add_field(name="管理者",value='0')
-            roleedit.add_field(name="管理者",value='0')
+            
+            roleedit.add_field(name="無付与・設定完了",value='0')
             await ctx.channel.send(embed=roleedit) 
             def  rotetime(m):
                 return m.content == "0" or "1" and m.author == ctx.author
