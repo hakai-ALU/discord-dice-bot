@@ -364,6 +364,7 @@ class TestCog(commands.Cog):
                 if reply.content == "0":
                     rote = 10
                 elif reply.content == "2":
+                    rote = 0
 
         guild = ctx.guild
         set_name2 = f"{what}"
