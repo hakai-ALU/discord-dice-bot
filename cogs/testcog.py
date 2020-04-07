@@ -364,6 +364,7 @@ class TestCog(commands.Cog):
                 if reply.content == "0":
                     rote = 10
                 elif reply.content == "2":
+
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2)
