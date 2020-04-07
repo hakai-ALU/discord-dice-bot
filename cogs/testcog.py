@@ -348,7 +348,7 @@ class TestCog(commands.Cog):
             await ctx.send('Error:type name=None')
             return
         rote = 0
-        while rote = 10:
+        while rote < 10:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力")
             roleedit.add_field(name="管理者",value='0')
             roleedit.add_field(name="管理者",value='0')
