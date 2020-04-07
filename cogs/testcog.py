@@ -348,6 +348,23 @@ class TestCog(commands.Cog):
         if what == None:
             await ctx.send('Error:type name=None')
             return
+        rote = 0
+        while rote = 10:
+            roleedit = discord.Embed(title="権限設定",description=f"番号を入力")
+            roleedit.add_field(name="管理者",value='0')
+            roleedit.add_field(name="管理者",value='0')
+            await ctx.channel.send(embed=roleedit) 
+            def  rotetime(m):
+                return m.content == "0" and m.author == message.author
+            try:
+                reply = await self.bot.wait_for( "message" , check = rotetime , timeout = 300.0 )
+            except asyncio.TimeoutError:
+                await message.channel.send( "設定を中止します。(type:time over)" )
+                return
+            else:
+                if reply.content == "0":
+                    rote = 10
+                elif reply.content == "2":
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2)
