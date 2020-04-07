@@ -354,16 +354,16 @@ class TestCog(commands.Cog):
             roleedit.add_field(name="管理者",value='0')
             await ctx.channel.send(embed=roleedit) 
             def  rotetime(m):
-                return m.content == "0" and m.author == message.author
+                return m.content == "0" or "1" and m.author == ctx.author
             try:
                 reply = await self.bot.wait_for( "message" , check = rotetime , timeout = 300.0 )
             except asyncio.TimeoutError:
-                await message.channel.send( "設定を中止します。(type:time over)" )
+                await ctx.channel.send( "設定を中止します。(type:time over)" )
                 return
             else:
                 if reply.content == "0":
                     rote = 10
-                elif reply.content == "2":
+                elif reply.content == "1":
                     rote = 0
 
         guild = ctx.guild
