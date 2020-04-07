@@ -8,7 +8,6 @@ great_owner_id = 459936557432963103
 
 # コグとして用いるクラスを定義。
 class TestCog(commands.Cog):
-
     # TestCogクラスのコンストラクタ。Botを受取り、インスタンス変数として保持。
     def __init__(self, bot):
         self.bot = bot
