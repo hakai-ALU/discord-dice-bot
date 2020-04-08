@@ -441,7 +441,7 @@ class TestCog(commands.Cog):
                     use_voice_activation = True
                     rote = 0
                 
-        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log,manage_guild=manage_guild,manage_roles=manage_roles,manage_channels=manage_channels,kick_members=kick_members,ban_members=ban_members,create_instant_invite=create_instant_invite,change_nicknames=change_nicknames,manage_nicknames=manage_nicknames,manage_emojis=manage_emojis,manage_webhooks=manage_webhooks,read_messages=read_messages,use_voice_activation=use_voice_activation)       
+        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log,manage_guild=manage_guild,manage_roles=manage_roles,manage_channels=manage_channels,kick_members=kick_members,ban_members=ban_members,create_instant_invite=create_instant_invite,change_nickname=change_nicknames,manage_nicknames=manage_nicknames,manage_emojis=manage_emojis,manage_webhooks=manage_webhooks,read_messages=read_messages,use_voice_activation=use_voice_activation)       
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,permissions=pre)
