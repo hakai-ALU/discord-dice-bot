@@ -415,10 +415,10 @@ class TestCog(commands.Cog):
                 elif reply.content == "13":
                     rote = 0
                 
-
+        pre = discord.Permissions(administrator=administrator)
         guild = ctx.guild
         set_name2 = f"{what}"
-        await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,permissions(administrator=administrator))
+        await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,pre)
         await ctx.send(f'作成しました。@' + set_name2)
         
 # Bot本体側からコグを読み込む際に呼び出される関数。
