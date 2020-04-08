@@ -362,7 +362,6 @@ class TestCog(commands.Cog):
         manage_nicknames = False
         manage_emojis = False
         manage_webhooks = False
-        use_voice_activation = False
         read_messages = False
         while rote < 2:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
@@ -395,53 +394,97 @@ class TestCog(commands.Cog):
                 if reply.content == "0":
                     rote = 2
                 elif reply.content == "a":
-                    hoist = True
+                    if hoist == False:
+                        hoist = True
+                    elif hoist == True:
+                        hoist = False
                     rote = 0
                 elif reply.content == "b":
-                    mentionable = True
+                    if mentionable == False:
+                        mentionable = True
+                    elif mentionable == True:
+                        mentionable = False
                     rote = 0
                 elif reply.content == "1":
-                    administrator = True
+                    if administrator == False:
+                        administrator = True
+                    elif administrator == True:
+                        administrator = False
                     rote = 0
                 elif reply.content == "2":
-                    view_audit_log = True
+                    if view_audit_log == False:
+                        view_audit_log = True
+                    elif view_audit_log == True:
+                        view_audit_log = False
                     rote = 0
                 elif reply.content == "3":
-                    manage_guild = True
+                    if manage_guild == False:
+                        manage_guild = True
+                    elif manage_guild == True:
+                        manage_guild = False
                     rote = 0
                 elif reply.content == "4":
-                    manage_roles = True
+                    if manage_roles == False:
+                        manage_roles = True
+                    elif manage_roles == True:
+                        manage_roles = False
                     rote = 0
                 elif reply.content == "5":
-                    manage_channels = True
+                    if manage_channels == False:
+                        manage_channels = True
+                    elif manage_channels == True:
+                        manage_channels = False
                     rote = 0
                 elif reply.content == "6":
-                    kick_members = True
+                    if kick_members == False:
+                        kick_members = True
+                    elif kick_members == True:
+                        kick_members = False
                     rote = 0
                 elif reply.content == "7":
-                    ban_members = True
+                    if ban_members == False:
+                        ban_members = True
+                    elif ban_members == True:
+                        ban_members = False
                     rote = 0
                 elif reply.content == "8":
-                    create_instant_invite = True
+                    if create_instant_invite == False:
+                        create_instant_invite = True
+                    elif create_instant_invite == True:
+                        create_instant_invite = False
                     rote = 0
                 elif reply.content == "9":
-                    change_nicknames = True
+                    if change_nicknames == False:
+                        change_nicknames = True
+                    elif change_nicknames == True:
+                        change_nicknames = False
                     rote = 0
                 elif reply.content == "10":
-                    manage_nicknames = True
+                    if manage_nicknames == False:
+                        manage_nicknames = True
+                    elif manage_nicknames == True:
+                        manage_nicknames = False
                     rote = 0
                 elif reply.content == "11":
-                    manage_emojis = True
+                    if manage_emojis == False:
+                        manage_emojis = True
+                    elif manage_emojis == True:
+                        manage_emojis = False
                     rote = 0
                 elif reply.content == "12":
-                    manage_webhooks = True
+                    if manage_webhooks == False:
+                        manage_webhooks = True
+                    elif manage_webhooks == True:
+                        manage_webhooks = False
                     rote = 0
                 elif reply.content == "13":
-                    read_messages = True
-                    use_voice_activation = True
+                    if read_messages == False:
+                        read_messages = True
+                    elif read_messages == True:
+                        read_messages = False
                     rote = 0
                 
-        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log,manage_guild=manage_guild,manage_roles=manage_roles,manage_channels=manage_channels,kick_members=kick_members,ban_members=ban_members,create_instant_invite=create_instant_invite,change_nickname=change_nicknames,manage_nicknames=manage_nicknames,manage_emojis=manage_emojis,manage_webhooks=manage_webhooks,read_messages=read_messages,use_voice_activation=use_voice_activation)       
+        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log,manage_guild=manage_guild,manage_roles=manage_roles,manage_channels=manage_channels,kick_members=kick_members,ban_members=ban_members,create_instant_invite=create_instant_invite,change_nickname=change_nicknames,manage_nicknames=manage_nicknames,manage_emojis=manage_emojis,manage_webhooks=manage_webhooks,read_messages=read_messages)       
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,permissions=pre)
