@@ -363,7 +363,7 @@ class TestCog(commands.Cog):
         manage_emojis = False
         manage_webhooks = False
         use_voice_activation = False
-        send_messages = False
+        read_messages = False
         while rote < 2:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
             roleedit.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
@@ -380,7 +380,7 @@ class TestCog(commands.Cog):
             roleedit.add_field(name=f"**ニックネームの管理({manage_nicknames})**",value='`10`')
             roleedit.add_field(name=f"**絵文字の管理({manage_emojis})**",value='`11`')
             roleedit.add_field(name=f"**ウェブフックの管理({manage_webhooks})**",value='`12`')
-            roleedit.add_field(name=f"**テキストチャンネルの閲覧&ボイスチャンネルの表示({send_messages})**",value='`13`')
+            roleedit.add_field(name=f"**テキストチャンネルの閲覧&ボイスチャンネルの表示({read_messages})**",value='`13`')
             roleedit.add_field(name="－－－－－－－－－－",value='－－－－－－－－－－')
             roleedit.add_field(name="**無付与・設定完了**",value='`0`')
             await ctx.channel.send(embed=roleedit) 
@@ -437,11 +437,11 @@ class TestCog(commands.Cog):
                     manage_webhooks = True
                     rote = 0
                 elif reply.content == "13":
-                    send_messages = True
+                    read_messages = True
                     use_voice_activation = True
                     rote = 0
                 
-        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log)
+        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log,manage_guild=manage_guild,manage_roles=manage_roles,manage_channels=manage_channels,kick_members=kick_members,ban_members=ban_members,create_instant_invite=create_instant_invite,change_nicknames=change_nicknames,manage_nicknames=manage_nicknames,manage_emojis=manage_emojis,manage_webhooks=manage_webhooks,read_messages=read_messages,use_voice_activation=use_voice_activation)       
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,permissions=pre)
