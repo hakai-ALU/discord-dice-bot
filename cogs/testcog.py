@@ -350,6 +350,8 @@ class TestCog(commands.Cog):
         rote = 0
         while rote < 10:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
+            roleedit.add_field(name="オンラインメンバーとは別にロールメンバーを表示する",value='a')
+            roleedit.add_field(name="このロールに対して@mentionを許可する",value='b')
             roleedit.add_field(name="管理者",value='1')
             roleedit.add_field(name="監査ログを表示",value='2')
             roleedit.add_field(name="サーバーの管理",value='3')
@@ -357,8 +359,13 @@ class TestCog(commands.Cog):
             roleedit.add_field(name="チャンネルの管理",value='5')
             roleedit.add_field(name="メンバーをKICK",value='6')
             roleedit.add_field(name="メンバーをBAN",value='7')
-            roleedit.add_field(name="管理者",value='0')
-            
+            roleedit.add_field(name="招待を作成",value='8')
+            roleedit.add_field(name="ニックネームの変更",value='9')
+            roleedit.add_field(name="ニックネームの管理",value='10')
+            roleedit.add_field(name="絵文字の管理",value='11')
+            roleedit.add_field(name="ウェブフックの管理",value='12')
+            roleedit.add_field(name="テキストチャンネルの閲覧&ボイスチャンネルの表示",value='13')
+            roleedit.add_field(name="－－－－－－－－－－－－－－",value='－－－－－－－－－－－－－－－')
             roleedit.add_field(name="無付与・設定完了",value='0')
             await ctx.channel.send(embed=roleedit) 
             def  rotetime(m):
