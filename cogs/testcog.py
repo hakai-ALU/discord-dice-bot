@@ -350,10 +350,10 @@ class TestCog(commands.Cog):
         rote = 0
         while rote < 10:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
-            roleedit.add_field(name="オンラインメンバーとは別にロールメンバーを表示する",value='a')
-            roleedit.add_field(name="このロールに対して@mentionを許可する",value='b')
-            roleedit.add_field(name="管理者",value='1')
-            roleedit.add_field(name="監査ログを表示",value='2')
+            roleedit.add_field(name="**オンラインメンバーとは別にロールメンバーを表示する**",value='`a`')
+            roleedit.add_field(name="**このロールに対して@mentionを許可する**",value='`b`')
+            roleedit.add_field(name="**管理者**",value='`1`')
+            roleedit.add_field(name="**監査ログを表示**",value='`2`')
             roleedit.add_field(name="サーバーの管理",value='3')
             roleedit.add_field(name="ロールの管理",value='4')
             roleedit.add_field(name="チャンネルの管理",value='5')
