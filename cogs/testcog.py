@@ -377,7 +377,7 @@ class TestCog(commands.Cog):
 
         guild = ctx.guild
         set_name2 = f"{what}"
-        await guild.create_role(name=set_name2,mentionable)
+        await guild.create_role(name=set_name2,mentionable=mentionable)
         await ctx.send(f'作成しました。@' + set_name2)
         
 # Bot本体側からコグを読み込む際に呼び出される関数。
