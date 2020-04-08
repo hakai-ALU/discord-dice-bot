@@ -348,7 +348,10 @@ class TestCog(commands.Cog):
             await ctx.send('Error:type name=None')
             return
         rote = 0
-        while rote < 10:
+        hoist = False
+        mentionable = False
+        administrator = False
+        while rote < 2:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
             roleedit.add_field(name="**オンラインメンバーとは別にロールメンバーを表示する**",value='`a`')
             roleedit.add_field(name="**このロールに対して@mentionを許可する**",value='`b`')
@@ -377,12 +380,15 @@ class TestCog(commands.Cog):
                 return
             else:
                 if reply.content == "0":
-                    rote = 10
+                    rote = 2
                 elif reply.content == "a":
+                    hoist = True
                     rote = 0
                 elif reply.content == "b":
+                    mentionable = True
                     rote = 0
                 elif reply.content == "1":
+                    administrator = True
                     rote = 0
                 elif reply.content == "2":
                     rote = 0
@@ -412,7 +418,7 @@ class TestCog(commands.Cog):
 
         guild = ctx.guild
         set_name2 = f"{what}"
-        await guild.create_role(name=set_name2,mentionable=mentionable)
+        await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable)
         await ctx.send(f'作成しました。@' + set_name2)
         
 # Bot本体側からコグを読み込む際に呼び出される関数。
