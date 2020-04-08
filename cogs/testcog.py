@@ -356,8 +356,7 @@ class TestCog(commands.Cog):
     @role.command(aliases=['cr'])
     async def create(self, ctx, what= None):
         if what == None:
-            await ctx.send('Error:type name=None')
-            return
+            what = "new role"
         rote = 0
         hoist = False
         mentionable = False
