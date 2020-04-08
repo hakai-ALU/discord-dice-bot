@@ -341,6 +341,17 @@ class TestCog(commands.Cog):
         await ctx.send('剥奪しました。')
 
     # roleコマンドのサブコマンド
+    # 指定した役職を削除する。
+    @role.command(aliases=['dl'])
+    async def delete(self, ctx, role_name=None):
+        if role_name == None:
+            await ctx.send('役職名を指定して下さい。')
+            return
+        role = discord.utils.get(ctx.message.server.roles, name=role_name)
+        await bot.delete_role(ctx.message.server, role)
+        await ctx.send('削除しました。')
+
+    # roleコマンドのサブコマンド
     # 指定したユーザーに指定した役職を付与する。
     @role.command(aliases=['cr'])
     async def create(self, ctx, what= None):
