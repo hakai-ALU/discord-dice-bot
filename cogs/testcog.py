@@ -348,7 +348,7 @@ class TestCog(commands.Cog):
             await ctx.send('役職名を指定して下さい。')
             return
         role = discord.utils.get(ctx.guild.roles, name=role_name)
-        await bot.delete_role(ctx.guild, role)
+        await self.bot.delete_role(ctx.guild, role)
         await ctx.send('削除しました。')
 
     # roleコマンドのサブコマンド
