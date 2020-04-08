@@ -352,23 +352,35 @@ class TestCog(commands.Cog):
         mentionable = False
         administrator = False
         view_audit_log = False
+        manage_guild = False
+        manage_roles = False
+        manage_channels = False
+        kick_members = False
+        ban_members = False
+        create_instant_invite = False
+        change_nicknames = False
+        manage_nicknames = False
+        manage_emojis = False
+        manage_webhooks = False
+        use_voice_activation = False
+        send_messages = False
         while rote < 2:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
-            roleedit.add_field(name="**オンラインメンバーとは別にロールメンバーを表示する**",value=f'`a({hoist})`')
-            roleedit.add_field(name="**このロールに対して@mentionを許可する**",value='`b`')
-            roleedit.add_field(name="**管理者**",value='`1`')
-            roleedit.add_field(name="**監査ログを表示**",value='`2`')
-            roleedit.add_field(name="**サーバーの管理**",value='`3`')
-            roleedit.add_field(name="**ロールの管理**",value='`4`')
-            roleedit.add_field(name="**チャンネルの管理**",value='`5`')
-            roleedit.add_field(name="**メンバーをKICK**",value='`6`')
-            roleedit.add_field(name="**メンバーをBAN**",value='`7`')
-            roleedit.add_field(name="**招待を作成**",value='`8`')
-            roleedit.add_field(name="**ニックネームの変更**",value='`9`')
-            roleedit.add_field(name="**ニックネームの管理**",value='`10`')
-            roleedit.add_field(name="**絵文字の管理**",value='`11`')
-            roleedit.add_field(name="**ウェブフックの管理**",value='`12`')
-            roleedit.add_field(name="**テキストチャンネルの閲覧&ボイスチャンネルの表示**",value='`13`')
+            roleedit.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
+            roleedit.add_field(name=f"**このロールに対して@mentionを許可する({mentionable})**",value='`b`')
+            roleedit.add_field(name=f"**管理者({administrator})**",value='`1`')
+            roleedit.add_field(name=f"**監査ログを表示({view_audit_log})**",value='`2`')
+            roleedit.add_field(name=f"**サーバーの管理({manage_guild})**",value='`3`')
+            roleedit.add_field(name=f"**ロールの管理({manage_roles})**",value='`4`')
+            roleedit.add_field(name=f"**チャンネルの管理({manage_channels})**",value='`5`')
+            roleedit.add_field(name=f"**メンバーをKICK({kick_members})**",value='`6`')
+            roleedit.add_field(name=f"**メンバーをBAN({ban_members})**",value='`7`')
+            roleedit.add_field(name=f"**招待を作成({create_instant_invite})**",value='`8`')
+            roleedit.add_field(name=f"**ニックネームの変更({change_nicknames})**",value='`9`')
+            roleedit.add_field(name=f"**ニックネームの管理({manage_nicknames})**",value='`10`')
+            roleedit.add_field(name=f"**絵文字の管理({manage_emojis})**",value='`11`')
+            roleedit.add_field(name=f"**ウェブフックの管理({manage_webhooks})**",value='`12`')
+            roleedit.add_field(name=f"**テキストチャンネルの閲覧&ボイスチャンネルの表示({send_messages})**",value='`13`')
             roleedit.add_field(name="－－－－－－－－－－",value='－－－－－－－－－－')
             roleedit.add_field(name="**無付与・設定完了**",value='`0`')
             await ctx.channel.send(embed=roleedit) 
@@ -395,26 +407,38 @@ class TestCog(commands.Cog):
                     view_audit_log = True
                     rote = 0
                 elif reply.content == "3":
+                    manage_guild = True
                     rote = 0
                 elif reply.content == "4":
+                    manage_roles = True
                     rote = 0
                 elif reply.content == "5":
+                    manage_channels = True
                     rote = 0
                 elif reply.content == "6":
+                    kick_members = True
                     rote = 0
                 elif reply.content == "7":
+                    ban_members = True
                     rote = 0
                 elif reply.content == "8":
+                    create_instant_invite = True
                     rote = 0
                 elif reply.content == "9":
+                    change_nicknames = True
                     rote = 0
                 elif reply.content == "10":
+                    manage_nicknames = True
                     rote = 0
                 elif reply.content == "11":
+                    manage_emojis = True
                     rote = 0
                 elif reply.content == "12":
+                    manage_webhooks = True
                     rote = 0
                 elif reply.content == "13":
+                    send_messages = True
+                    use_voice_activation = True
                     rote = 0
                 
         pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log)
