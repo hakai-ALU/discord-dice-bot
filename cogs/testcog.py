@@ -15,6 +15,7 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sc'])
     async def stopcode(self, ctx, stop_code: int=None):
+        """ストップコード(開発者用)"""
         if ctx.author.id != great_owner_id:
             return
         if stop_code == None:
@@ -26,10 +27,12 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
+        """オウム返し"""
         await ctx.send(f'{what}')
 
     @commands.command(aliases=['sinfo'])
     async def serverinfo(self, ctx, server_id: int=None):
+        """鯖について"""
         if server_id == None:
             embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
             embed.add_field(name="サーバー名",value=f'`{ctx.guild.name}`')
@@ -64,6 +67,7 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['b'])
     async def bot(self, ctx):
+        """Botについて"""
         embed = discord.Embed(title=f"{self.bot.user}", description="このBotの情報です")
         embed.set_thumbnail(url=self.bot.user.avatar_url)
         embed.add_field(name="SERVERの数", value=f'`{len(self.bot.guilds)}`',inline=False)
@@ -76,6 +80,7 @@ class TestCog(commands.Cog):
     #gbans a user with a reason
     @commands.command()
     async def gban(self, ctx, user_id: int=None, reason =None):
+        """グローバルBan(開発者用)"""
         if ctx.author.id != great_owner_id:
             return
         if reason == None:
@@ -90,6 +95,7 @@ class TestCog(commands.Cog):
     #gunbans a user with a reason
     @commands.command()
     async def gunban(self, ctx, user_id: int=None, reason =None):
+        """グローバルUnBan(開発者用)"""
         if ctx.author.id != great_owner_id:
             return
         if reason == None:
@@ -105,6 +111,7 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def ban(self, ctx, user_id: int=None, reason =None):
+        """Ban(管理者用)"""
         if user_id == None:
             await ctx.channel.send("BAN対象が正しくありません")
             return
@@ -126,6 +133,7 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def unban(self, ctx, user_id: int=None, reason =None):
+        """UnBan(管理者用)"""
         if user_id == None:
             await ctx.channel.send("UNBAN対象が正しくありません")
             return
@@ -146,6 +154,7 @@ class TestCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def kick(self, ctx, member:discord.User=None, reason =None):
+        """Kick(管理者用)"""
         if member == None or member == ctx.message.author:
             await ctx.channel.send("KICK対象が正しくありません")
             return
@@ -185,6 +194,7 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sl'])
     async def slot(self, ctx, what: int=None):
+        """スロット"""
         if self.stopcodes != 0:
             await ctx.channel.send('⚠️現在使用できません⚠️')
             return
@@ -234,6 +244,7 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sl2'])
     async def slot2(self, ctx, what: int=None):
+        """スロット(Not出力)"""
         if self.stopcodes != 0:
             await ctx.channel.send('⚠️現在使用できません⚠️')
             return
@@ -277,6 +288,7 @@ class TestCog(commands.Cog):
 
     @commands.command(aliases=['sl3'])
     async def slot3(self, ctx, what: int=None):
+        """スロット(Not出力&毎Ping値)"""
         if self.stopcodes != 0:
             await ctx.channel.send('⚠️現在使用できません⚠️')
             return
@@ -322,6 +334,7 @@ class TestCog(commands.Cog):
     @commands.group(aliases=['rl'])
     @commands.has_permissions(manage_guild=True)
     async def role(self, ctx):
+        """役職関連(管理者用)"""
         # サブコマンドが指定されていない場合、メッセージを送信する。
         if ctx.invoked_subcommand is None:
             await ctx.send('このコマンドにはサブコマンドが必要です。')
@@ -330,6 +343,7 @@ class TestCog(commands.Cog):
     # 指定したユーザーに指定した役職を付与する。
     @role.command(aliases=['ad'])
     async def add(self, ctx, member: discord.Member, role: discord.Role):
+        """付与(管理者用)"""
         await member.add_roles(role)
         await ctx.send('付与しました。')
 
@@ -337,6 +351,7 @@ class TestCog(commands.Cog):
     # 指定したユーザーから指定した役職を剥奪する。
     @role.command(aliases=['rm'])
     async def remove(self, ctx, member: discord.Member, role: discord.Role):
+        """剥奪(管理者用)"""
         await member.remove_roles(role)
         await ctx.send('剥奪しました。')
 
@@ -344,6 +359,7 @@ class TestCog(commands.Cog):
     # 指定した役職を削除する。
     @role.command(aliases=['dl'])
     async def delete(self, ctx, role: discord.Role=None):
+        """削除(管理者用)"""
         if role == None:
             await ctx.send('役職名を指定して下さい。')
             return
@@ -352,9 +368,10 @@ class TestCog(commands.Cog):
         await ctx.send('削除しました。')
 
     # roleコマンドのサブコマンド
-    # 指定したユーザーに指定した役職を付与する。
+    # 役職を作成する。
     @role.command(aliases=['cr'])
     async def create(self, ctx, what= None):
+        """作成(管理者用)"""
         if what == None:
             what = "new role"
         rote = 0
