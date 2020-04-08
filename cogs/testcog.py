@@ -351,9 +351,10 @@ class TestCog(commands.Cog):
         hoist = False
         mentionable = False
         administrator = False
+        view_audit_log = False
         while rote < 2:
             roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
-            roleedit.add_field(name="**オンラインメンバーとは別にロールメンバーを表示する**",value='`a`')
+            roleedit.add_field(name="**オンラインメンバーとは別にロールメンバーを表示する**",value=f'`a({hoist})`')
             roleedit.add_field(name="**このロールに対して@mentionを許可する**",value='`b`')
             roleedit.add_field(name="**管理者**",value='`1`')
             roleedit.add_field(name="**監査ログを表示**",value='`2`')
@@ -391,6 +392,7 @@ class TestCog(commands.Cog):
                     administrator = True
                     rote = 0
                 elif reply.content == "2":
+                    view_audit_log = True
                     rote = 0
                 elif reply.content == "3":
                     rote = 0
@@ -415,7 +417,7 @@ class TestCog(commands.Cog):
                 elif reply.content == "13":
                     rote = 0
                 
-        pre = discord.Permissions(administrator=administrator)
+        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log)
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,permissions=pre)
