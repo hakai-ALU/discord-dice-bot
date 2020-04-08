@@ -354,22 +354,22 @@ class TestCog(commands.Cog):
             roleedit.add_field(name="**このロールに対して@mentionを許可する**",value='`b`')
             roleedit.add_field(name="**管理者**",value='`1`')
             roleedit.add_field(name="**監査ログを表示**",value='`2`')
-            roleedit.add_field(name="サーバーの管理",value='3')
-            roleedit.add_field(name="ロールの管理",value='4')
-            roleedit.add_field(name="チャンネルの管理",value='5')
-            roleedit.add_field(name="メンバーをKICK",value='6')
-            roleedit.add_field(name="メンバーをBAN",value='7')
-            roleedit.add_field(name="招待を作成",value='8')
-            roleedit.add_field(name="ニックネームの変更",value='9')
-            roleedit.add_field(name="ニックネームの管理",value='10')
-            roleedit.add_field(name="絵文字の管理",value='11')
-            roleedit.add_field(name="ウェブフックの管理",value='12')
-            roleedit.add_field(name="テキストチャンネルの閲覧&ボイスチャンネルの表示",value='13')
-            roleedit.add_field(name="－－－－－－－－－－－－－－",value='－－－－－－－－－－－－－－－')
-            roleedit.add_field(name="無付与・設定完了",value='0')
+            roleedit.add_field(name="**サーバーの管理**",value='`3`')
+            roleedit.add_field(name="**ロールの管理**",value='`4`')
+            roleedit.add_field(name="**チャンネルの管理**",value='`5`')
+            roleedit.add_field(name="**メンバーをKICK**",value='`6`')
+            roleedit.add_field(name="**メンバーをBAN**",value='`7`')
+            roleedit.add_field(name="**招待を作成**",value='`8`')
+            roleedit.add_field(name="**ニックネームの変更**",value='`9`')
+            roleedit.add_field(name="**ニックネームの管理**",value='`10`')
+            roleedit.add_field(name="**絵文字の管理**",value='`11`')
+            roleedit.add_field(name="**ウェブフックの管理**",value='`12`')
+            roleedit.add_field(name="**テキストチャンネルの閲覧&ボイスチャンネルの表示**",value='`13`')
+            roleedit.add_field(name="－－－－－－－－－－",value='－－－－－－－－－－')
+            roleedit.add_field(name="**無付与・設定完了**",value='`0`')
             await ctx.channel.send(embed=roleedit) 
             def  rotetime(m):
-                return m.content == "0" or "1" and m.author == ctx.author
+                return m.content == "a" or "b" or "0" or "1" or "2" or "3" or "4" or "5" or "6" or "7" or "8" or "9" or "10" or "11" or "12" or "13" and m.author == ctx.author
             try:
                 reply = await self.bot.wait_for( "message" , check = rotetime , timeout = 300.0 )
             except asyncio.TimeoutError:
@@ -378,9 +378,37 @@ class TestCog(commands.Cog):
             else:
                 if reply.content == "0":
                     rote = 10
-                    mentionable=True
+                elif reply.content == "a":
+                    rote = 0
+                elif reply.content == "b":
+                    rote = 0
                 elif reply.content == "1":
                     rote = 0
+                elif reply.content == "2":
+                    rote = 0
+                elif reply.content == "3":
+                    rote = 0
+                elif reply.content == "4":
+                    rote = 0
+                elif reply.content == "5":
+                    rote = 0
+                elif reply.content == "6":
+                    rote = 0
+                elif reply.content == "7":
+                    rote = 0
+                elif reply.content == "8":
+                    rote = 0
+                elif reply.content == "9":
+                    rote = 0
+                elif reply.content == "10":
+                    rote = 0
+                elif reply.content == "11":
+                    rote = 0
+                elif reply.content == "12":
+                    rote = 0
+                elif reply.content == "13":
+                    rote = 0
+                
 
         guild = ctx.guild
         set_name2 = f"{what}"
