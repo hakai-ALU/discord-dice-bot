@@ -371,12 +371,13 @@ class TestCog(commands.Cog):
             else:
                 if reply.content == "0":
                     rote = 10
+                    mentionable=True
                 elif reply.content == "1":
                     rote = 0
 
         guild = ctx.guild
         set_name2 = f"{what}"
-        await guild.create_role(name=set_name2,mentionable=True)
+        await guild.create_role(name=set_name2,mentionable)
         await ctx.send(f'作成しました。@' + set_name2)
         
 # Bot本体側からコグを読み込む際に呼び出される関数。
