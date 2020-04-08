@@ -343,12 +343,12 @@ class TestCog(commands.Cog):
     # roleコマンドのサブコマンド
     # 指定した役職を削除する。
     @role.command(aliases=['dl'])
-    async def delete(self, ctx, role_name=None):
-        if role_name == None:
+    async def delete(self, ctx, role: discord.Role=None):
+        if role == None:
             await ctx.send('役職名を指定して下さい。')
             return
-        role = discord.utils.get(ctx.guild.roles, name=role_name)
-        await self.bot.delete_role(ctx.guild, role)
+        #role = discord.utils.get(ctx.guild.roles, name=role_name)
+        await role.delete()
         await ctx.send('削除しました。')
 
     # roleコマンドのサブコマンド
