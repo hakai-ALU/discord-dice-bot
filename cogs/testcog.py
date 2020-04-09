@@ -412,7 +412,7 @@ class TestCog(commands.Cog):
             await ctx.channel.send(embed=roleedit) 
             if read_messages == True:
                 await asyncio.sleep(0.1)
-                roletxt = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
+                roletxt = discord.Embed(title="権限設定1",description=f"番号を入力して下さい。")
                 roletxt.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
                 roletxt.add_field(name=f"**このロールに対して@mentionを許可する({mentionable})**",value='`b`')
                 roletxt.add_field(name=f"**管理者({administrator})**",value='`1`')
@@ -432,7 +432,7 @@ class TestCog(commands.Cog):
                 roletxt.add_field(name="**無付与・設定完了**",value='`0`')
                 await ctx.channel.send(embed=roletxt) 
                 await asyncio.sleep(0.1)
-                rolevoc = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
+                rolevoc = discord.Embed(title="権限設定2",description=f"番号を入力して下さい。")
                 rolevoc.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
                 rolevoc.add_field(name=f"**このロールに対して@mentionを許可する({mentionable})**",value='`b`')
                 rolevoc.add_field(name=f"**管理者({administrator})**",value='`1`')
