@@ -393,9 +393,22 @@ class TestCog(commands.Cog):
         manage_webhooks = False
         read_messages = False
         #テキスト権限
-        
+        send_messages = False
+        send_tts_messages = False
+        manage_messages = False
+        embed_links = False
+        attach_files = False
+        read_message_history = False
+        mention_everyone = False
+        external_emojis = False
+        add_reactions = False
         #ボイス権限
-
+        connect = False
+        speak = False
+        mute_members = False
+        deafen_members = False
+        move_members = False
+        use_voice_activation = False
         while rote < 2:
             roleedit = discord.Embed(title="権限設定",description=f"番号・記号を入力して下さい。")
             roleedit.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
@@ -419,26 +432,26 @@ class TestCog(commands.Cog):
             if read_messages == True:
                 await asyncio.sleep(0.1)
                 roletxt = discord.Embed(title="テキストの権限",description=f"番号を入力して下さい。")
-                roletxt.add_field(name=f"**メッセージを送信({hoist})**",value='`14`')
-                roletxt.add_field(name=f"**TTSメッセージを送信({mentionable})**",value='`15`')
-                roletxt.add_field(name=f"**メッセージの管理({administrator})**",value='`16`')
-                roletxt.add_field(name=f"**埋め込みリンク({view_audit_log})**",value='`17`')
-                roletxt.add_field(name=f"**ファイルの添付({manage_guild})**",value='`18`')
-                roletxt.add_field(name=f"**メッセージ履歴を読む({manage_roles})**",value='`19`')
-                roletxt.add_field(name=f"**@everyone,@here,すべてのロールにメンション({manage_channels})**",value='`20`')
-                roletxt.add_field(name=f"**外部の絵文字の仕様({kick_members})**",value='`21`')
-                roletxt.add_field(name=f"**リアクションの追加({ban_members})**",value='`22`')
+                roletxt.add_field(name=f"**メッセージを送信({send_messages})**",value='`14`')
+                roletxt.add_field(name=f"**TTSメッセージを送信({send_tts_messages})**",value='`15`')
+                roletxt.add_field(name=f"**メッセージの管理({manage_messages})**",value='`16`')
+                roletxt.add_field(name=f"**埋め込みリンク({embed_links})**",value='`17`')
+                roletxt.add_field(name=f"**ファイルの添付({attach_files})**",value='`18`')
+                roletxt.add_field(name=f"**メッセージ履歴を読む({read_message_history})**",value='`19`')
+                roletxt.add_field(name=f"**@everyone,@here,すべてのロールにメンション({mention_everyone})**",value='`20`')
+                roletxt.add_field(name=f"**外部の絵文字の使用({external_emojis})**",value='`21`')
+                roletxt.add_field(name=f"**リアクションの追加({add_reactions})**",value='`22`')
                 roletxt.add_field(name="－－－－－－－－－－",value='－－－－－－－－－－')
                 roletxt.add_field(name="**無付与・設定完了**",value='`0`')
                 await ctx.channel.send(embed=roletxt) 
                 await asyncio.sleep(0.1)
                 rolevoc = discord.Embed(title="音声の権限",description=f"番号を入力して下さい。")
-                rolevoc.add_field(name=f"**接続({hoist})**",value='`23`')
-                rolevoc.add_field(name=f"**発言({mentionable})**",value='`24`')
-                rolevoc.add_field(name=f"**メンバーをミュート({administrator})**",value='`25`')
-                rolevoc.add_field(name=f"**メンバーのスピーカーをミュート({view_audit_log})**",value='`26`')
-                rolevoc.add_field(name=f"**メンバーを移動({manage_guild})**",value='`27`')
-                rolevoc.add_field(name=f"**音声検出を使用({manage_roles})**",value='`28`')
+                rolevoc.add_field(name=f"**接続({connect})**",value='`23`')
+                rolevoc.add_field(name=f"**発言({speak})**",value='`24`')
+                rolevoc.add_field(name=f"**メンバーをミュート({mute_members})**",value='`25`')
+                rolevoc.add_field(name=f"**メンバーのスピーカーをミュート({deafen_members})**",value='`26`')
+                rolevoc.add_field(name=f"**メンバーを移動({move_members})**",value='`27`')
+                rolevoc.add_field(name=f"**音声検出を使用({use_voice_activation})**",value='`28`')
                 rolevoc.add_field(name="－－－－－－－－－－",value='－－－－－－－－－－')
                 rolevoc.add_field(name="**無付与・設定完了**",value='`0`')
                 await ctx.channel.send(embed=rolevoc) 
@@ -541,99 +554,116 @@ class TestCog(commands.Cog):
                         read_messages = True
                     elif read_messages == True:
                         read_messages = False
+                        send_messages = False
+                        send_tts_messages = False
+                        manage_messages = False
+                        embed_links = False
+                        attach_files = False
+                        read_message_history = False
+                        mention_everyone = False
+                        external_emojis = False
+                        add_reactions = False
+                        connect = False
+                        speak = False
+                        mute_members = False
+                        deafen_members = False
+                        move_members = False
+                        use_voice_activation = False
                     rote = 0
                 elif reply.content == "14":
-                    if hoist == False:
-                        hoist = True
-                    elif hoist == True:
-                        hoist = False
+                    if send_messages == False:
+                        send_messages = True
+                    elif send_messages == True:
+                        send_messages = False
                     rote = 0
                 elif reply.content == "15":
-                    if mentionable == False:
-                        mentionable = True
-                    elif mentionable == True:
-                        mentionable = False
+                    if send_tts_messages == False:
+                        send_tts_messages = True
+                    elif send_tts_messages == True:
+                        send_tts_messages = False
                     rote = 0
                 elif reply.content == "16":
-                    if administrator == False:
-                        administrator = True
-                    elif administrator == True:
-                        administrator = False
+                    if manage_messages == False:
+                        manage_messages = True
+                    elif manage_messages == True:
+                        manage_messages = False
                     rote = 0
                 elif reply.content == "17":
-                    if view_audit_log == False:
-                        view_audit_log = True
-                    elif view_audit_log == True:
-                        view_audit_log = False
+                    if embed_links == False:
+                        embed_links = True
+                    elif embed_links == True:
+                        embed_links = False
                     rote = 0
                 elif reply.content == "18":
-                    if manage_guild == False:
-                        manage_guild = True
-                    elif manage_guild == True:
-                        manage_guild = False
+                    if attach_files == False:
+                        attach_files = True
+                    elif attach_files == True:
+                        attach_files = False
                     rote = 0
                 elif reply.content == "19":
-                    if manage_roles == False:
-                        manage_roles = True
-                    elif manage_roles == True:
-                        manage_roles = False
+                    if read_message_history == False:
+                        read_message_history = True
+                    elif read_message_history == True:
+                        read_message_history = False
                     rote = 0
                 elif reply.content == "20":
-                    if manage_channels == False:
-                        manage_channels = True
-                    elif manage_channels == True:
-                        manage_channels = False
+                    if mention_everyone == False:
+                        mention_everyone = True
+                    elif mention_everyone == True:
+                        mention_everyone = False
                     rote = 0
                 elif reply.content == "21":
-                    if kick_members == False:
-                        kick_members = True
-                    elif kick_members == True:
-                        kick_members = False
+                    if external_emojis == False:
+                        external_emojis = True
+                    elif external_emojis == True:
+                        external_emojis = False
                     rote = 0
                 elif reply.content == "22":
-                    if ban_members == False:
-                        ban_members = True
-                    elif ban_members == True:
-                        ban_members = False
+                    if add_reactions == False:
+                        add_reactions = True
+                    elif add_reactions == True:
+                        add_reactions = False
                     rote = 0
                 elif reply.content == "23":
-                    if create_instant_invite == False:
-                        create_instant_invite = True
-                    elif create_instant_invite == True:
-                        create_instant_invite = False
+                    if connect == False:
+                        connect = True
+                    elif connect == True:
+                        connect = False
                     rote = 0
                 elif reply.content == "24":
-                    if change_nicknames == False:
-                        change_nicknames = True
-                    elif change_nicknames == True:
-                        change_nicknames = False
+                    if speak == False:
+                        speak = True
+                    elif speak == True:
+                        speak = False
                     rote = 0
                 elif reply.content == "25":
-                    if manage_nicknames == False:
-                        manage_nicknames = True
-                    elif manage_nicknames == True:
-                        manage_nicknames = False
+                    if mute_members == False:
+                        mute_members = True
+                    elif mute_members == True:
+                        mute_members = False
                     rote = 0
                 elif reply.content == "26":
-                    if manage_emojis == False:
-                        manage_emojis = True
-                    elif manage_emojis == True:
-                        manage_emojis = False
+                    if deafen_members == False:
+                        deafen_members = True
+                    elif deafen_members == True:
+                        deafen_members = False
                     rote = 0
                 elif reply.content == "27":
-                    if manage_webhooks == False:
-                        manage_webhooks = True
-                    elif manage_webhooks == True:
-                        manage_webhooks = False
+                    if move_members == False:
+                        move_members = True
+                    elif move_members == True:
+                        move_members = False
                     rote = 0
                 elif reply.content == "28":
-                    if read_messages == False:
-                        read_messages = True
-                    elif read_messages == True:
-                        read_messages = False
+                    if use_voice_activation == False:
+                        use_voice_activation = True
+                    elif use_voice_activation == True:
+                        use_voice_activation = False
                     rote = 0
                 
-        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log,manage_guild=manage_guild,manage_roles=manage_roles,manage_channels=manage_channels,kick_members=kick_members,ban_members=ban_members,create_instant_invite=create_instant_invite,change_nickname=change_nicknames,manage_nicknames=manage_nicknames,manage_emojis=manage_emojis,manage_webhooks=manage_webhooks,read_messages=read_messages)       
+        pre = discord.Permissions(administrator=administrator,view_audit_log=view_audit_log,manage_guild=manage_guild,manage_roles=manage_roles,manage_channels=manage_channels,kick_members=kick_members,ban_members=ban_members,create_instant_invite=create_instant_invite,change_nickname=change_nicknames,manage_nicknames=manage_nicknames,manage_emojis=manage_emojis,manage_webhooks=manage_webhooks,read_messages=read_messages,send_messages=send_messages,
+                                  send_tts_messages=send_tts_messages,manage_messages=manage_messages,embed_links=embed_links,attach_files=attach_files,read_message_history=read_message_history,mention_everyone=mention_everyone,external_emojis=external_emojis,add_reactions=add_reactions,
+                                  connect=connect,speak=speak,mute_members=mute_members,deafen_members=deafen_members,move_members=move_members,use_voice_activation=use_voice_activation)       
         guild = ctx.guild
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,permissions=pre)
