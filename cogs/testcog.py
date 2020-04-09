@@ -375,8 +375,10 @@ class TestCog(commands.Cog):
         if what == None:
             what = "new role"
         rote = 0
+        #システム
         hoist = False
         mentionable = False
+        #基本権限
         administrator = False
         view_audit_log = False
         manage_guild = False
@@ -390,8 +392,12 @@ class TestCog(commands.Cog):
         manage_emojis = False
         manage_webhooks = False
         read_messages = False
+        #テキスト権限
+        
+        #ボイス権限
+
         while rote < 2:
-            roleedit = discord.Embed(title="権限設定",description=f"番号を入力して下さい。")
+            roleedit = discord.Embed(title="権限設定",description=f"番号・記号を入力して下さい。")
             roleedit.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
             roleedit.add_field(name=f"**このロールに対して@mentionを許可する({mentionable})**",value='`b`')
             roleedit.add_field(name=f"**管理者({administrator})**",value='`1`')
@@ -412,47 +418,32 @@ class TestCog(commands.Cog):
             await ctx.channel.send(embed=roleedit) 
             if read_messages == True:
                 await asyncio.sleep(0.1)
-                roletxt = discord.Embed(title="権限設定1",description=f"番号を入力して下さい。")
-                roletxt.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
-                roletxt.add_field(name=f"**このロールに対して@mentionを許可する({mentionable})**",value='`b`')
-                roletxt.add_field(name=f"**管理者({administrator})**",value='`1`')
-                roletxt.add_field(name=f"**監査ログを表示({view_audit_log})**",value='`2`')
-                roletxt.add_field(name=f"**サーバーの管理({manage_guild})**",value='`3`')
-                roletxt.add_field(name=f"**ロールの管理({manage_roles})**",value='`4`')
-                roletxt.add_field(name=f"**チャンネルの管理({manage_channels})**",value='`5`')
-                roletxt.add_field(name=f"**メンバーをKICK({kick_members})**",value='`6`')
-                roletxt.add_field(name=f"**メンバーをBAN({ban_members})**",value='`7`')
-                roletxt.add_field(name=f"**招待を作成({create_instant_invite})**",value='`8`')
-                roletxt.add_field(name=f"**ニックネームの変更({change_nicknames})**",value='`9`')
-                roletxt.add_field(name=f"**ニックネームの管理({manage_nicknames})**",value='`10`')
-                roletxt.add_field(name=f"**絵文字の管理({manage_emojis})**",value='`11`')
-                roletxt.add_field(name=f"**ウェブフックの管理({manage_webhooks})**",value='`12`')
-                roletxt.add_field(name=f"**テキストチャンネルの閲覧&ボイスチャンネルの表示({read_messages})**",value='`13`')
+                roletxt = discord.Embed(title="テキストの権限",description=f"番号を入力して下さい。")
+                roletxt.add_field(name=f"**メッセージを送信({hoist})**",value='`14`')
+                roletxt.add_field(name=f"**TTSメッセージを送信({mentionable})**",value='`15`')
+                roletxt.add_field(name=f"**メッセージの管理({administrator})**",value='`16`')
+                roletxt.add_field(name=f"**埋め込みリンク({view_audit_log})**",value='`17`')
+                roletxt.add_field(name=f"**ファイルの添付({manage_guild})**",value='`18`')
+                roletxt.add_field(name=f"**メッセージ履歴を読む({manage_roles})**",value='`19`')
+                roletxt.add_field(name=f"**@everyone,@here,すべてのロールにメンション({manage_channels})**",value='`20`')
+                roletxt.add_field(name=f"**外部の絵文字の仕様({kick_members})**",value='`21`')
+                roletxt.add_field(name=f"**リアクションの追加({ban_members})**",value='`22`')
                 roletxt.add_field(name="－－－－－－－－－－",value='－－－－－－－－－－')
                 roletxt.add_field(name="**無付与・設定完了**",value='`0`')
                 await ctx.channel.send(embed=roletxt) 
                 await asyncio.sleep(0.1)
-                rolevoc = discord.Embed(title="権限設定2",description=f"番号を入力して下さい。")
-                rolevoc.add_field(name=f"**オンラインメンバーとは別にロールメンバーを表示する({hoist})**",value='`a`')
-                rolevoc.add_field(name=f"**このロールに対して@mentionを許可する({mentionable})**",value='`b`')
-                rolevoc.add_field(name=f"**管理者({administrator})**",value='`1`')
-                rolevoc.add_field(name=f"**監査ログを表示({view_audit_log})**",value='`2`')
-                rolevoc.add_field(name=f"**サーバーの管理({manage_guild})**",value='`3`')
-                rolevoc.add_field(name=f"**ロールの管理({manage_roles})**",value='`4`')
-                rolevoc.add_field(name=f"**チャンネルの管理({manage_channels})**",value='`5`')
-                rolevoc.add_field(name=f"**メンバーをKICK({kick_members})**",value='`6`')
-                rolevoc.add_field(name=f"**メンバーをBAN({ban_members})**",value='`7`')
-                rolevoc.add_field(name=f"**招待を作成({create_instant_invite})**",value='`8`')
-                rolevoc.add_field(name=f"**ニックネームの変更({change_nicknames})**",value='`9`')
-                rolevoc.add_field(name=f"**ニックネームの管理({manage_nicknames})**",value='`10`')
-                rolevoc.add_field(name=f"**絵文字の管理({manage_emojis})**",value='`11`')
-                rolevoc.add_field(name=f"**ウェブフックの管理({manage_webhooks})**",value='`12`')
-                rolevoc.add_field(name=f"**テキストチャンネルの閲覧&ボイスチャンネルの表示({read_messages})**",value='`13`')
+                rolevoc = discord.Embed(title="音声の権限",description=f"番号を入力して下さい。")
+                rolevoc.add_field(name=f"**接続({hoist})**",value='`23`')
+                rolevoc.add_field(name=f"**発言({mentionable})**",value='`24`')
+                rolevoc.add_field(name=f"**メンバーをミュート({administrator})**",value='`25`')
+                rolevoc.add_field(name=f"**メンバーのスピーカーをミュート({view_audit_log})**",value='`26`')
+                rolevoc.add_field(name=f"**メンバーを移動({manage_guild})**",value='`27`')
+                rolevoc.add_field(name=f"**音声検出を使用({manage_roles})**",value='`28`')
                 rolevoc.add_field(name="－－－－－－－－－－",value='－－－－－－－－－－')
                 rolevoc.add_field(name="**無付与・設定完了**",value='`0`')
                 await ctx.channel.send(embed=rolevoc) 
             def  rotetime(m):
-                return m.content == "a" or "b" or "0" or "1" or "2" or "3" or "4" or "5" or "6" or "7" or "8" or "9" or "10" or "11" or "12" or "13" and m.author == ctx.author
+                return m.content == "a" or "b" or "0" or "1" or "2" or "3" or "4" or "5" or "6" or "7" or "8" or "9" or "10" or "11" or "12" or "13" or "14" or "15" or "16" or "17" or "18" "19" or "20" or "21" or "22" or "23" or "24" or "25" or "26" or "27" or "28" and m.author == ctx.author
             try:
                 reply = await self.bot.wait_for( "message" , check = rotetime , timeout = 300.0 )
             except asyncio.TimeoutError:
@@ -546,6 +537,96 @@ class TestCog(commands.Cog):
                         manage_webhooks = False
                     rote = 0
                 elif reply.content == "13":
+                    if read_messages == False:
+                        read_messages = True
+                    elif read_messages == True:
+                        read_messages = False
+                    rote = 0
+                elif reply.content == "14":
+                    if hoist == False:
+                        hoist = True
+                    elif hoist == True:
+                        hoist = False
+                    rote = 0
+                elif reply.content == "15":
+                    if mentionable == False:
+                        mentionable = True
+                    elif mentionable == True:
+                        mentionable = False
+                    rote = 0
+                elif reply.content == "16":
+                    if administrator == False:
+                        administrator = True
+                    elif administrator == True:
+                        administrator = False
+                    rote = 0
+                elif reply.content == "17":
+                    if view_audit_log == False:
+                        view_audit_log = True
+                    elif view_audit_log == True:
+                        view_audit_log = False
+                    rote = 0
+                elif reply.content == "18":
+                    if manage_guild == False:
+                        manage_guild = True
+                    elif manage_guild == True:
+                        manage_guild = False
+                    rote = 0
+                elif reply.content == "19":
+                    if manage_roles == False:
+                        manage_roles = True
+                    elif manage_roles == True:
+                        manage_roles = False
+                    rote = 0
+                elif reply.content == "20":
+                    if manage_channels == False:
+                        manage_channels = True
+                    elif manage_channels == True:
+                        manage_channels = False
+                    rote = 0
+                elif reply.content == "21":
+                    if kick_members == False:
+                        kick_members = True
+                    elif kick_members == True:
+                        kick_members = False
+                    rote = 0
+                elif reply.content == "22":
+                    if ban_members == False:
+                        ban_members = True
+                    elif ban_members == True:
+                        ban_members = False
+                    rote = 0
+                elif reply.content == "23":
+                    if create_instant_invite == False:
+                        create_instant_invite = True
+                    elif create_instant_invite == True:
+                        create_instant_invite = False
+                    rote = 0
+                elif reply.content == "24":
+                    if change_nicknames == False:
+                        change_nicknames = True
+                    elif change_nicknames == True:
+                        change_nicknames = False
+                    rote = 0
+                elif reply.content == "25":
+                    if manage_nicknames == False:
+                        manage_nicknames = True
+                    elif manage_nicknames == True:
+                        manage_nicknames = False
+                    rote = 0
+                elif reply.content == "26":
+                    if manage_emojis == False:
+                        manage_emojis = True
+                    elif manage_emojis == True:
+                        manage_emojis = False
+                    rote = 0
+                elif reply.content == "27":
+                    if manage_webhooks == False:
+                        manage_webhooks = True
+                    elif manage_webhooks == True:
+                        manage_webhooks = False
+                    rote = 0
+                elif reply.content == "28":
                     if read_messages == False:
                         read_messages = True
                     elif read_messages == True:
