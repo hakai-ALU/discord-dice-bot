@@ -49,7 +49,8 @@ class TestCog(commands.Cog):
             embed.set_thumbnail(url=ctx.guild.icon_url)
             await ctx.channel.send(embed=embed)
             return
-        server = self.bot.get_guild(server_id)
+        server = discord.Object(server_id)
+        #self.bot.get_guild(server_id)
         embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
         embed.add_field(name="サーバー名",value=f'`{server.name}`')
         embed.add_field(name="現オーナー名",value=f'`{server.owner}`')
