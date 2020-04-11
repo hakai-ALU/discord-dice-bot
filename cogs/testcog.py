@@ -31,7 +31,7 @@ class TestCog(commands.Cog):
         await ctx.send(f'{what}')
 
     @commands.command(aliases=['t'])
-    async def test(self, ctx, user_id):
+    async def test(self, ctx, user_id: int):
         """オウム返し"""
         member = self.bot.get_user(user_id)
         await ctx.send(f'{member}')
