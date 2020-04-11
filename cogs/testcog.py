@@ -37,7 +37,7 @@ class TestCog(commands.Cog):
         await ctx.send(f'{memberss}')
         await ctx.send(f'{memberss.name}')
         await ctx.send(f'{memberss.id}')
-        await ctx.send(f'{member.tag}')
+        await ctx.send(f'{memberss.tag}')
         
     @commands.command(aliases=['sinfo'])
     async def serverinfo(self, ctx, server_id: int=None):
