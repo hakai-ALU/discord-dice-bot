@@ -30,6 +30,11 @@ class TestCog(commands.Cog):
         """オウム返し"""
         await ctx.send(f'{what}')
 
+    @commands.command(aliases=['t'])
+    async def test(self, ctx, user: discord.Object):
+        """オウム返し"""
+        await ctx.send(f'{user}')
+
     @commands.command(aliases=['sinfo'])
     async def serverinfo(self, ctx, server_id: int=None):
         """鯖について"""
