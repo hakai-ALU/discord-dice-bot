@@ -33,7 +33,7 @@ class TestCog(commands.Cog):
     @commands.command(aliases=['t'])
     async def test(self, ctx, user_id: discord.Object):
         """オウム返し"""
-        memberss = self.bot.get_user(user_id)
+        memberss = user_id #self.bot.get_user(user_id)
         await ctx.send(f'{memberss}')
         await ctx.send(f'{memberss.name}')
         await ctx.send(f'{memberss.id}')
