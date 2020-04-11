@@ -33,9 +33,12 @@ class TestCog(commands.Cog):
     @commands.command(aliases=['t'])
     async def test(self, ctx, user_id: int):
         """オウム返し"""
-        member = self.bot.get_user(user_id)
-        await ctx.send(f'{member}')
-
+        memberss = self.bot.get_user(user_id)
+        await ctx.send(f'{memberss}')
+        await ctx.send(f'{memberss.name}')
+        await ctx.send(f'{memberss.id}')
+        await ctx.send(f'{member.tag}')
+        
     @commands.command(aliases=['sinfo'])
     async def serverinfo(self, ctx, server_id: int=None):
         """鯖について"""
