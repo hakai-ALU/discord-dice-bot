@@ -31,9 +31,10 @@ class TestCog(commands.Cog):
         await ctx.send(f'{what}')
 
     @commands.command(aliases=['t'])
-    async def test(self, ctx, user: discord.Object):
+    async def test(self, ctx, user_id):
         """オウム返し"""
-        await ctx.send(f'{user}')
+        member = self.bot.get_user(user_id)
+        await ctx.send(f'{member}')
 
     @commands.command(aliases=['sinfo'])
     async def serverinfo(self, ctx, server_id: int=None):
