@@ -677,7 +677,7 @@ class TestCog(commands.Cog):
         set_name2 = f"{what}"
         await guild.create_role(name=set_name2,hoist=hoist,mentionable=mentionable,permissions=pre)
         await ctx.send(f'作成しました。@' + set_name2)
-        
+
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
