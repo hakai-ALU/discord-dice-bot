@@ -245,9 +245,9 @@ class TestCog(commands.Cog):
                 coin_fals += 1
             slots += 1
         hundreds = "100"
-        coin_true_co = coin_true // whats # * hundreds
-        coin_none_co = coin_none // whats # * hundreds
-        coin_fals_co = coin_fals // whats # * hundreds
+        coin_true_co = coin_true / whats # * hundreds
+        coin_none_co = coin_none / whats # * hundreds
+        coin_fals_co = coin_fals / whats # * hundreds
         embed = discord.Embed(title="スロット結果",description=f"`Ping値:{self.bot.ws.latency * 1000:.0f}ms`")
         embed.add_field(name="試行回数",value=f'`{whats}`')
         embed.add_field(name="当たり回数", value=f'`{coin_true}({coin_true_co}%)`',inline=False)
