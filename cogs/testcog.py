@@ -244,11 +244,15 @@ class TestCog(commands.Cog):
                 await my_message.edit(content=suroto + '|' + suroto1 + '|' + suroto2 + '\n 結果：ハズレ')
                 coin_fals += 1
             slots += 1
+        hundreds = "100"
+        coin_true_co = coin_true // whats * hundreds
+        coin_none_co = coin_none // whats * hundreds
+        coin_fals_co = coin_fals // whats * hundreds
         embed = discord.Embed(title="スロット結果",description=f"`Ping値:{self.bot.ws.latency * 1000:.0f}ms`")
         embed.add_field(name="試行回数",value=f'`{whats}`')
-        embed.add_field(name="当たり回数", value=f'`{coin_true}`',inline=False)
-        embed.add_field(name="リーチ回数", value=f'`{coin_none}`',inline=False)
-        embed.add_field(name="ハズレ回数", value=f'`{coin_fals}`',inline=False)
+        embed.add_field(name="当たり回数", value=f'`{coin_true}({coin_true_co}%)`',inline=False)
+        embed.add_field(name="リーチ回数", value=f'`{coin_none}({coin_none_co}%)`',inline=False)
+        embed.add_field(name="ハズレ回数", value=f'`{coin_fals}({coin_fals_co}%)`',inline=False)
         await ctx.channel.send(embed=embed)
 
     @commands.command(aliases=['sl2'])
