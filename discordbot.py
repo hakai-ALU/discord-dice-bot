@@ -8,7 +8,7 @@ prefix = 'rt'
 
 # 読み込むコグの名前を格納しておく。
 INITIAL_EXTENSIONS = [
-    'cogs.testcog'
+    'cogs.main'
 ]
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
@@ -54,5 +54,5 @@ class JapaneseHelpCommand(commands.DefaultHelpCommand):
 
 #MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='rt',help_command=JapaneseHelpCommand()) # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
+    bot = MyBot(command_prefix=prefix,help_command=JapaneseHelpCommand()) # command_prefixはコマンドの最初の文字として使うもの。 e.g. !ping
     bot.run(TOKEN) # Botのトークン
