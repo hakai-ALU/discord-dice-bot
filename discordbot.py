@@ -8,7 +8,11 @@ prefix = 'rt'
 
 # 読み込むコグの名前を格納しておく。
 INITIAL_EXTENSIONS = [
-    'cogs.main'
+    'cogs.main',
+    'cogs.bans',
+    'cogs.info',
+    'cogs.roles',
+    'cogs.slot'
 ]
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
