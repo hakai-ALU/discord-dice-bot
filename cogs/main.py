@@ -7,8 +7,8 @@ import datetime
 great_owner_id = 459936557432963103
 
 # コグとして用いるクラスを定義。
-class TestCog(commands.Cog):
-    # TestCogクラスのコンストラクタ。Botを受取り、インスタンス変数として保持。
+class main(commands.Cog):
+    # mainクラスのコンストラクタ。Botを受取り、インスタンス変数として保持。
     def __init__(self, bot):
         self.bot = bot
         self.stopcodes = 0
@@ -692,4 +692,4 @@ class TestCog(commands.Cog):
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
-    bot.add_cog(TestCog(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
+    bot.add_cog(main(bot)) # mainにBotを渡してインスタンス化し、Botにコグとして登録する。
