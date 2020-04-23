@@ -12,6 +12,7 @@ INITIAL_EXTENSIONS = [
     'cogs.bans',
     'cogs.info',
     'cogs.roles',
+    'cogs.global_chat',
     'cogs.slot'
 ]
 
