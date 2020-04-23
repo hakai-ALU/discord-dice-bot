@@ -44,7 +44,6 @@ class main(commands.Cog):
         if message.content == '再起動して':
             await self.bot.logout()
 
-
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(main(bot)) # mainにBotを渡してインスタンス化し、Botにコグとして登録する。
