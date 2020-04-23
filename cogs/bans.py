@@ -5,7 +5,7 @@ import random
 import datetime
 
 great_owner_id = 459936557432963103
-"""使い方:prefix+command @user(user_id) reason"""
+
 # コグとして用いるクラスを定義。
 class bans(commands.Cog):
     # bansクラスのコンストラクタ。Botを受取り、インスタンス変数として保持。
