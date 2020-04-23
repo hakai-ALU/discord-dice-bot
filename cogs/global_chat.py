@@ -12,7 +12,7 @@ class global_chat(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=['gc'])
-    async def globalchat(self, ctx)
+    async def globalchat(self, ctx):
         await ctx.channel.send("Global Chatです。\n`【グローバルチャット】`という名前でチャンネルを作ると接続されます。")
 
     @commands.Cog.listener()
