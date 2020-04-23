@@ -11,6 +11,10 @@ class global_chat(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command(aliases=['gc'])
+    async def globalchat(self, ctx)
+        await ctx.channel.send("Global Chatです。\n`【グローバルチャット】`という名前でチャンネルを作ると接続されます。")
+
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:
@@ -20,27 +24,22 @@ class global_chat(commands.Cog):
         filename = f"{date.year}{date.month}{date.day}-{date.hour}{date.minute}{date.second}" 
         #画像保存名(基本)を｢年月日-時分秒｣とする。
 
-        GLOBAL_WEBHOOK_NAME = "Arknights-webhook"
+        GLOBAL_WEBHOOK_NAME = "RUTIA-GLOBAL"
         #グローバルチャットのウェブフック名
+        GLOBAL_CH_NAME = "【グローバルチャット】"
 
-        conn = sqlite3.connect("all_data.db")
-        c = conn.cursor()
-        GLOBAL_CH_ID = []
-        for row in c.execute("SELECT * FROM global_chat"):
-            GLOBAL_CH_ID.append(row[0])
-        
-        if message.channel.id in GLOBAL_CH_ID:
+        if message.channel.name == GLOBAL_CH_NAME:
         #発言チャンネルidがGLOBAL_CH_IDに入っていたら反応
 
-            if message.content.startswith(";"):
+            if message.content.startswith("rt"):
                 pass
             #発言時、頭に｢;｣がついていたらpass
 
             else:
                 channels = self.bot.get_all_channels()
                 #ボットの参加する全てのチャンネル取得
-                global_channels = [ch for ch in channels if ch.id in GLOBAL_CH_ID]
-                #channelsからGLOBAL_CH_IDと合致する物をglobal_channelsに格納
+                global_channels = [ch for ch in channels if ch.name == GLOBAL_CH_NAME]
+                #channelsからGLOBAL_CH_NAMEと合致する物をglobal_channelsに格納
 
                 for channel in global_channels:
                 #global_channelsから一つずつ取得
