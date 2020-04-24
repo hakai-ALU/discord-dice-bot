@@ -17,7 +17,7 @@ class poll(commands.Cog):
         else:
             poll_embed = discord.Embed(title=question, description=None)
         if answer1 != None:
-            poll_embed.add_field(name=f'1⃣{answer1}')
+            poll_embed.add_field(name=f'1⃣{answer1}',value="")
         if answer2 != None:
             poll_embed.add_field(name=f'2⃣{answer2}',value="")
         if answer3 != None:
