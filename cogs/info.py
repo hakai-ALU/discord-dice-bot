@@ -62,7 +62,7 @@ class info(commands.Cog):
     @commands.command(aliases=['ui'])
     async def userinfo(self, ctx, user_id: int):
         """ユーザーについて"""
-        memberss = self.bot.get_users(user_id)
+        memberss = discord.utils.get(self.bot.users,id=user_id)
         await ctx.send(f'{memberss}')
         await ctx.send(f'{memberss.name}')
         await ctx.send(f'{memberss.id}')
