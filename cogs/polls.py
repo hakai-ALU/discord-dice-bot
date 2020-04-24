@@ -17,15 +17,15 @@ class poll(commands.Cog):
         else:
             poll_embed = discord.Embed(title=question, description=None)
         if answer1 != None:
-            poll_embed.add_field(name=f'1⃣{answer1}',value="")
+            poll_embed.add_field(name=f'1⃣{answer1}',value=" ")
         if answer2 != None:
-            poll_embed.add_field(name=f'2⃣{answer2}',value="")
+            poll_embed.add_field(name=f'2⃣{answer2}',value=" ")
         if answer3 != None:
-            poll_embed.add_field(name=f'3⃣{answer3}',value="")
+            poll_embed.add_field(name=f'3⃣{answer3}',value=" ")
         if answer4 != None:
-            poll_embed.add_field(name=f'4⃣{answer4}',value="")
+            poll_embed.add_field(name=f'4⃣{answer4}',value=" ")
         if answer5 != None:
-            poll_embed.add_field(name=f'5⃣{answer5}',value="")
+            poll_embed.add_field(name=f'5⃣{answer5}',value=" ")
         await ctx.send(embed=poll_embed)
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
