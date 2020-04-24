@@ -9,13 +9,13 @@ class poll(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def poll(self, ctx, question: int=None, answer1: int=None, answer2: int=None, answer3: int=None, answer4: int=None, answer5: int=None):  
+    async def poll(self, ctx, question= None, answer1= None, answer2= None, answer3= None, answer4= None, answer5= None):  
         """質問5つまで"""
         if question == None:
             await ctx.send("質問を設定して下さい。")
             return
         else:
-            poll_embed = discord.Embed(title=f'{question}', description=None)
+            poll_embed = discord.Embed(title=question, description=None)
         if answer1 != None:
             poll_embed.add_field(name=f'{answer1}',value=None)
         if answer2 != None:
