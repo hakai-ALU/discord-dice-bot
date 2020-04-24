@@ -59,10 +59,10 @@ class info(commands.Cog):
         embed.add_field(name="各種リンク", value="[このBOTの公式開発鯖](<https://discord.gg/ENxnsJM>)", inline=False)
         await ctx.channel.send(embed=embed)
             
-    @commands.command(aliases=['t'])
-    async def test(self, ctx, user_id: int):
-        """ユーザーについて(テスト)"""
-        memberss = self.bot.get_user(user_id)
+    @commands.command(aliases=['ui'])
+    async def userinfo(self, ctx, user_id: int):
+        """ユーザーについて"""
+        memberss = self.bot.get_user(discord_Object(user_id))
         await ctx.send(f'{memberss}')
         await ctx.send(f'{memberss.name}')
         await ctx.send(f'{memberss.id}')
