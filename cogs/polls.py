@@ -11,7 +11,6 @@ class poll(commands.Cog):
     @commands.command()
     async def poll(self, ctx, question= None, answer1= None, answer2= None, answer3= None, answer4= None, answer5= None):  
         """質問5つまで"""
-        await ctx.delete()
         if question == None:
             await ctx.send("質問を設定して下さい。")
             return
