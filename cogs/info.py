@@ -60,13 +60,16 @@ class info(commands.Cog):
         await ctx.channel.send(embed=embed)
             
     @commands.command(aliases=['ui'])
-    async def userinfo(self, ctx, user_id: int):
+    async def userinfo(self, ctx, user_id: int=None):
         """ユーザーについて"""
-        memberss = discord.Object(id=user_id)
-        await ctx.send(f'{memberss}')
-        await ctx.send(f'{memberss.name}')
-        await ctx.send(f'{memberss.id}')
-        await ctx.send(f'{memberss.created_at}')
+        memberss = self.bot.get_user(user_id)
+        embed = discord.Embed(title="プロフィール", description=None)
+        embed.set_thumbnail(url=memberss.avatar_url)
+        embed.add_field(name="Name#Tag", value=f'`{memberss}`',inline=False)
+        embed.add_field(name="ID", value=f'`{memberss.id}`',inline=False)
+        embed.add_field(name="アカウント作成日", value=f'`{memberss.created_at}`',inline=False)
+        embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
+        await ctx.channel.send(embed=embed)
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
