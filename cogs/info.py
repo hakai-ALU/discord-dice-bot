@@ -65,7 +65,7 @@ class info(commands.Cog):
         if user_id == None:
             embed = discord.Embed(title="プロフィール", description=None)
             embed.set_thumbnail(url=user.avatar_url)
-            embed.add_field(name="Name#Tag", value=f'`{user}`',inline=False)
+            embed.add_field(name="Name#Tag", value=f'`{user.name}`',inline=False)
             embed.add_field(name="ID", value=f'`{user.id}`',inline=False)
             embed.add_field(name="アカウント作成日", value=f'`{user.created_at}`',inline=False)
             embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
