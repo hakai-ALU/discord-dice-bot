@@ -72,7 +72,7 @@ class info(commands.Cog):
             embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
             await ctx.channel.send(embed=embed)
             return
-        memberss = self.bot.get_user(user_id)
+        memberss =discord.utils.get(self.bot.get_all_members(), id=user_id)
         embed = discord.Embed(title="プロフィール", description=None)
         embed.set_thumbnail(url=memberss.avatar_url)
         embed.add_field(name="Name#Tag", value=f'`{memberss}`',inline=False)
