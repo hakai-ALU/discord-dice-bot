@@ -63,11 +63,12 @@ class info(commands.Cog):
     async def userinfo(self, ctx, user_id: int=None):
         """ユーザーについて"""
         if user_id == None:
+            memberss = self.bot.get_user(ctx.author.id)
             embed = discord.Embed(title="プロフィール", description=None)
-            embed.set_thumbnail(url=user.avatar_url)
-            embed.add_field(name="Name#Tag", value=f'`{user.name}`',inline=False)
-            embed.add_field(name="ID", value=f'`{user.id}`',inline=False)
-            embed.add_field(name="アカウント作成日", value=f'`{user.created_at}`',inline=False)
+            embed.set_thumbnail(url=memberss.avatar_url)
+            embed.add_field(name="Name#Tag", value=f'`{memberss}`',inline=False)
+            embed.add_field(name="ID", value=f'`{memberss.id}`',inline=False)
+            embed.add_field(name="アカウント作成日", value=f'`{memberss.created_at}`',inline=False)
             embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
             await ctx.channel.send(embed=embed)
             return
