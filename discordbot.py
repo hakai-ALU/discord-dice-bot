@@ -15,7 +15,8 @@ INITIAL_EXTENSIONS = [
     'cogs.global_chat',
     'cogs.polls',
     'cogs.slot',
-    'cogs.test'
+    'cogs.test',
+    'cogs.databases'
 ]
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
