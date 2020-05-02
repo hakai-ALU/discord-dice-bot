@@ -20,7 +20,7 @@ class info(commands.Cog):
             embed.add_field(name="サーバー名",value=f'`{ctx.guild.name}`')
             embed.add_field(name="現オーナー名",value=f'`{ctx.guild.owner}`')
             guild = ctx.guild
-            embed.add_field(name="作成日",value=f'`{guild.create_at}`')
+            embed.add_field(name="作成日",value=f'`{guild.created_at}`')
             member_count = sum(1 for member in guild.members if not member.bot) 
             bot_count = sum(1 for member in guild.members if member.bot) 
             all_count = (member_count) + (bot_count)
@@ -36,7 +36,7 @@ class info(commands.Cog):
         embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
         embed.add_field(name="サーバー名",value=f'`{server.name}`')
         embed.add_field(name="現オーナー名",value=f'`{server.owner}`')
-        embed.add_field(name="作成日",value=f'`{server.create_at}`')
+        embed.add_field(name="作成日",value=f'`{server.created_at}`')
         guild = server
         member_count = sum(1 for member in guild.members if not member.bot) 
         bot_count = sum(1 for member in guild.members if member.bot) 
