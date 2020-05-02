@@ -8,7 +8,7 @@ class Example(commands.Cog):
         self.bot = bot
 
         DATABASE_URL = os.getenv("DATABASE_URL")
-        conn = sqlite3.connect(DATABASE_URL, sslmode="require")
+        conn = sqlite3.connect(DATABASE_URL)
         c = conn.cursor()
         c.execute("""
         CREATE SCHEMA IF NOT EXISTS bot;
