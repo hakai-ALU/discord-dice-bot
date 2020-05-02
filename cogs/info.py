@@ -86,13 +86,15 @@ class info(commands.Cog):
         """ユーザーについて"""
         if user_id == None:
             memberss = self.bot.get_user(ctx.author.id)
-            embed = discord.Embed(title=f"[アバターURL](<{memberss.avatar_url}>)", description=None)
-            embed.set_image(url=memberss.avatar_url)
+            avater_url = memberss.avatar_url
+            embed = discord.Embed(title=f"[アバターURL](<{avater_url}>)", description=None)
+            embed.set_image(url=avater_url)
             await ctx.channel.send(embed=embed)
             return
         memberss =discord.utils.get(self.bot.get_all_members(), id=user_id)
-        embed = discord.Embed(title=f"[アバターURL](<{memberss.avatar_url}>)", description=None)
-        embed.set_image(url=memberss.avatar_url)
+        avater_url = memberss.avatar_url
+        embed = discord.Embed(title=f"[アバターURL]<{avater_url}>", description=None)
+        embed.set_image(url=avater_url)
         await ctx.channel.send(embed=embed)
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
