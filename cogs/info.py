@@ -93,7 +93,7 @@ class info(commands.Cog):
             return
         memberss =discord.utils.get(self.bot.get_all_members(), id=user_id)
         avater_url = memberss.avatar_url
-        embed = discord.Embed(title=f"[アバターURL]<{avater_url}>", description=None)
+        embed = discord.Embed(title="**Avater Image**",description=f"[アバターURL](<{avater_url}>)")
         embed.set_image(url=avater_url)
         await ctx.channel.send(embed=embed)
 
