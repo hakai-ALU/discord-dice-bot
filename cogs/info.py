@@ -81,6 +81,20 @@ class info(commands.Cog):
         embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
         await ctx.channel.send(embed=embed)
 
+    @commands.command(aliases=['ai'])
+    async def avaterimage(self, ctx, user_id: int=None):
+        """ユーザーについて"""
+        if user_id == None:
+            memberss = self.bot.get_user(ctx.author.id)
+            embed = discord.Embed(title=f"[アバターURL](<{memberss.avatar_url}>)", description=None)
+            embed.set_image(url=memberss.avatar_url)
+            await ctx.channel.send(embed=embed)
+            return
+        memberss =discord.utils.get(self.bot.get_all_members(), id=user_id)
+        embed = discord.Embed(title=f"[アバターURL](<{memberss.avatar_url}>)", description=None)
+        embed.set_image(url=memberss.avatar_url)
+        await ctx.channel.send(embed=embed)
+
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(info(bot)) # mainにBotを渡してインスタンス化し、Botにコグとして登録する。        
