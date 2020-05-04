@@ -9,12 +9,12 @@ class Example(commands.Cog):
 
     @commands.command()
     async def set(self, ctx, what1, what2):
-        conn = rdb.connect()
+        conn = connect.connect()
         conn.set(what1, what2)
 
     @commands.command()
     async def get(self, ctx, what1):
-        conn = rdb.connect()
+        conn = connect.connect()
         p = conn.get(what1)
         await ctx.send(p)
 
