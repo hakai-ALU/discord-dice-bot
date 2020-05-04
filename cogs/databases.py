@@ -1,5 +1,5 @@
 import os
-import rdb
+from rdb import connect
 from discord.ext import commands
 
 class Example(commands.Cog):
