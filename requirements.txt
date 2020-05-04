@@ -1,2 +1,2 @@
 discord.py[voice]
-psycopg2-binary
+redis==3.3.11
