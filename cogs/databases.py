@@ -9,13 +9,13 @@ class Example(commands.Cog):
 
     @commands.command()
     async def set(self, ctx, what1, what2):
-        conn = rdb.connect()
+        conn = con.connect()
         q = conn.set(what1, what2)
         await ctx.send(q)
 
     @commands.command()
     async def get(self, ctx, what1):
-        conn = rdb.connect()
+        conn = con.connect()
         p = conn.get(what1)
         await ctx.send(p)
 
