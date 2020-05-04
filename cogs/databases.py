@@ -1,5 +1,5 @@
 import os
-from rdb import connect
+from rdb import con
 from discord.ext import commands
 
 class Example(commands.Cog):
@@ -9,12 +9,13 @@ class Example(commands.Cog):
 
     @commands.command()
     async def set(self, ctx, what1, what2):
-        conn = connect.connect()
-        conn.set(what1, what2)
+        conn = con.connect()
+        q = conn.set(what1, what2)
+        await ctx.send(q)
 
     @commands.command()
     async def get(self, ctx, what1):
-        conn = connect.connect()
+        conn = con.connect()
         p = conn.get(what1)
         await ctx.send(p)
 
