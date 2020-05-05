@@ -7,6 +7,13 @@ class Example(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command()
+    async def sadd(self, ctx, what):
+        if ctx.author.id == 459936557432963103:
+            conn = r.connect()
+            bt = conn.sadd("bets", what)
+            await ctx.send(bt)
+
     @commands.Cog.listener()
     async def on_message(self, message):
         betatester = conn.smembers("bets")
