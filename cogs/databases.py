@@ -74,7 +74,7 @@ class Example(commands.Cog):
     @commands.command()
     async def key(self, ctx):
         conn = r.connect()
-        betatester = conn.sinter("bet")
+        betatester = conn.sinterstore("bet")
         await ctx.send(betatester)
         if ctx.author.id in betatester:
             await ctx.send("True")
