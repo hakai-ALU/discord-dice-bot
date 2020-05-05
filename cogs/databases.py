@@ -16,6 +16,7 @@ class Example(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        conn = r.connect()
         betatester = conn.smembers("bets")
         if not message.author.id in betatester:
             return
