@@ -19,5 +19,37 @@ class Example(commands.Cog):
         p = conn.get(what1)
         await ctx.send(p)
 
+    @commands.command()
+    async def sadd(self, ctx, what):
+        conn = r.connect()
+        q = conn.sadd("what2", what)
+        await ctx.send(q)
+
+    @commands.command()
+    async def smembers(self, ctx):
+        conn = r.connect()
+        p = conn.smembers("what2")
+        for w in p:
+            await ctx.send(w)
+
+    @commands.command()
+    async def key(self, ctx):
+        conn = r.connect()
+        ak = conn.keys()
+        for k in ak:
+            await ctx.send(k)
+
+    @commands.command()
+    async def delete(self, ctx, what):
+        conn = r.connect()
+        d = conn.delete(what)
+        await ctx.send(d)
+
+    @commands.command()
+    async def alldelete(self, ctx):
+        conn = r.connect()
+        ad = conn.flushdb()
+        await ctx.send(ad)
+
 def setup(bot):
     bot.add_cog(Example(bot))
