@@ -75,7 +75,8 @@ class Example(commands.Cog):
     async def key(self, ctx):
         conn = r.connect()
         betatester = conn.smembers("bet")
-        if ctx.author.id in str(betatester):
+        await ctx.send(betatester)
+        if ctx.author.id in betatester:
             await ctx.send("True")
         else:
             await ctx.send("貴方はベータテスターではありません。")
