@@ -19,9 +19,9 @@ class Example(commands.Cog):
         conn = r.connect()
         betatester = conn.smembers("bets")
         if message.author.id in betatester:
-            await ctx.send("True")
+            await message.channel.send("True")
         else:
-            await ctx.send("貴方はベータテスターではありません。")
+            await message.channel.send("貴方はベータテスターではありません。")
             return
         
     @commands.command()
