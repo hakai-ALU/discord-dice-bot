@@ -19,7 +19,7 @@ class Example(commands.Cog):
         conn = r.connect()
         betatester = conn.smembers("bets")
         if ctx.author.id in betatester:
-            ctx ctx.send("True")
+            await ctx.send("True")
         else:
             await ctx.send("貴方はベータテスターではありません。")
             return
