@@ -13,40 +13,52 @@ class Example(commands.Cog):
             conn = r.connect()
             bt = conn.sadd("bets", what)
             await ctx.send(bt)
-
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        if message.author.bot:
-            return
-        conn = r.connect()
-        betatester = conn.smembers("bets")
-        if message.author.id in betatester:
-            await message.channel.send("True")
-        else:
-            await message.channel.send("貴方はベータテスターではありません。")
-            return
         
     @commands.command()
     async def set(self, ctx, what1, what2):
         conn = r.connect()
-        q = conn.set(what1, what2)
-        await ctx.send(q)
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await message.channel.send("貴方はベータテスターではありません。")
+            return
+       q = conn.set(what1, what2)
+       await ctx.send(q)
 
     @commands.command()
     async def get(self, ctx, what1):
         conn = r.connect()
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await message.channel.send("貴方はベータテスターではありません。")
+            return
         p = conn.get(what1)
         await ctx.send(p)
 
     @commands.command()
     async def sadd(self, ctx, what):
         conn = r.connect()
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await message.channel.send("貴方はベータテスターではありません。")
+            return
         q = conn.sadd("what2", what)
         await ctx.send(q)
 
     @commands.command()
     async def smembers(self, ctx):
         conn = r.connect()
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await message.channel.send("貴方はベータテスターではありません。")
+            return
         p = conn.smembers("what2")
         for w in p:
             await ctx.send(w)
@@ -54,6 +66,12 @@ class Example(commands.Cog):
     @commands.command()
     async def key(self, ctx):
         conn = r.connect()
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await message.channel.send("貴方はベータテスターではありません。")
+            return
         ak = conn.keys()
         for k in ak:
             await ctx.send(k)
@@ -61,12 +79,24 @@ class Example(commands.Cog):
     @commands.command()
     async def delete(self, ctx, what):
         conn = r.connect()
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await message.channel.send("貴方はベータテスターではありません。")
+            return
         d = conn.delete(what)
         await ctx.send(d)
 
     @commands.command()
     async def alldelete(self, ctx):
         conn = r.connect()
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await message.channel.send("貴方はベータテスターではありません。")
+            return
         ad = conn.flushdb()
         await ctx.send(ad)
 
