@@ -23,8 +23,8 @@ class Example(commands.Cog):
         else:
             await message.channel.send("貴方はベータテスターではありません。")
             return
-       q = conn.set(what1, what2)
-       await ctx.send(q)
+        q = conn.set(what1, what2)
+        await ctx.send(q)
 
     @commands.command()
     async def get(self, ctx, what1):
