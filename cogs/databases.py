@@ -13,6 +13,8 @@ class Example(commands.Cog):
             conn = r.connect()
             bt = conn.sadd("bet", what)
             await ctx.send(bt)
+            bts = conn.smembers("bet")
+            await ctx.send("`" + bts + "`")
         
     @commands.command()
     async def set(self, ctx, what1, what2):
