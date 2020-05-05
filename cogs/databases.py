@@ -11,13 +11,13 @@ class Example(commands.Cog):
     async def bet(self, ctx, what):
         if ctx.author.id == 459936557432963103:
             conn = r.connect()
-            bt = conn.sadd("bets", what)
+            bt = conn.sadd("bet", what)
             await ctx.send(bt)
         
     @commands.command()
     async def set(self, ctx, what1, what2):
         conn = r.connect()
-        betatester = conn.smembers("bets")
+        betatester = conn.smembers("bet")
         if ctx.author.id in betatester:
             await ctx.send("True")
         else:
@@ -29,7 +29,7 @@ class Example(commands.Cog):
     @commands.command()
     async def get(self, ctx, what1):
         conn = r.connect()
-        betatester = conn.smembers("bets")
+        betatester = conn.smembers("bet")
         if ctx.author.id in betatester:
             await ctx.send("True")
         else:
@@ -41,7 +41,7 @@ class Example(commands.Cog):
     @commands.command()
     async def sadd(self, ctx, what):
         conn = r.connect()
-        betatester = conn.smembers("bets")
+        betatester = conn.smembers("bet")
         if ctx.author.id in betatester:
             await ctx.send("True")
         else:
@@ -53,7 +53,7 @@ class Example(commands.Cog):
     @commands.command()
     async def smembers(self, ctx):
         conn = r.connect()
-        betatester = conn.smembers("bets")
+        betatester = conn.smembers("bet")
         if ctx.author.id in betatester:
             await ctx.send("True")
         else:
@@ -66,7 +66,7 @@ class Example(commands.Cog):
     @commands.command()
     async def key(self, ctx):
         conn = r.connect()
-        betatester = conn.smembers("bets")
+        betatester = conn.smembers("bet")
         if ctx.author.id in betatester:
             await ctx.send("True")
         else:
@@ -79,7 +79,7 @@ class Example(commands.Cog):
     @commands.command()
     async def delete(self, ctx, what):
         conn = r.connect()
-        betatester = conn.smembers("bets")
+        betatester = conn.smembers("bet")
         if ctx.author.id in betatester:
             await ctx.send("True")
         else:
@@ -91,7 +91,7 @@ class Example(commands.Cog):
     @commands.command()
     async def alldelete(self, ctx):
         conn = r.connect()
-        betatester = conn.smembers("bets")
+        betatester = conn.smembers("bet")
         if ctx.author.id in betatester:
             await ctx.send("True")
         else:
