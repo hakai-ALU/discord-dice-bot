@@ -18,7 +18,10 @@ class Example(commands.Cog):
     async def on_message(self, message):
         conn = r.connect()
         betatester = conn.smembers("bets")
-        if not message.author.id in betatester:
+        if message.author.id in betatester:
+            await ctx.send("True")
+        else:
+            await ctx.send("貴方はベータテスターではありません。")
             return
         
     @commands.command()
