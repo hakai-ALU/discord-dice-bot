@@ -7,6 +7,14 @@ class Example(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        betatester = conn.smembers("bets")
+        if message.author.id in betatester:
+            continue
+        else:
+            return
+        
     @commands.command()
     async def set(self, ctx, what1, what2):
         conn = r.connect()
