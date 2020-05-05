@@ -8,7 +8,7 @@ class Example(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def sadd(self, ctx, what):
+    async def bet(self, ctx, what):
         if ctx.author.id == 459936557432963103:
             conn = r.connect()
             bt = conn.sadd("bets", what)
