@@ -16,6 +16,8 @@ class Example(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        if message.author.bot:
+            return
         conn = r.connect()
         betatester = conn.smembers("bets")
         if message.author.id in betatester:
