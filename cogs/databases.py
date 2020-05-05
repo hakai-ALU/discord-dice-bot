@@ -8,6 +8,13 @@ class Example(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    async def bets(self, ctx, what):
+        if ctx.author.id == 459936557432963103:
+            conn = r.connect()
+            bts = conn.set("bets", what)
+            await ctx.send(bts)
+
+    @commands.command()
     async def bet(self, ctx, what):
         if ctx.author.id == 459936557432963103:
             conn = r.connect()
