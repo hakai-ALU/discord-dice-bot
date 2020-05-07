@@ -11,9 +11,11 @@ class Example(commands.Cog):
     async def bet(self, ctx, what:int):
         if ctx.author.id == 459936557432963103:
             conn = r.connect()
-            M = conn.get("M")
-            bt = conn.set(f"bet{M}", what)
+            u = conn.get("M")
+            bt = conn.set(f"bet{u}", what)
             await ctx.send(bt)
+            u += 1
+            bv = conn.getset("M", U)
             
     @commands.command()
     async def delbet(self, ctx):
