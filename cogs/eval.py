@@ -5,6 +5,7 @@ import textwrap
 import contextlib
 import json
 import glob
+import r
 
 from discord.ext import commands
 from discord import NotFound, Embed,  Forbidden
