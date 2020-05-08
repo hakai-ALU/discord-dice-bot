@@ -14,8 +14,8 @@ class Example(commands.Cog):
             u = conn.get("M")
             bt = conn.set(f"bet{u}", what)
             await ctx.send(bt)
-            u = u + 1
-            bv = conn.set("M", u)
+            v = u + 1
+            bv = conn.set("M", v)
             
     @commands.command()
     async def delbet(self, ctx):
