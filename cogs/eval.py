@@ -6,6 +6,7 @@ import contextlib
 import json
 import glob
 import r
+import os
 
 from discord.ext import commands
 from discord import NotFound, Embed,  Forbidden
