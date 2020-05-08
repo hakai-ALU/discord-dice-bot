@@ -14,7 +14,7 @@ class Example(commands.Cog):
             u = conn.get("M")
             bt = conn.set(f"bet{u}", what)
             await ctx.send(bt)
-            v = u + 1
+            v = int(u) + 1
             bv = conn.set("M", v)
             
     @commands.command()
