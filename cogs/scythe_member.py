@@ -12,7 +12,7 @@ class scythe(commands.Cog):
     async def sighin(self, ctx):
         conn = r.connect()
         k = conn.keys()
-        cai = ctx.author.id
+        cai = int(ctx.author.id)
         for i in k:
             if i == cai:
                 self.namebea += 1
