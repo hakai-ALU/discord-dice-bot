@@ -11,7 +11,7 @@ class scythe(commands.Cog):
 
     @commands.command(name="登録")
     async def sighin(self, ctx):
-        ```ポイント制度登録```
+        """ポイント制度登録"""
         conn = r.connect()
         k = conn.keys()
         cai = str(ctx.author.id)
@@ -29,7 +29,7 @@ class scythe(commands.Cog):
 
     @commands.command(name="ポイント確認")
     async def get_point(self, ctx, user_id:int= None):
-        ```ポイントの確認```
+        """ポイントの確認"""
         conn = r.connect()
         ci = str(ctx.author.id)
         gu = self.bot.get_user(user_id)
