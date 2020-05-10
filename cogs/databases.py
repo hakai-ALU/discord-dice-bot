@@ -37,7 +37,7 @@ class Example(commands.Cog):
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
-        p = conn.smembers(what)
+        p = conn.smembers(f'{what}')
         for w in p:
             await ctx.send(w)
 
