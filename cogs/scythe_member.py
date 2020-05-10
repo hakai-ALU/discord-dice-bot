@@ -25,5 +25,24 @@ class scythe(commands.Cog):
         else:
             await ctx.send("既に登録済みです。")
 
+    @commands.command(name="ポイント確認")
+    async def get_point(self, ctx, user_id:int= None):
+        conn = r.connect()
+        ci = str(ctx.author.id)
+        gu = self.bot.get_user(user_id)
+        ui = str(user_id)
+        if user_id == None:
+            embed = discord.Embed(title=f"**{ctx.author.name}さんの情報**", description=None)
+            up = conn.get(ci)
+            embed.add_field(name="現在ポイント", value=f"`{up}p`")
+            await ctx.send(embed=embed)
+            return
+        else:
+            embed = discord.Embed(title=f"**{gu.name}さんの情報**", description=None)
+            up = conn.get(ui)
+            embed.add_field(name="現在ポイント", value=f"`{up}p`")
+            await ctx.send(embed=embed)
+            return
+
 def setup(bot):
     bot.add_cog(scythe(bot))
