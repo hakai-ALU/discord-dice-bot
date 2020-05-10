@@ -15,8 +15,8 @@ class scythe(commands.Cog):
         cai = ctx.author.id
         for i in k:
             if i == cai:
-                name_bea = 1
-        if name_bea == 1:
+                name_bea += 1
+        if name_bea == "1":
             nb = conn.set(cai,"1")
             if nb == "True":
                 await ctx.send("登録しました。\n登録特典で1Point付与しました。")   
