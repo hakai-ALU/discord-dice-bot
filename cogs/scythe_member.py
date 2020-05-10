@@ -6,17 +6,25 @@ class scythe(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        self.name_bea = 0
 
-    @commands.command()
-    async def bet(self, ctx, what:int):
-        if ctx.author.id == 459936557432963103:
-            conn = r.connect()
-            u = conn.get("M")
-            bt = conn.set(f"bet{u}", what)
-            await ctx.send(bt)
-            v = int(u) + 1
-            bv = conn.set("M", v)
-            
+    @commands.command(name='登録')
+    async def touroku(self, ctx):
+        conn = r.connect()
+        k = conn.keys()
+        cai = ctx.author.id
+        for i in k:
+            if i == cai:
+                name_bea = 1
+        if name_bea == 1:
+            nb = conn.set(cai,"1")
+            if nb == "True":
+                await ctx.send("登録しました。\n登録特典で1Point付与しました。")   
+            else:
+                await ctx.send("登録に失敗しました。\nやり直して下さい。")
+        else:
+            await ctx.send("既に登録済みです。")
+
     @commands.command()
     async def delbet(self, ctx):
         conn = r.connect()
