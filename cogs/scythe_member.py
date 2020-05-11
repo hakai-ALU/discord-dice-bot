@@ -92,7 +92,7 @@ class scythe(commands.Cog):
         embed = discord.Embed(title=f"**ポイント管理者一覧**", description=None)
         for ad in sm:
             adm = self.bot.get_user(int(ad))
-            embed.add_field(name=f"{P}人目", value=f"`{adm.name}`")
+            embed.add_field(name=f"{P}人目", value=f"`{adm}`")
             P+=1
         await ctx.send(embed=embed)
 
