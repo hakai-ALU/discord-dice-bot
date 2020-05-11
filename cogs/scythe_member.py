@@ -51,6 +51,7 @@ class scythe(commands.Cog):
 
     @commands.command(name="P制御")
     async def give_point(self, ctx, user_id:int=None, point:int=None):
+        """ポイント付与・剥奪"""
         if user_id == None:
             return await ctx.send("ユーザーIDを設定して下さい。")
         if point == None:
@@ -76,6 +77,7 @@ class scythe(commands.Cog):
 
     @commands.command(name="ID取得")
     async def getid(self, ctx, user_mention:discord.Member=None):
+        """ID確認用"""
         if user_mention == None:
             await ctx.send(f"{ctx.author.name}さんのidは")
             return await ctx.send(ctx.author.id)
