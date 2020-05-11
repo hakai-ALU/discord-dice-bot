@@ -55,7 +55,7 @@ class scythe(commands.Cog):
             return await ctx.send("ユーザーIDを設定して下さい。")
         if point == None:
             return await ctx.send("付与ポイントを設定して下さい。")
-        self.givepoint = 1
+        self.givepoint = 0
         c = str(ctx.author.id)
         conn = r.connect()
         sm = conn.smembers('adomin')
