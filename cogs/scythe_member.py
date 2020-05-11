@@ -84,5 +84,17 @@ class scythe(commands.Cog):
         await ctx.send(f"{user_mention.name}さんのidは")
         await ctx.send(user_mention.id)
 
+    @commands.command(name="ポイント管理者")
+    async def point_admin(self, ctx):
+        P=1
+        conn = r.connect()
+        sm = conn.smembers('adomin')
+        embed = discord.Embed(title=f"**ポイント管理者一覧**", description=None)
+        for ad in sm:
+            adm = self.bot.get_user(int(ad))
+            embed.add_field(name=f"{P}人目", value=f"`{adm.name}`")
+            P+=1
+        await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(scythe(bot))
