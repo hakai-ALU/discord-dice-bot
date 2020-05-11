@@ -48,7 +48,7 @@ class scythe(commands.Cog):
             return
 
     @commands.command(name="P制御")
-    async def give_point(self, ctx, user_id:int=None, point=None):
+    async def give_point(self, ctx, user_id:int=None, point:str=None):
         if user_id == None:
             return await ctx.send("ユーザーIDを設定して下さい。")
         if point == None:
