@@ -47,5 +47,21 @@ class scythe(commands.Cog):
             await ctx.send(embed=embed)
             return
 
+    @commands.command(name="P制御")
+    async def give_point(self, ctx, user_id:int=None, point=None)
+        if user_id == None:
+            return await ctx.send("ユーザーIDを設定して下さい。")
+        if point == None:
+            return await ctx.send("付与ポイントを設定して下さい。")
+        conn = r.connect()
+        ui = str(user_id)
+        up = conn.get(ui)
+        up = int(up) + point
+        us = conn.set(ui,up)
+        if us == True:
+            return await ctx.send(f"`{point}`P付与しました。")
+        else:
+            return await ctx.send("付与に失敗しました。\n最初からやり直して下さい。")
+
 def setup(bot):
     bot.add_cog(scythe(bot))
