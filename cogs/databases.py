@@ -74,7 +74,7 @@ class Example(commands.Cog):
         await ctx.send(ad)
 
     @commands.command()
-    async def sadd(self, ctx, what1, what2):
+    async def srem(self, ctx, what1, what2):
         """srem [key] [value] and more"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
