@@ -2,7 +2,7 @@ import os
 import r
 from discord.ext import commands
 
-class Example(commands.Cog):
+class database(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
@@ -83,4 +83,4 @@ class Example(commands.Cog):
         await ctx.send(f)
 
 def setup(bot):
-    bot.add_cog(Example(bot))
+    bot.add_cog(database(bot))
