@@ -8,10 +8,12 @@ class scythe(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.namebea = 0
+        self.givepoint = 0
 
     @commands.command(name="登録")
     async def sighin(self, ctx):
         """ポイント制度登録"""
+        self.namebea = 0
         conn = r.connect()
         k = conn.keys()
         cai = str(ctx.author.id)
@@ -30,7 +32,7 @@ class scythe(commands.Cog):
     @commands.command(name="ポイント確認")
     async def get_point(self, ctx, user_id:int= None):
         """ポイントの確認"""
-        conn = r.connect()
+        conn=r.connect()
         ci = str(ctx.author.id)
         gu = self.bot.get_user(user_id)
         ui = str(user_id)
@@ -53,7 +55,15 @@ class scythe(commands.Cog):
             return await ctx.send("ユーザーIDを設定して下さい。")
         if point == None:
             return await ctx.send("付与ポイントを設定して下さい。")
+        self.givepoint = 1
+        c = str(ctx.author.id)
         conn = r.connect()
+        sm = conn.smembers('adomin')
+        for ad in sm:
+            if ad == c:
+                self.givepoint += 1
+        if self.givepoint == 0:
+            return await ctx.send("貴方は操作できません。")
         ui = str(user_id)
         up = conn.get(ui)
         up = int(up) + point
