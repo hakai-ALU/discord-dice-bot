@@ -64,12 +64,13 @@ class scythe(commands.Cog):
                 self.givepoint += 1
         if self.givepoint == 0:
             return await ctx.send("貴方は操作できません。")
+        un = self.bot.get_user(user_id)
         ui = str(user_id)
         up = conn.get(ui)
         up = int(up) + point
         us = conn.set(ui,up)
         if us == True:
-            return await ctx.send(f"`{point}`P付与しました。")
+            return await ctx.send(f"{un.name}さんに`{point}`P付与しました。")
         else:
             return await ctx.send("付与に失敗しました。\n最初からやり直して下さい。")
 
