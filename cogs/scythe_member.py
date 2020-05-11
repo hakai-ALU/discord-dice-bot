@@ -77,7 +77,7 @@ class scythe(commands.Cog):
     @commands.command(name="ID取得")
     async def getid(self, ctx, user_mention:discord.Member=None):
         if user_mention == None:
-            await ctx.send(f"{ctx.author.name}さんのidは)
+            await ctx.send(f"{ctx.author.name}さんのidは")
             return await ctx.send(ctx.author.id)
         await ctx.send(f"{user_mention.name}さんのidは")
         await ctx.send(user_mention.id)
