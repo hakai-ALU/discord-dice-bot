@@ -75,7 +75,7 @@ class scythe(commands.Cog):
             return await ctx.send("付与に失敗しました。\n最初からやり直して下さい。")
 
     @commands.command(name="ID取得")
-    async def getid(self, ctx, user_mention:discord.member):
+    async def getid(self, ctx, user_mention:discord.Member):
         await ctx.send(f"{user_mention.name}さんのidは")
         await ctx.send(user_mention.id)
 
