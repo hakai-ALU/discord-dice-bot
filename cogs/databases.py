@@ -10,6 +10,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def set(self, ctx, what1, what2):
+        """set [key] [value]"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
@@ -18,6 +19,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def get(self, ctx, what1):
+        """get [key]"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
@@ -26,6 +28,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def sadd(self, ctx, what1, what2):
+        """sadd [key] [value] and more"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
@@ -34,6 +37,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def smembers(self, ctx, whst):
+        """smembers [key]"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
@@ -43,6 +47,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def key(self, ctx):
+        """key"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
@@ -52,6 +57,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def delete(self, ctx, what):
+        """delete [key]"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
@@ -60,11 +66,21 @@ class Example(commands.Cog):
 
     @commands.command()
     async def alldelete(self, ctx):
+        """flushdb"""
         if ctx.author.id != self.ahomin:
             return await ctx.send("貴方は使えません")
         conn = r.connect()
         ad = conn.flushdb()
         await ctx.send(ad)
+
+    @commands.command()
+    async def sadd(self, ctx, what1, what2):
+        """srem [key] [value] and more"""
+        if ctx.author.id != self.ahomin:
+            return await ctx.send("貴方は使えません")
+        conn = r.connect()
+        f = conn.srem(what1, what2)
+        await ctx.send(f)
 
 def setup(bot):
     bot.add_cog(Example(bot))
