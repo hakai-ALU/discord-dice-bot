@@ -118,7 +118,7 @@ class scythe(commands.Cog):
                     cg=conn.get(p)
                     bp=int(cg)+1
                     det=conn.set(p,bp)
-        for am in ctx.guild.member:
+        for am in ctx.guild.members:
             for adf in am.roles:
                 prole = ctx.guild.get_role(709678662961594371)
                 if adf in prole:
