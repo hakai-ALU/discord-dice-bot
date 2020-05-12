@@ -87,6 +87,7 @@ class scythe(commands.Cog):
 
     @commands.command(name="ポイント管理者")
     async def point_admin(self, ctx):
+        """ポイント管理者一覧"""
         P=1
         conn = r.connect()
         sm = conn.smembers('adomin')
@@ -98,8 +99,8 @@ class scythe(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(name="P集会付与")
-    async def give_point(self, ctx):
-        """ポイント付与・剥奪"""
+    async def all_give_point(self, ctx):
+        """集会参加ポイント"""
         self.givepoint = 0
         c = str(ctx.author.id)
         conn = r.connect()
