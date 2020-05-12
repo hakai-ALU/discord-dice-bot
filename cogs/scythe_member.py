@@ -111,7 +111,7 @@ class scythe(commands.Cog):
             return await ctx.send("貴方は操作できません。")
         mem=conn.smembers("scythes")
         for p in mem:
-            q=self.bot.get_user(int(p))
+            q=self.bot.get_member(int(p))
             for ro in q.roles:
                 if ro.name == "集会参加":
                     cg=conn.get(p)
