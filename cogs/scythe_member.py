@@ -121,7 +121,7 @@ class scythe(commands.Cog):
         for am in ctx.guild.members:
             for adf in am.roles:
                 prole = ctx.guild.get_role(709678662961594371)
-                if adf == prole:
+                if adf.name == "集会参加":
                     await q.remove_roles(prole)
         
         await ctx.send("付与完了しました。")
