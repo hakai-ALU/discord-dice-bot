@@ -117,7 +117,7 @@ class scythe(commands.Cog):
                     cg=conn.get(p)
                     bp=int(cg)+1
                     det=conn.set(p,bp)
-                    prole = get(ctx.guild.roles, name='集会参加')
+                    prole = self.bot.get(ctx.guild.roles, name='集会参加')
                     await self.bot.remove_roles(q,prole)
         await ctx.send("付与完了しました。")
 
