@@ -122,5 +122,18 @@ class scythe(commands.Cog):
                     await q.remove_roles(prole)
         await ctx.send("付与完了しました。")
 
+    @commands.command(name="登録者")
+    async def point_geter(self, ctx):
+        """ポイント管理者一覧"""
+        P=1
+        conn = r.connect()
+        sm = conn.smembers('scythes')
+        embed = discord.Embed(title=f"**登録者**", description=None)
+        for ad in sm:
+            adm = self.bot.get_user(int(ad))
+            embed.add_field(name=f"{P}人目", value=f"`{adm}`")
+            P+=1
+        await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(scythe(bot))
