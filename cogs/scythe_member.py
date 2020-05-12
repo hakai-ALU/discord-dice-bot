@@ -91,7 +91,7 @@ class scythe(commands.Cog):
         P=1
         conn = r.connect()
         sm = conn.smembers('adomin')
-        embed = discord.Embed(title=f"**ポイント管理者一覧**", description=None)
+        embed = discord.Embed(title=f"**ポイント管理者一覧**", description=None, color=0x9b59b6)
         for ad in sm:
             adm = self.bot.get_user(int(ad))
             embed.add_field(name=f"{P}人目", value=f"`{adm}`")
@@ -118,8 +118,12 @@ class scythe(commands.Cog):
                     cg=conn.get(p)
                     bp=int(cg)+1
                     det=conn.set(p,bp)
-                    prole = ctx.guild.get_role(709678662961594371)
+        for am in ctx.guild.member:
+            for adf in am.roles:
+                prole = ctx.guild.get_role(709678662961594371)
+                if adf in prole:
                     await q.remove_roles(prole)
+        
         await ctx.send("付与完了しました。")
 
     @commands.command(name="登録者")
