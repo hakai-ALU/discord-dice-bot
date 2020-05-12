@@ -112,8 +112,8 @@ class scythe(commands.Cog):
         mem=conn.smembers("scythes")
         for p in mem:
             q=self.bot.get_user(int(p))
-            for r in q.roles:
-                if r.name == "集会参加":
+            for ro in q.roles:
+                if ro.name == "集会参加":
                     cg=conn.get(p)
                     bp=int(cg)+1
                     det=conn.set(p,bp)
