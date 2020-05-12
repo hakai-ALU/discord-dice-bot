@@ -22,6 +22,7 @@ class scythe(commands.Cog):
                 self.namebea += 1
         if self.namebea == 0:
             nb = conn.set(cai,"1")
+            nb2 = conn.sadd("scythes",cai)
             if nb == True:
                 await ctx.send("登録しました。\n登録特典で1Point付与しました。")   
             else:
@@ -95,6 +96,28 @@ class scythe(commands.Cog):
             embed.add_field(name=f"{P}人目", value=f"`{adm}`")
             P+=1
         await ctx.send(embed=embed)
+
+    @commands.command(name="P集会付与")
+    async def give_point(self, ctx):
+        """ポイント付与・剥奪"""
+        self.givepoint = 0
+        c = str(ctx.author.id)
+        conn = r.connect()
+        sm = conn.smembers('adomin')
+        for ad in sm:
+            if ad == c:
+                self.givepoint += 1
+        if self.givepoint == 0:
+            return await ctx.send("貴方は操作できません。")
+        mem=conn.smembers("scythes")
+        for p in mem:
+            q=self.bot.get_user(int(p))
+            for r in q.roles:
+                if r.name == "集会参加":
+                    cg=conn.get(p)
+                    bp=int(cg)+1
+                    det=conn.set(p,bp)
+        await ctx.send("付与完了しました。")
 
 def setup(bot):
     bot.add_cog(scythe(bot))
