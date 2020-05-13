@@ -21,7 +21,7 @@ class scythe(commands.Cog):
             if i == cai:
                 self.namebea += 1
         if self.namebea == 0:
-            nb = conn.set(cai,"1")
+            nb = conn.set(cai,"150")
             nb2 = conn.sadd("scythes",cai)
             if nb == True:
                 await ctx.send("登録しました。\n登録特典で1Point付与しました。")   
@@ -116,7 +116,7 @@ class scythe(commands.Cog):
             for ro in q.roles:
                 if ro.name == "集会参加":
                     cg=conn.get(p)
-                    bp=int(cg)+1
+                    bp=int(cg)+150
                     det=conn.set(p,bp)
         for am in ctx.guild.members:
             for adf in am.roles:
@@ -128,7 +128,7 @@ class scythe(commands.Cog):
 
     @commands.command(name="登録者")
     async def point_geter(self, ctx):
-        """ポイント管理者一覧"""
+        """ポイント登録者一覧"""
         P=1
         conn = r.connect()
         sm = conn.smembers('scythes')
