@@ -13,7 +13,7 @@ class eew(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def gban(self, ctx):
+    async def eew(self, ctx):
         """Test1(開発者用)"""
         if ctx.author.id != great_owner_id:
             return
