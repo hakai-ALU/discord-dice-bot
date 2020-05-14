@@ -7,7 +7,6 @@ import json
 import glob
 import r
 import os
-import json
 import requests
 
 from discord.ext import commands, tasks
