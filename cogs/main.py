@@ -15,10 +15,11 @@ class main(commands.Cog):
     @commands.command(aliases=['s'])
     async def say(self, ctx, what):
         """オウム返し"""
+        if ctx.author.id == great_owner_id:
+            return
         await ctx.send(f'{what}')
 
     @commands.Cog.listener()
-    @commands.has_permissions(manage_guild=True)
     async def on_message(self, message):
         if message.author.id == 159985870458322944: # MEE6からのメッセージかどうかを判別
             if message.content.startswith("!levelup"):
