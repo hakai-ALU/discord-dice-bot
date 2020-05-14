@@ -24,7 +24,7 @@ class scythe(commands.Cog):
             nb = conn.set(cai,"150")
             nb2 = conn.sadd("scythes",cai)
             if nb == True:
-                await ctx.send("登録しました。\n登録特典で1Point付与しました。")   
+                await ctx.send("登録しました。\n登録特典で100Point付与しました。")   
             else:
                 await ctx.send("登録に失敗しました。\nやり直して下さい。")
         else:
