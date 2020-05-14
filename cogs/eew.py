@@ -2,7 +2,7 @@ from discord.ext import commands # Bot Commands Frameworkのインポート
 import discord
 import asyncio
 import json
-import requests
+import urllib.request
 
 great_owner_id = 459936557432963103
 
@@ -17,8 +17,8 @@ class eew(commands.Cog):
         """Test1(開発者用)"""
         if ctx.author.id != great_owner_id:
             return
-        r = requests.get('http://svir.jp/eew/data.json')
-        eew = r.json()
+        resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
+        eew = json.loads(resp.decode('utf-8'))
         embed=discord.Embed(title="**地震情報**", description=eew['Head']['Title'])
         embed.add_field(name="発表時刻", value=eew['Body']['Earthquake']['OriginTime'], inline=False)
         embed.add_field(name="震源地", value=eew['Body']['Earthquake']['Hypocenter']['Name'], inline=False)
