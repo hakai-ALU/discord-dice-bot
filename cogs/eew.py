@@ -18,7 +18,7 @@ class eew(commands.Cog):
         if ctx.author.id != great_owner_id:
             return
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
-        eew = json.loads(resp.decode('utf-8'))
+        eew = json.loads(resp)
         embed=discord.Embed(title="**地震情報**", description=eew['Head']['Title'])
         embed.add_field(name="発表時刻", value=eew['Body']['Earthquake']['OriginTime'], inline=False)
         embed.add_field(name="震源地", value=eew['Body']['Earthquake']['Hypocenter']['Name'], inline=False)
