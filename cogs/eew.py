@@ -40,8 +40,14 @@ class eew(commands.Cog):
         eew = json.loads(resp.read().decode('utf-8'))
         eew_code = eew['Head']['EventID']
         if self.code != eew_code:
-            for chj in chw:
-                await chj.send("test")
+            for chj in chw:   
+                embed=discord.Embed(title="**地震情報**", description=eew['Head']['Title'])
+                embed.add_field(name="発表時刻", value=eew['Body']['Earthquake']['OriginTime'], inline=False)
+                embed.add_field(name="震源地", value=eew['Body']['Earthquake']['Hypocenter']['Name'], inline=False)
+                embed.add_field(name="マグニチュード", value=eew['Body']['Earthquake']['Magnitude'], inline=False) 
+                embed.add_field(name="深さ", value=eew['Body']['Earthquake']['Hypocenter']['Depth'] + "km" , inline=False)
+                embed.add_field(name="予想震度[震源地付近の推定です]", value=eew['Body']['Intensity']['TextInt'], inline=False)
+                await chj.send(embed=embed)
             self.code = eew_code
     
 
