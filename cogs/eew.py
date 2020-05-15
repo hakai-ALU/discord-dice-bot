@@ -39,7 +39,6 @@ class eew(commands.Cog):
             for chj in chw:
                 await chj.send("test")
             self.code = eew_code
-
     loop.start()
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
