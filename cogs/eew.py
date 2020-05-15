@@ -39,7 +39,7 @@ class eew(commands.Cog):
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
         eew = json.loads(resp.read().decode('utf-8'))
         eew_code = eew['Head']['EventID']
-        if self.code != eew_code:
+        if eew_code != self.code:
             for chj in chw:   
                 embed=discord.Embed(title="**地震情報**", description=eew['Head']['Title'])
                 embed.add_field(name="発表時刻", value=eew['Body']['Earthquake']['OriginTime'], inline=False)
