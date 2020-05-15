@@ -33,15 +33,19 @@ class main(commands.Cog):
                 if level == 10: # レベル1になった時の処理
                     levelrole1 = discord.utils.get(message.server.roles, name="上級市民")
                     await target.add_roles(levelrole1)
+
         if message.author.bot:
             return
+
         if message.author.id != great_owner_id:
             return
+
         if message.content == 'ログ削除して':
             await message.channel.purge()
             msg = await message.channel.send("削除しました。")
             await asyncio.sleep(15)
             await msg.delete()
+
         if message.content == '再起動して':
             await self.bot.logout()
 
