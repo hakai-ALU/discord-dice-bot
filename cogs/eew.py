@@ -33,8 +33,8 @@ class eew(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def eew(self, ctx):
-        """Test1(開発者用)"""
+    async def eewop(self, ctx):
+        """Test2(開発者用)"""
         if ctx.author.id != great_owner_id:
             return
         await ctx.send(self.code)
