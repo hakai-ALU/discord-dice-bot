@@ -74,29 +74,14 @@ class info(commands.Cog):
             embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
             await ctx.channel.send(embed=embed)
             return
-        memberss =discord.utils.get(self.bot.get_all_members(), id=user_id)
+        user = await self.bot.fetch_user(id)
         embed = discord.Embed(title="プロフィール", description=None)
-        embed.set_thumbnail(url=memberss.avatar_url)
-        embed.add_field(name="Name#Tag", value=f'`{memberss}`',inline=False)
-        embed.add_field(name="ID", value=f'`{memberss.id}`',inline=False)
-        embed.add_field(name="アカウント作成日", value=f'`{memberss.created_at}`',inline=False)
+        embed.set_thumbnail(url=user.avatar_url_as(static_format="png"))
+        embed.add_field(name="Name#Tag", value=f'`{user}`',inline=False)
+        embed.add_field(name="ID", value=f'`{user.id}`',inline=False)
+        embed.add_field(name="アカウント作成日", value=f'`{user.created_at}`',inline=False)
+        embed.add_field(name="BOT判定", value=f"{user.bot}", inline=False)
         embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
-        await ctx.channel.send(embed=embed)
-
-    @commands.command(aliases=['ai'])
-    async def avaterimage(self, ctx, user_id: int=None):
-        """ユーザーについて"""
-        if user_id == None:
-            memberss = self.bot.get_user(ctx.author.id)
-            avater_url = memberss.avatar_url
-            embed = discord.Embed(title="**Avater Image**",description=f"[アバターURL](<{avater_url}>)")
-            embed.set_image(url=avater_url)
-            await ctx.channel.send(embed=embed)
-            return
-        memberss =discord.utils.get(self.bot.get_all_members(), id=user_id)
-        avater_url = memberss.avatar_url
-        embed = discord.Embed(title="**Avater Image**",description=f"[アバターURL](<{avater_url}>)")
-        embed.set_image(url=avater_url)
         await ctx.channel.send(embed=embed)
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
