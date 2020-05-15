@@ -84,7 +84,7 @@ class info(commands.Cog):
         embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
         await ctx.send(embed=embed)
         if user.bot == False:
-            up = await user.profile()
+            up = await profile(user)
             embed = discord.Embed(title="プロフィール", description=None)
             embed.set_thumbnail(url=user.avatar_url_as(static_format="png"))
             embed.add_field(name="ニトロの有無", value=f'`{up.premium}`',inline=False)
