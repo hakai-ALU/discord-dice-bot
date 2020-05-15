@@ -1,4 +1,4 @@
-from discord.ext import commands # Bot Commands Frameworkのインポート
+from discord.ext import commands, tasks # Bot Commands Frameworkのインポート
 import discord
 import asyncio
 import json
@@ -11,6 +11,7 @@ class eew(commands.Cog):
     # testクラスのコンストラクタ。Botを受取り、インスタンス変数として保持。
     def __init__(self, bot):
         self.bot = bot
+        self.code = 0
 
     @commands.command()
     async def eew(self, ctx):
@@ -26,6 +27,20 @@ class eew(commands.Cog):
         embed.add_field(name="深さ", value=eew['Body']['Earthquake']['Hypocenter']['Depth'] + "km" , inline=False)
         embed.add_field(name="予想震度[震源地付近の推定です]", value=eew['Body']['Intensity']['TextInt'], inline=False)
         await ctx.send(embed=embed)
+
+    @tasks.loop(seconds=5)
+    async def loop():
+        channels=bot.get_all_channels()
+        chw=[ch for ch in channels if ch.name == "eew"]
+        resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
+        eew = json.loads(resp.read().decode('utf-8'))
+        eew_code = eew['Head']['EventID']
+        if self.code != eew_code:
+            for chj in chw:
+                await chj.send("test")
+            self.code = eew_code
+
+    loop.start()
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
