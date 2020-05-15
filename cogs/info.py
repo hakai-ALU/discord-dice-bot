@@ -80,7 +80,7 @@ class info(commands.Cog):
         embed.add_field(name="Name#Tag", value=f'`{user}`',inline=False)
         embed.add_field(name="ID", value=f'`{user.id}`',inline=False)
         embed.add_field(name="アカウント作成日", value=f'`{user.created_at}`',inline=False)
-        embed.add_field(name="BOT判定", value=f"{user.bot}", inline=False)
+        embed.add_field(name="BOT判定", value=f"`{user.bot}`", inline=False)
         embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
         await ctx.channel.send(embed=embed)
 
