@@ -40,7 +40,7 @@ class eew(commands.Cog):
         await ctx.send(self.code)
 
     @tasks.loop(seconds=5)
-    async def loop(self, bot):
+    async def loop(self):
         channels=self.bot.get_all_channels()
         chw=[ch for ch in channels if ch.name == "eew"]
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
