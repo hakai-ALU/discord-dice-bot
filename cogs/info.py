@@ -34,7 +34,7 @@ class info(commands.Cog):
             return
         server = self.bot.fetch_guild(server_id)
         embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
-        embed.add_field(name="サーバー名",value=f'`{server.name}`')
+        embed.add_field(name="サーバー名",value=f'`{server}`')
         embed.add_field(name="現オーナー名",value=f'`{server.owner}`')
         embed.add_field(name="作成日",value=f'`{server.created_at}`')
         guild = server
