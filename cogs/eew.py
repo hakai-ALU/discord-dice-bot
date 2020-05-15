@@ -12,6 +12,10 @@ class eew(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.code = 0
+        self.loop.start()
+
+    def cog_unload(self):
+        self.loop.cancel() 
 
     @commands.command()
     async def eew(self, ctx):
@@ -39,7 +43,7 @@ class eew(commands.Cog):
             for chj in chw:
                 await chj.send("test")
             self.code = eew_code
-    loop.start()
+    
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
