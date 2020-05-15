@@ -8,6 +8,7 @@ import glob
 import r
 import os
 
+import urllib.request
 from discord.ext import commands, tasks
 from discord import NotFound, Embed,  Forbidden
 
