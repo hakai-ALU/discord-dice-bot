@@ -32,6 +32,13 @@ class eew(commands.Cog):
         embed.add_field(name="予想震度[震源地付近の推定です]", value=eew['Body']['Intensity']['TextInt'], inline=False)
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def eew(self, ctx):
+        """Test1(開発者用)"""
+        if ctx.author.id != great_owner_id:
+            return
+        await ctx.send(self.code)
+
     @tasks.loop(seconds=5)
     async def loop(self, bot):
         channels=self.bot.get_all_channels()
