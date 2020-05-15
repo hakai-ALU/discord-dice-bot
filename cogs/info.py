@@ -32,9 +32,9 @@ class info(commands.Cog):
             embed.set_thumbnail(url=ctx.guild.icon_url)
             await ctx.channel.send(embed=embed)
             return
-        server = self.bot.fetch_guild(server_id)
+        server = self.bot.get_guild(server_id)
         embed = discord.Embed(title="鯖ステータス",description=f"Ping:`{self.bot.ws.latency * 1000:.0f}ms`")
-        embed.add_field(name="サーバー名",value=f'`{server}`')
+        embed.add_field(name="サーバー名",value=f'`{server.name}`')
         embed.add_field(name="現オーナー名",value=f'`{server.owner}`')
         embed.add_field(name="作成日",value=f'`{server.created_at}`')
         guild = server
@@ -82,7 +82,17 @@ class info(commands.Cog):
         embed.add_field(name="アカウント作成日", value=f'`{user.created_at}`',inline=False)
         embed.add_field(name="BOT判定", value=f"`{user.bot}`", inline=False)
         embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
-        await ctx.channel.send(embed=embed)
+        await ctx.send(embed=embed)
+        if user.bot == False:
+            up = await user.profile()
+            embed = discord.Embed(title="プロフィール", description=None)
+            embed.set_thumbnail(url=user.avatar_url_as(static_format="png"))
+            embed.add_field(name="ニトロの有無", value=f'`{up.premium}`',inline=False)
+            embed.add_field(name="ニトロ日", value=f'`{up.premium_since}`',inline=False)
+            embed.add_field(name="スタッフ", value=f'`{up.staff}`',inline=False)
+            embed.add_field(name="パートナー", value=f"`{up.partner}`", inline=False)
+            embed.add_field(name="デバッガー", value=f'`{up.bug_hunter}`',inline=False)
+            await ctx.send(embed=embed)
 
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
