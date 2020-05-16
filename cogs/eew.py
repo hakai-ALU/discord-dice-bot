@@ -3,7 +3,6 @@ import discord
 import asyncio
 import json
 import urllib.request
-import eewname
 
 great_owner_id = 459936557432963103
 
