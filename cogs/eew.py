@@ -3,6 +3,7 @@ import discord
 import asyncio
 import json
 import urllib.request
+import eewname
 
 great_owner_id = 459936557432963103
 
@@ -75,7 +76,6 @@ class eew(commands.Cog):
         embed.add_field(name="**震源位置の経度**", value=eew['Body']['PLUMFlag'], inline=False)
         embed.add_field(name="**震源の深さ**", value=eew['Body']['WarningFlag'], inline=False)
         embed.add_field(name="**震源の陸海識別**", value=eew['Body']['EndFlag'], inline=False)
-        
         await ctx.send(embed=embed)
 
     @tasks.loop(seconds=5)
