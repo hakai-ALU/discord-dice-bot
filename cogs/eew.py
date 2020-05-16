@@ -36,6 +36,7 @@ class eew(commands.Cog):
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
         eew = json.loads(resp.read().decode('utf-8'))
         name = open('eewname.json', 'r')
+        name = json.load(name)
         embed=discord.Embed(title="**Head情報**", description=None)
         embed.add_field(name=f"**{name['Head']['Title']}**", value=eew['Head']['Title'], inline=False)
         embed.add_field(name=f"**{name['Head']['DateTime']}**", value=eew['Head']['DateTime'], inline=False)
@@ -52,7 +53,8 @@ class eew(commands.Cog):
         """地震情報(確認用)"""
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
         eew = json.loads(resp.read().decode('utf-8'))
-        json_open = open('eewname.json', 'r')       
+        name = open('eewname.json', 'r')
+        name = json.load(name)       
         embed=discord.Embed(title="**Body情報**", description=None)
         embed.add_field(name="**地震発生時刻**", value=eew['Body']['Earthquake']['OriginTime'])
         embed.add_field(name="**震央地名**", value=eew['Body']['Earthquake']['Hypocenter']['Name'], inline=False) 
