@@ -36,7 +36,7 @@ class eew(commands.Cog):
         """地震情報(確認用)"""
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
         eew = json.loads(resp.read().decode('utf-8'))
-        #Head
+        json_open = open('eewname.json', 'r')
         embed=discord.Embed(title="**Head情報**", description=None)
         embed.add_field(name="**API識別タイトル、「緊急地震速報（予報）」で固定**", value=eew['Head']['Title'], inline=False)
         embed.add_field(name="**緊急地震速報の発表時刻**", value=eew['Head']['DateTime'], inline=False)
@@ -53,7 +53,7 @@ class eew(commands.Cog):
         """地震情報(確認用)"""
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
         eew = json.loads(resp.read().decode('utf-8'))
-        #body       
+        json_open = open('eewname.json', 'r')       
         embed=discord.Embed(title="**Body情報**", description=None)
         embed.add_field(name="**地震発生時刻**", value=eew['Body']['Earthquake']['OriginTime'])
         embed.add_field(name="**震央地名**", value=eew['Body']['Earthquake']['Hypocenter']['Name'], inline=False) 
