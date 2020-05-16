@@ -32,10 +32,19 @@ class eew(commands.Cog):
 
     @commands.command()
     async def eewop(self, ctx):
-        """Test2(開発者用)"""
-        if ctx.author.id != great_owner_id:
-            return
-        await ctx.send(self.code)
+        """地震情報(確認用)"""
+        resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
+        eew = json.loads(resp.read().decode('utf-8'))
+        embed=discord.Embed(title="**API識別タイトル、「緊急地震速報（予報）」で固定**", description=eew['Head']['Title'])
+        embed.add_field(name="緊急地震速報の発表時刻", value=eew['Head']['DateTime'], inline=False)
+        embed.add_field(name="緊急地震速報を発表した管区気象台名", value=eew['Head']['EditorialOffice'], inline=False)
+        embed.add_field(name="発表官庁名、「気象庁」で固定", value=eew['Head']['PublishingOffice'], inline=False) 
+        embed.add_field(name="地震識別ID、地震ごとに異なる", value=eew['Head']['EventID'], inline=False)
+        embed.add_field(name="電文の状態、「通常」は通常配信、「取消」はキャンセル報、「訓練」は訓練配信、「訓練取消」は訓練をキャンセル、「試験」は試験配信", value=eew['Head']['Status'], inline=False)
+        embed.add_field(name="電文の配信数、地震識別IDごとに増えていく", value=eew['Head']['Serial'], inline=False)
+        embed.add_field(name="電文バージョン", value=eew['Head']['Version'], inline=False)
+        
+        await ctx.send(embed=embed)
 
     @tasks.loop(seconds=5)
     async def loop(self):
