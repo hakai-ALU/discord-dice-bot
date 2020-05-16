@@ -58,7 +58,7 @@ class eew(commands.Cog):
         embed.add_field(name="**震央地名**", value=eew['Body']['Earthquake']['Hypocenter']['Name'], inline=False) 
         embed.add_field(name="**震央地名コード**", value=eew['Body']['Earthquake']['Hypocenter']['Code'], inline=False)
         embed.add_field(name="**震源位置の緯度**", value=eew['Body']['Earthquake']['Hypocenter']['Lat'], inline=False)
-        embed.add_field(name="**震源位置の経度**", value=eew['Body']['Earthquake']['Hypocenter']['Lot'], inline=False)
+        embed.add_field(name="**震源位置の経度**", value=eew['Body']['Earthquake']['Hypocenter']['Lon'], inline=False)
         embed.add_field(name="**震源の深さ**", value=eew['Body']['Earthquake']['Hypocenter']['Depth'], inline=False)
         embed.add_field(name="**震源の陸海識別**", value=eew['Body']['Earthquake']['Hypocenter']['LandOrSea'], inline=False)
         embed.add_field(name="**地震発生時刻**", value=eew['Body']['Earthquake']['Accuracy']['Epicenter'])
