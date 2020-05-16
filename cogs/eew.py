@@ -19,9 +19,7 @@ class eew(commands.Cog):
 
     @commands.command()
     async def eew(self, ctx):
-        """Test1(開発者用)"""
-        if ctx.author.id != great_owner_id:
-            return
+        """地震情報(最新)"""
         resp = urllib.request.urlopen('http://svir.jp/eew/data.json')
         eew = json.loads(resp.read().decode('utf-8'))
         embed=discord.Embed(title="**地震情報**", description=eew['Head']['Title'])
