@@ -66,7 +66,7 @@ class eew(commands.Cog):
         embed.add_field(name="**最大予測震度1:震度12:震度23:震度34:震度45-:震度5弱5+:震度5強6-:震度6弱6+:震度6強7:震度7不明:不明時**", value=eew['Body']['Intensity']['MaxInt'], inline=False)
         embed.add_field(name="**テキストの予測最大震度**", value=eew['Body']['Intensity']['TextInt'], inline=False)
         embed.add_field(name="**最大予測震度の下限1:震度12:震度23:震度34:震度45-:震度5弱5+:震度5強6-:震度6弱6+:震度6強7:震度7不明:不明時**", value=eew['Body']['Intensity']['ForecastInt']['From'], inline=False)
-        embed.add_field(name="**最大予測震度の上限1:震度12:震度23:震度34:震度45-:震度5弱5+:震度5強6-:震度6弱6+:震度6強7:震度7over:～程度以上不明:不明時**", value=eew['Body']'Intensity']['ForecastInt']['To'], inline=False)
+        embed.add_field(name="**最大予測震度の上限1:震度12:震度23:震度34:震度45-:震度5弱5+:震度5強6-:震度6弱6+:震度6強7:震度7over:～程度以上不明:不明時**", value=eew['Body']['Intensity']['ForecastInt']['To'], inline=False)
         embed.add_field(name="**最大予測震度変化0:ほとんど変化なし1:最大予測震度が1.0以上大きくなった2:最大予測震度が1.0以上小さくなった3-9:未定義**", value=eew['Body']['Intensity']['MaxIntChange'], inline=False)
         embed.add_field(name="**最大予測震度変化の理由0:変化なし1:主としてMが変化したため（1.0以上）2:主として震央位置が変化したため（10㎞以上）3:M及び震央位置が変化したため（1と2の複合条件）4:震源の深さが変化したため（上記のいずれにも当てはまらず、30㎞以上変化）5-8:未定義9:PLUM法による予想により変化したため**", value=eew['Body']['Intensity']['MaxIntChangeReason'], inline=False)
         await ctx.send(embed=embed)
