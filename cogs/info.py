@@ -79,8 +79,11 @@ class info(commands.Cog):
         embed.set_thumbnail(url=user.avatar_url_as(static_format="png"))
         embed.add_field(name="Name#Tag", value=f'`{user}`',inline=False)
         embed.add_field(name="ID", value=f'`{user.id}`',inline=False)
+        embed.add_field(name="discriminator", value=f"`{user.discriminator}`", inline=False)
+        embed.add_field(name="bot", value=f'`{user.bot}`',inline=False)
+        embed.add_field(name="system", value=f'`{user.system}`',inline=False)
         embed.add_field(name="アカウント作成日", value=f'`{user.created_at}`',inline=False)
-        embed.add_field(name="BOT判定", value=f"`{user.bot}`", inline=False)
+        
         embed.add_field(name="Ping値", value=f'`{self.bot.ws.latency * 1000:.0f}ms`',inline=False)
         await ctx.send(embed=embed)
         if user.bot == False:
