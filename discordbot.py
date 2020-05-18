@@ -20,7 +20,7 @@ INITIAL_EXTENSIONS = [
     'cogs.eval',
     'cogs.scythe_member',
     'cogs.eew',
-    'cogs.TRPG'
+    'cogs.trpg'
 ]
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
