@@ -1,7 +1,6 @@
 from discord.ext import commands # Bot Commands Frameworkのインポート
 import discord
 import asyncio
-import random
 import datetime
 
 great_owner_id = 459936557432963103
