@@ -28,8 +28,8 @@ class TRPG(commands.Cog):
     @commands.command(name='TRPG値')
     async def trpg(self, ctx, what):
         """オウム返し"""
-        2d6="1,3"
-        t1=random.randint(2d6)
+        sd6="1,3"
+        t1=random.randint(sd6)
         await ctx.send(t1)
         
 def setup(bot):
