@@ -28,7 +28,8 @@ class TRPG(commands.Cog):
     @commands.command(name='TRPG値')
     async def trpg(self, ctx):
         """TRPG探索者値"""
-        embed = discord.Embed(title=f"**{ctx.author.name}さんの能力値**", description=None,color=0x2ECC69)
+        color=random.choice((0,0x1abc9c,0x11806a,0x2ecc71,0x1f8b4c,0x3498db,0x206694,0x9b59b6,0x71368a,0xe91e63,0xad1457,0xf1c40f,0xc27c0e,0xe67e22,0x95a5a6,0x607d8b,0x979c9f,0x546e7a,0x7289da,0x99aab5))
+        embed = discord.Embed(title=f"**{ctx.author.name}さんの能力値**", description=None,color=color)
         embed.set_thumbnail(url=ctx.author.avatar_url)
 
         str1=random.randint(3,18)
@@ -63,7 +64,7 @@ class TRPG(commands.Cog):
 
         await ctx.send(embed=embed)
 
-        embed2 = discord.Embed(title=f"**{ctx.author.name}さんの能力値ロール**", description=None,color=0x2ECC69)
+        embed2 = discord.Embed(title=f"**{ctx.author.name}さんの能力値ロール**", description=None,color=color)
         embed2.set_thumbnail(url=ctx.author.avatar_url)
 
         ida1=int1*5
@@ -102,7 +103,7 @@ class TRPG(commands.Cog):
 
         await ctx.send(embed=embed2)
 
-        embed3 = discord.Embed(title=f"**その他**", description=None,color=0x2ECC69)
+        embed3 = discord.Embed(title=f"**その他**", description=None,color=color)
         embed3.set_thumbnail(url=ctx.author.avatar_url)
 
         wrp1=edu1*20
