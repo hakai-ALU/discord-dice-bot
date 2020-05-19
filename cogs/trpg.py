@@ -28,7 +28,7 @@ class TRPG(commands.Cog):
     @commands.command(name='TRPG値')
     async def trpg(self, ctx, what):
         """オウム返し"""
-        sd6="1,3"
+        sd6=int("1,3")
         t1=random.randint(sd6)
         await ctx.send(t1)
         
