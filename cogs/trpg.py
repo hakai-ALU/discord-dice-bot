@@ -71,7 +71,7 @@ class TRPG(commands.Cog):
         embed2.add_field(name="**アイデア**", value=f"`{ida1}`")
 
         rac1=pow1*5
-        embed2.add_field(name="**幸運", value=f"`{rac1}`")
+        embed2.add_field(name="**幸運**", value=f"`{rac1}`")
 
         lun1=edu1*5
         embed2.add_field(name="**知識**", value=f"`{lun1}`")
