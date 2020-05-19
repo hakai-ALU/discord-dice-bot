@@ -79,7 +79,7 @@ class eew(commands.Cog):
         embed.add_field(name=f"**{name['Body']['EndFlag']}**", value=eew['Body']['EndFlag'], inline=False)
         await ctx.send(embed=embed)
 
-    @tasks.loop(seconds=5)
+    @tasks.loop(seconds=30)
     async def loop(self):
         channels=self.bot.get_all_channels()
         chw=[ch for ch in channels if ch.name == "eew"]
