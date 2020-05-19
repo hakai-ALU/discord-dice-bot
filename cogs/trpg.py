@@ -27,35 +27,39 @@ class TRPG(commands.Cog):
 
     @commands.command(name='TRPG値')
     async def trpg(self, ctx):
-        """オウム返し"""
-        embed = discord.Embed(title="**TRPG値(ランダム生成)**", description=None,color=0x2ECC69)
+        """TRPG探索者値"""
+        embed = discord.Embed(title=f"**{ctx.author.name}さんの能力値**", description=None,color=0x2ECC69)
+
         str1=random.randint(3,18)
-        str1+=6
         embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
-        str1=random.randint(3,18)
-        str1+=6
-        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+
+        con1=random.randint(3,18)
+        embed.add_field(name="**CON(体力)**", value=f"`{con1}`")
+
+        pow1=random.randint(3,18)
+        embed.add_field(name="**POW(精神力)**", value=f"`{pow1}`")
+
+        dex1=random.randint(3,18)
+        embed.add_field(name="**DEX(敏捷)**", value=f"`{dex1}`")
+
+        app1=random.randint(3,18)
+        embed.add_field(name="**APP(容姿)**", value=f"`{app1}`")
+
+        siz1=random.randint(2,12)
+        siz1+=6
+        embed.add_field(name="**SIZ(体格)**", value=f"`{siz1}`")
+
+        int1=random.randint(2,12)
+        int1+=6
+        embed.add_field(name="**INT(知性)**", value=f"`{int1}`")
+
+        edu1=random.randint(3,18)
+        edu1+=3
+        embed.add_field(name="**EDU(教養)**", value=f"`{edu1}`")
+
+        sun1=pow1*5
+        embed.add_field(name="**SAN(正気度)**", value=f"`{sun1}`")
+
         await ctx.send(embed=embed)
         
 def setup(bot):
