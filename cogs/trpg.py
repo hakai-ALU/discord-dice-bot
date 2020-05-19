@@ -25,5 +25,12 @@ class TRPG(commands.Cog):
             # さいころの目の総和の内訳を表示する
             await message.channel.send(dice)
 
+    @commands.command(name='TRPG値')
+    async def trpg(self, ctx, what):
+        """オウム返し"""
+        2d6="1,3"
+        t1=random.randint(2d6)
+        await ctx.send(t1)
+        
 def setup(bot):
     bot.add_cog(TRPG(bot))
