@@ -28,9 +28,35 @@ class TRPG(commands.Cog):
     @commands.command(name='TRPG値')
     async def trpg(self, ctx, what):
         """オウム返し"""
-        sd6=int("1,3")
-        t1=random.randint(sd6)
-        await ctx.send(t1)
+        embed = discord.Embed(title="**TRPG値(ランダム生成)**", description=None,color=0x2ECC69)
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        str1=random.randint(3,18)
+        str1+=6
+        embed.add_field(name="**STR(筋力)**", value=f"`{str1}`")
+        await ctx.send(embed=embed)
         
 def setup(bot):
     bot.add_cog(TRPG(bot))
