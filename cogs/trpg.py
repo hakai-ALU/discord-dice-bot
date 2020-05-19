@@ -26,7 +26,7 @@ class TRPG(commands.Cog):
             await message.channel.send(dice)
 
     @commands.command(name='TRPG値')
-    async def trpg(self, ctx, what):
+    async def trpg(self, ctx):
         """オウム返し"""
         embed = discord.Embed(title="**TRPG値(ランダム生成)**", description=None,color=0x2ECC69)
         str1=random.randint(3,18)
