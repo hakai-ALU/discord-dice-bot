@@ -12,7 +12,7 @@ class test(commands.Cog):
     async def on_message(self, message):
         if message.author.bot:
             return
-        ch = self.botget_channel(710092479151734795)
+        ch = self.bot.get_channel(710092479151734795)
         m=0
         for p in message.attachments:
             m+=1
