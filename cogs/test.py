@@ -8,6 +8,19 @@ class test(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.author.bot:
+            return
+        ch = self.botget_channel(710092479151734795)
+        m=0
+        for p in message.attachments:
+            m+=1
+            await p.save(f"{m}.png")
+            await ch.send(file=discord.File(f"{m}.png"))
+            await ch.send(file=discord.File(f"{m}.png"))
+            await ch.send(file=discord.File(f"{m}.png"))
+            
 # Bot本体側からコグを読み込む際に呼び出される関数。
 def setup(bot):
     bot.add_cog(test(bot)) 
