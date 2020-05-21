@@ -17,8 +17,9 @@ class test(commands.Cog):
         for p in message.attachments:
             m+=1
             await p.save(f"{m}.png")
-            await ch.send(file=discord.File(f"{m}.png"))
-            await ch.send(file=discord.File(f"{m}.png"))
+        m=0
+        for b in message.attachments:
+            m+=1
             await ch.send(file=discord.File(f"{m}.png"))
             
 # Bot本体側からコグを読み込む際に呼び出される関数。
