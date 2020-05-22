@@ -6,15 +6,15 @@
     "YYY",
     "ZZZ"
   ],
-  "repository": "https://github.com/xxx/xxx",
+  "repository": "https://github.com/hakai-ALU/discord-dice-bot",
   "env": {
     "HUBOT_HEROKU_KEEPALIVE_INTERVAL": {
       "description": "hubot-heroku-keepalive interval.",
       "value": ""
     },
-    "HUBOT_HEROKU_KEEPALIVE_URL": {
-      "description": "hubot-heroku-keepalive URL.",
-      "value": ""
+    "TZ": {
+      "description": "Time-Zone(Tokyo)",
+      "value": "Asia/Tokyo"
     }
   },
 }
