@@ -6,7 +6,7 @@
     "YYY",
     "ZZZ"
   ],
-  "repository": "https://github.com/hakai-ALU/discord-dice-bot",
+  "repository": "https://github.com/hakai-ALU/discord-dice-bot/blob/master/app.json",
   "env": {
     "DISCORD_BOT_TOKEN": {
       "description": "YOUER DISCORD BOT TOKEN",
