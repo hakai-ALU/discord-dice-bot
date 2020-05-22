@@ -8,8 +8,8 @@
   ],
   "repository": "https://github.com/hakai-ALU/discord-dice-bot",
   "env": {
-    "HUBOT_HEROKU_KEEPALIVE_INTERVAL": {
-      "description": "hubot-heroku-keepalive interval.",
+    "DISCORD_BOT_TOKEN": {
+      "description": "YOUER DISCORD BOT TOKEN",
       "value": ""
     },
     "TZ": {
