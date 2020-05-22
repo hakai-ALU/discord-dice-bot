@@ -1,0 +1,20 @@
+{
+  "name": "discord-dice-bot",
+  "description": "discordで動かすダイスボットです。",
+  "keywords": [
+    "XXX",
+    "YYY",
+    "ZZZ"
+  ],
+  "repository": "https://github.com/xxx/xxx",
+  "env": {
+    "HUBOT_HEROKU_KEEPALIVE_INTERVAL": {
+      "description": "hubot-heroku-keepalive interval.",
+      "value": ""
+    },
+    "HUBOT_HEROKU_KEEPALIVE_URL": {
+      "description": "hubot-heroku-keepalive URL.",
+      "value": ""
+    }
+  },
+}
