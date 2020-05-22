@@ -2,11 +2,11 @@
   "name": "discord-dice-bot",
   "description": "discordで動かすダイスボットです。",
   "keywords": [
-    "XXX",
-    "YYY",
-    "ZZZ"
+    "discord",
+    "dice",
+    "bot"
   ],
-  "repository": "https://github.com/hakai-ALU/discord-dice-bot/blob/master",
+  "repository": "https://github.com/hakai-ALU/discord-dice-bot",
   "env": {
     "DISCORD_BOT_TOKEN": {
       "description": "YOUER DISCORD BOT TOKEN",
